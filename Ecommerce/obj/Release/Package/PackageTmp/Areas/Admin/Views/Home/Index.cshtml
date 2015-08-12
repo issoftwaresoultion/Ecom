@@ -1,0 +1,90 @@
+﻿@model Ecommerce.Model.LoginModel
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../../../Content/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- MetisMenu CSS -->
+    <link href="../../../../Content/css/metisMenu.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="../../../../Content/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="../../../../Content/css/sb-admin-2.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+     <!-- jQuery -->
+    <script src="../../../../Scripts/jquery-1.9.1.js"></script>
+    <script src="../../../../Scripts/jquery.validate.js"></script>
+    <script src="../../../../Scripts/jquery.validate.unobtrusive.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+                       @using (Html.BeginForm("Validate", "home"))
+                        {
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m=>m.Email,new {@class="form-control",@placeholder="Email"})
+                                    @Html.ValidationMessageFor(m=>m.Email)
+                                     </div>
+                                <div class="form-group">
+                                     @Html.PasswordFor(m=>m.Password,new {@class="form-control",@placeholder="Password"})
+                                     @Html.ValidationMessageFor(m=>m.Password)
+                                     </div>
+                            if (TempData["ErrorMessage"] != null)
+                            {
+                            <span id="error" class="field-validation-error">
+                                @Html.Raw(Convert.ToString(TempData["ErrorMessage"]))
+                            </span>
+                            }
+                                <!-- Change this to a button or input when using this as a form -->
+                                <input type="submit" onclick="validate();" value="Login" class="btn btn-lg btn-success btn-block"/>
+                        }
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../../../Scripts/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+
+    <script src="../../../../Scripts/metisMenu.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../../../../Scripts/sb-admin-2.js"></script>
+
+</body>
+
+</html>
+<script type="text/javascript">
+    function validate() {
+        $("#error").html('');
+    }
+
+</script>

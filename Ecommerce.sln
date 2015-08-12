@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce", "Ecommerce\Ecommerce.csproj", "{155F4338-4F44-48AA-A954-EDC344EF3028}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{EA35CBDB-1BD5-4EC8-AC28-E1B78A9F112C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{155F4338-4F44-48AA-A954-EDC344EF3028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{155F4338-4F44-48AA-A954-EDC344EF3028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{155F4338-4F44-48AA-A954-EDC344EF3028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{155F4338-4F44-48AA-A954-EDC344EF3028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA35CBDB-1BD5-4EC8-AC28-E1B78A9F112C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA35CBDB-1BD5-4EC8-AC28-E1B78A9F112C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA35CBDB-1BD5-4EC8-AC28-E1B78A9F112C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA35CBDB-1BD5-4EC8-AC28-E1B78A9F112C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

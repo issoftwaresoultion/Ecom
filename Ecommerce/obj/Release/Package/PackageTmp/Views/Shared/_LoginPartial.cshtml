@@ -1,0 +1,80 @@
+﻿@model Ecommerce.Model.LoginModel
+           @if(!Request.IsAuthenticated)
+           {
+           <li>
+               @using (Html.BeginForm("Validate", "Landing"))
+                        {
+                                <table >
+                                    <tr>
+                                        <td >@Html.TextBoxFor(m => m.Email, new {@placeholder="Email" })&nbsp;
+                                            @*<p>@Html.ValidationMessageFor(m=>m.Email) &nbsp;</p>*@
+                                        </td>
+                                        <td >@Html.PasswordFor(m => m.Password, new {@placeholder="Password" })&nbsp;
+                                            @*<p>@Html.ValidationMessageFor(m=>m.Password)&nbsp;</p>*@
+
+                                        </td>
+                                        <td style="vertical-align:top;">
+                                            <input type="submit" style="padding: 4px 5px;    font-size: 15px;" class="btn btn-primary btn-lg" onclick="return validate();"  value="Log in">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <a href="javascript:void(0)" onclick="ShowForGotPassword()">
+                                                Forgot password?
+                                             </a>
+                                            @*<p>@Html.ValidationMessageFor(m=>m.Email) &nbsp;</p>*@
+                                        </td>
+                                        <td colspan="2" >
+                                            <a href="javascript:void(0)" onclick="ShowRegisterUser()">
+                                            Create Account
+                                                </a>
+                                            @*<p>@Html.ValidationMessageFor(m=>m.Password)&nbsp;</p>*@
+
+                                        </td>
+                                        
+                                    </tr>
+                                </table>
+                            }
+                            </li>
+              
+           }
+else
+{
+                <li>
+                                <table >
+                                    <tr>
+                                        <td >Welcome :&nbsp;
+                                            
+                                        </td>
+                                        <td >@Model.Name</td>
+
+                                         <td> &nbsp;<a href="/Landing/SignOut">&nbsp;|&nbsp;Log out</a></td>
+                                        
+                                    </tr>
+                                </table>
+
+                            </li>
+           
+           }
+
+<script>
+    function validate() {
+        var check = true;
+        if ($("#Password").val() == "") {
+            $("#Password").css("background-color", "Pink");
+            check = false;
+        }
+        else {
+            $("#Password").css("background-color", "white");
+        }
+        if ($("#Email").val() == "") {
+            $("#Email").css("background-color", "Pink");
+            check = false;
+        }
+        else {
+            $("#Email").css("background-color", "white");
+        }
+       
+        return check;
+    }
+
+</script>

@@ -1,0 +1,119 @@
+﻿@model List<Ecommerce.Model.adminUser>
+@{
+
+    Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
+    string cssclass = "gradeA odd";
+}
+<link href="../../../../Content/css/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="../../../../Content/css/dataTables.responsive.css" rel="stylesheet" />
+<script src="../../../../Scripts/Datatable/jquery.dataTables.js"></script>
+<script src="../../../../Scripts/Datatable/dataTables.bootstrap.js"></script>
+<script type="text/javascript">
+    function deleteUser(e) {
+
+        var retVal = confirm("All the product prices with this color will be deleted. ");
+        if (retVal == true) {
+            $.ajax({
+                "url": "/admin/User/Delete/" + e,
+                "async": true,
+                "dataType": "json",
+                "success": function (json) {
+                    if (json) {
+                        window.location.href = "/admin/User/index"
+                    }
+                    else {
+                        alert("Error while deleting");
+                    }
+
+                }
+            });
+            //write delete code here
+            return true;
+        } else {
+            //alert("User does not want to continue!");
+            return false;
+        }
+    }
+</script>
+@if (Model.Count() > 0)
+{
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+             <div class="row">
+          <div class="col-sm-6"> <strong> User list</strong></div><div class="col-sm-6"><a href="/Admin/Length/Create" class="btn btn-primary fright">Add User</a> </div>
+                 </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <div class="row">
+                        
+                        @*<div class="col-sm-6">
+                            <div id="dataTables-example_filter" class="dataTables_filter">
+                                <label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label></div>
+                        </div>*@
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 20%;">Name</th>
+                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 20%;">Contact Number</th>
+                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 20%;">Email</th>
+                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 20%;">IsAdmin</th>
+                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 30%;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.Count(); i++)
+                                    {
+                                        if (i % 2 == 0)
+                                        {
+                                            cssclass = "gradeA even";
+                                        } 
+                                    <tr class="@cssclass" role="row">
+                                        <td class="">@Model[i].Name</td>
+                                             <td class="">@Model[i].ContactNumber</td>
+                                             <td class="">@Model[i].Email</td>
+                                             <td class="">@Model[i].Isadmin</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", "User", new {id=Model[i].id }, new { @class = "btn btn-success" })&nbsp;
+                                            <a href="javascript:void(0)" class="btn btn-danger" onclick="deleteUser('@Model[i].id');">Delete</a> 
+                                        </td>
+                                    </tr>
+                                    }
+                                     
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    
+ 
+}
+else
+{
+    
+    <div class="panel panel-yellow">
+        <div class="panel-heading">
+             <div class="row">
+          <div class="col-sm-6"> User list</div><div class="col-sm-6"><a href="/Admin/User/Create" class="btn btn-primary fright">Add User</a> </div>
+                 </div>
+        </div>
+        <div class="panel-body">
+            <p>No User yet!</p>
+        </div>
+
+    </div>
+}
+

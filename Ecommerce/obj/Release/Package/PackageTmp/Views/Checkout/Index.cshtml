@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Check out";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+@*www.fixer.io for money conversion*@
+<script src="../../FrontEndContent/JavaScript/money.js"></script>
+<style>
+    .li:before {
+        display: none;
+    }
+</style>
+<section id="content">
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="/Landing/Index">Home</a></li>
+            <li>Check Out</li>
+            <li class="li" style="float: right;">
+                <img src="/img/CheckOutStep2.png" /></li>
+        </ol>
+        <div id="CartDetail">
+
+            
+            <div class="row">
+                <div style="border-bottom: 1px dashed gray;">
+                    <h3 style="color: black; margin-top: 0px; margin-bottom: 3px;">YOUR DETAILS</h3>
+                </div>
+                @if (Convert.ToInt32(ViewBag.id) == 0)
+                {
+                <div class="col-lg-3">
+                    <h3 style="margin-top: 3px; margin-bottom: 3px;">Checkout below</h3>
+                    <h3 style="margin-top: 0px; margin-bottom: 3px;">without registering</h3>
+                    <span class="saveDetail">(You can save your details at the end)
+
+                    </span>
+
+                </div>
+                <div class="col-lg-3">
+                    <h1 style="color: black; text-align: center;">OR</h1>
+                </div>
+
+                <div class="col-lg-6">
+
+                @Html.Partial("/Views/Checkout/LoginPartial.cshtml")
+                @if (TempData["Invalidlogin"] != null)
+                {
+                    <span style="color:red;">
+                @Html.Raw(TempData["Invalidlogin"].ToString())</span>
+                }
+                </div>
+                }
+
+
+
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-7">
+                    @Html.Partial("/Views/Checkout/SignupPartial.cshtml", ViewBag.User as Ecommerce.Model.SignupModel)
+                </div>
+                <div class="col-lg-5">
+                    <span>&nbsp;       
+                </span>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Order Summary
+                        </div>
+                        <div class="panel-body">
+                            @Html.Action("Ordersummery", "Cart")
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <input type="hidden" id="coupanValidates" value="false" />
+    </div>
+</section>
+
+<script>
+
+
+</script>

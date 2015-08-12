@@ -1,0 +1,213 @@
+﻿@model List<Ecommerce.Model.ProductModel>
+@{
+   
+    Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
+    string cssclass = "gradeA odd";
+}
+<link href="../../../../Content/css/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="../../../../Content/css/dataTables.responsive.css" rel="stylesheet" />
+<script src="../../../../Scripts/Datatable/jquery.dataTables.js"></script>
+<script src="../../../../Scripts/Datatable/dataTables.bootstrap.js"></script>
+<script type="text/javascript">
+    function deleteProduct(e)
+    {
+      
+        var retVal = confirm("All the product in this product will be deleted. ");
+        if (retVal == true) {
+            var id = $("#Idpass").val();
+            var type = $("#type").val();
+            $.ajax( {
+                "url": "/admin/Product/Delete/" + e,
+	            "async": false,
+	            "dataType": "json",
+	           "success": function (json) {
+	               if (json) {
+	                   window.location.href = "/admin/Product/IndexFromCategory/" + id;
+	               }
+	               else {
+	                   alert("Error while deleting");
+	               }
+
+	                }
+	          } );
+            //write delete code here
+            return true;
+        } else {
+            //alert("User does not want to continue!");/Admin/Product/Create?tId=@ViewBag.Id&type=@ViewBag.Type
+            return false;
+        }
+    }
+    function CopyProduct(e) {
+        $.ajax({
+            "url": "/admin/Product/Copy/" + e,
+            "async": false,
+            "dataType": "json",
+            "success": function (json) {
+                if (json) {
+                    alert("Product is copied");
+                }
+                else {
+                    alert("Error while coping product");
+                }
+            }
+        });
+    }
+    </script>
+<input type="hidden" value="@ViewBag.Type" id="type"/>
+<input type="hidden" value="@ViewBag.Id" id="Idpass"/>
+@if (Model.Count() > 0)
+{
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+             <div class="row">
+          <div class="col-sm-6"> Product list- <strong> @Model[0].Category</strong></div><div class="col-sm-6"><a href="/Admin/Product/Create?tId=@ViewBag.Id&type=@ViewBag.Type" class="btn btn-primary fright">Add Product</a> </div>
+                 </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <div class="row">
+                        
+                        @*<div class="col-sm-6">
+                            <div id="dataTables-example_filter" class="dataTables_filter">
+                                <label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label></div>
+                        </div>*@
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 30%;">Image</th>
+                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 10%;">Name</th>
+@*                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 10%;">Brand</th>*@
+                                         <th  tabindex="0" aria-controls="dataTables-example"  style="width: 30%;">Description</th>
+                                         <th  tabindex="0" aria-controls="dataTables-example"  style="width: 20%;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.Count(); i++)
+                                    {
+                                        if (i % 2 == 0)
+                                        {
+                                            cssclass = "gradeA even";
+                                        } 
+                                    <tr class="@cssclass" role="row">
+                                        <td class=""><img src='/ProductImages/@Model[i].Image' height="200px" width="150px" /></td>
+                                        <td class="">@Model[i].Name</td>
+                                        @*<td class="">@Model[i].Brand</td>*@
+                                        <td class="">@Model[i].Discription</td>
+                                        <td>
+                                            <a class = "btn btn-success" href="/admin/Product/Edit?tId=@Model[i].Id&type=@ViewBag.Type">Edit</a>
+                                            <a href="javascript:void(0)" class="btn btn-danger" onclick="CopyProduct('@Model[i].Id');">Copy</a> 
+                                         <a href="javascript:void(0)" class="btn btn-danger" onclick="deleteProduct('@Model[i].Id');">Delete</a> 
+                                                                              <a   href="/admin/ReviewAdmin/Index/@Model[i].Id" class="btn btn-danger" >Reviews</a> 
+    
+                                        </td>
+                                    </tr>
+                                        <tr>
+                                            <td style="width: 5%;"></td>
+                                            <td style="width: 95%;" colspan="5">
+                                                <table>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>Length</td>
+                                                        <td>Color</td>
+                                                        <td>Dollar</td>
+                                                        <td>Euro</td>
+                                                        <td>Pound</td>
+                                                        <td>Naira</td>
+                                                        <td>Angola</td>
+                                                        <td>Ghana</td>
+
+                                                    </tr>
+                                                    @foreach(var x in Model[i].ProductPrice)
+                                                    {
+                                                    <tr>
+                                                        <td>Price</td>
+                                                        <td>@x.LengthName
+
+                                                        </td>
+                                                        <td>@x.ColorName
+
+                                                        </td>
+                                                        <td>@x.PriceDollar</td>
+                                                        <td>@x.PriceEuro</td>
+                                                        <td>@x.PricePound</td>
+                                                        <td>@x.pricenigeria</td>
+                                                        <td>@x.priceangola</td>
+                                                        <td>@x.priceghana</td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Our Price</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>@x.OurPriceDollar</td>
+                                                        <td>@x.OurPriceEuro</td>
+                                                        <td>@x.OurPricePound</td>
+                                                        <td>@x.ourpricenigeria</td>
+                                                        <td>@x.ourpriceangola</td>
+                                                        <td>@x.ourpriceghana</td>
+
+                                                    </tr>
+                                                    }
+                                                </table>
+
+
+                                            </td>
+                                        </tr>
+                                    }
+                                     
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @*<div class="row">
+                        <div class="col-sm-6">
+                            <div class="dataTables_info" id="dataTables-example_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a></li>
+                                    <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a></li>
+                                    <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li>
+                                    <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">3</a></li>
+                                    <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">4</a></li>
+                                    <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">5</a></li>
+                                    <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">6</a></li>
+                                    <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+ }
+else
+{
+    
+    <div class="panel panel-yellow">
+        <div class="panel-heading">
+             <div class="row">
+          <div class="col-sm-6"> Product list</div><div class="col-sm-6"><a href="/Admin/Product/Create?tId=@ViewBag.Id&type=@ViewBag.Type" class="btn btn-primary fright">Add Product</a> </div>
+                 </div>
+        </div>
+        <div class="panel-body">
+            <p>No Product is add yet!</p>
+        </div>
+
+    </div>
+}
+
+
+
+

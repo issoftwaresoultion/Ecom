@@ -1,0 +1,144 @@
+﻿@model Ecommerce.Model.CartModel
+@if (Model != null)
+{
+    if (Model.Product!=null)
+    {
+    <aside class="widget_shopping_cart">
+        <ul class="cart_list" style="list-style:none;">
+            @foreach (var x in Model.Product)
+            {
+                <li>
+                    <table style="width: 100%">
+                        <tr>
+                            <td rowspan="3" colspan="3" width="10%">
+                                <a href="GotoProductPage">
+                                    <img height="60px" width="60px" alt="" src="/ProductImages/@x.Image">
+                                </a>
+                            </td>
+                            <td colspan="2"><strong>@x.Name</strong></td>
+                            <td>&nbsp;</td>
+                            <td>
+
+                                <span class="quantity">&nbsp;<span class="amount">
+                                    @if (Session["currency"].ToString() == "Dollar")
+                                    {   
+                                        @Html.Raw("$" + x.Price.Ourprice)                          
+                                    }
+                                    @if (Session["currency"].ToString() == "Euro")
+                                    {   
+                                        @Html.Raw("&euro" + x.Price.Ourprice)
+                                    }
+                                    @if (Session["currency"].ToString() == "Pound")
+                                    {   
+                                        @Html.Raw("&pound;" + x.Price.Ourprice)
+                                    }
+                                    @if (Session["currency"].ToString() == "Naira")
+                                    {   
+                                        @Html.Raw("&#8358;" + x.Price.Ourprice)
+                                    }
+                                    @if (Session["currency"].ToString() == "Kwanza")
+                                    {   
+                                        @Html.Raw("Kz" + x.Price.Ourprice)
+                                    }
+                                    @if (Session["currency"].ToString() == "Cedi")
+                                    {   
+                                        @Html.Raw("GH₵" + x.Price.Ourprice)
+                                    }
+                                </span></span>
+
+                            </td>
+                              <td rowspan="3" style="text-align:right;vertical-align:top;">
+                                 
+                                
+                                      </td>
+                        </tr>
+                        <tr>
+                            <td>Length : &nbsp;@x.Price.LengthName</td>
+                            <td> </td>
+                            <td>&nbsp;</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Color : &nbsp;@x.Price.ColorName</td>
+                            <td></td>
+                            <td>&nbsp;</td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+
+
+                </li>
+            }
+
+        </ul>
+        <p class="total" style="text-align: right;margin-bottom: 0px;  ">
+            <strong>Delivery Charges:</strong> <span class="amount">
+                @if (Session["currency"].ToString() == "Dollar")
+                {   
+                    @Html.Raw("$" + Model.DelivierCharges)                          
+                }
+                @if (Session["currency"].ToString() == "Euro")
+                {   
+                    @Html.Raw("&euro" + Model.DelivierCharges)
+                }
+                @if (Session["currency"].ToString() == "Pound")
+                {   
+                    @Html.Raw("&pound;" + Model.DelivierCharges)
+                }
+                @if (Session["currency"].ToString() == "Naira")
+                {   
+                    @Html.Raw("&#8358;" + Model.DelivierCharges)
+                }
+                @if (Session["currency"].ToString() == "Kwanza")
+                {   
+                    @Html.Raw("Kz" + Model.DelivierCharges)
+                }
+                @if (Session["currency"].ToString() == "Cedi")
+                {   
+                    @Html.Raw("GH₵" + Model.DelivierCharges)
+                }
+            </span>
+        </p>
+        <p class="total" style="text-align: right;margin-bottom: 0px; ">
+            <strong>Subtotal:</strong> <span class="amount">
+                @if (Session["currency"].ToString() == "Dollar")
+                {   
+                    @Html.Raw("$" + Model.Total)                          
+                }
+                @if (Session["currency"].ToString() == "Euro")
+                {   
+                    @Html.Raw("&euro" + Model.Total)
+                }
+                @if (Session["currency"].ToString() == "Pound")
+                {   
+                    @Html.Raw("&pound;" + Model.Total)
+                }
+                @if (Session["currency"].ToString() == "Naira")
+                {   
+                    @Html.Raw("&#8358;" + Model.Total)
+                }
+                @if (Session["currency"].ToString() == "Kwanza")
+                {   
+                    @Html.Raw("Kz" + Model.Total)
+                }
+                @if (Session["currency"].ToString() == "Cedi")
+                {   
+                    @Html.Raw("GH₵" + Model.Total)
+                }
+            </span>
+        </p>
+    </aside>
+        }
+        else
+{
+    <h3 style="text-align:center;">Empty Shopping Cart</h3>
+}
+
+}
+else
+{
+    <h3 style="text-align:center;">Empty Shoping Cart</h3>
+}
+
+@*<input type="hidden" value="@ViewBag.count" id="ItemCount"/>*@

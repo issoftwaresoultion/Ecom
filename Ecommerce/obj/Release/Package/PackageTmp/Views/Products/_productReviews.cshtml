@@ -1,0 +1,54 @@
+﻿@model List<Ecommerce.Model.ReviewModel>
+<hr />
+<a href="#reviews" data-toggle="tab">
+    <h3>Reviews </h3>
+</a>
+<div class="tab-content">
+
+    <div class="tab-pane active" id="reviews">
+        <div>
+            @if (Model.Count > 0)
+            {
+                <ol class="commentlist">
+
+                    @foreach (var x in Model)
+                    {
+                            
+                        <li class="comment">
+                            <div class="comment_container">
+                                <img height="64px" width="64px" src="/img/Avtar.jpg" class="avatar">
+                                <div class="comment-text">
+                                    <div class="start-rating">
+
+                                        @for (int i = 0; i < 5; i++)
+                                        {
+                                            if (i < x.Rating)
+                                            {
+                                            <span class="glyphicon glyphicon-star">
+                                                <img src="/img/Golden.png" /></span>
+                                            }
+                                            else
+                                            {
+                                            <span class="glyphicon glyphicon-star">
+                                                <img src="/img/Black.png" /></span>
+                                            }
+                                        }
+
+                                    </div>
+                                    <h5 class="meta">@x.Name @*<span>&mdash; June 7, 2013</span>*@</h5>
+                                    <p>@x.Message</p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ol>
+               
+            }
+            else
+            {
+                <h5 class="meta" id="messageBox">Be first one to review the product</h5>
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ecommerceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ecommerceModelStoreContainer">
+    <EntitySet Name="brand" EntityType="ecommerceModel.Store.brand" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="category" EntityType="ecommerceModel.Store.category" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="color" EntityType="ecommerceModel.Store.color" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="deliverycharges" EntityType="ecommerceModel.Store.deliverycharges" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="images" EntityType="ecommerceModel.Store.images" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="length" EntityType="ecommerceModel.Store.length" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="product" EntityType="ecommerceModel.Store.product" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="productpricing" EntityType="ecommerceModel.Store.productpricing" store:Type="Tables" Schema="ecommerce" />
+  </EntityContainer>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BrandName" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="discription" Type="varchar" MaxLength="500" />
+    <Property Name="Code" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="color">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="deliverycharges">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="deliveryDoller" Type="decimal" />
+    <Property Name="deliveryPound" Type="decimal" />
+    <Property Name="deliveryEuro" Type="decimal" />
+    <Property Name="deliveryNigria" Type="decimal" />
+    <Property Name="deliveryAngola" Type="decimal" />
+    <Property Name="deliveryGhana" Type="decimal" />
+  </EntityType>
+  <EntityType Name="images">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="image" Type="varchar" MaxLength="200" />
+    <Property Name="imageType" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="length">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="value" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="catid" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="discription" Type="varchar" MaxLength="500" />
+    <Property Name="image" Type="varchar" MaxLength="100" />
+    <Property Name="brandid" Type="int" />
+    <Property Name="productCode" Type="varchar" MaxLength="250" />
+    <Property Name="keyWord" Type="varchar" MaxLength="45" />
+    <Property Name="isHot" Type="bit" />
+  </EntityType>
+  <EntityType Name="productpricing">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="productid" Type="int" />
+    <Property Name="lengthId" Type="int" />
+    <Property Name="colorId" Type="int" />
+    <Property Name="pricedollor" Type="double" />
+    <Property Name="priceeuro" Type="double" />
+    <Property Name="pricepound" Type="double" />
+    <Property Name="ourpricedollor" Type="double" />
+    <Property Name="ourpriceeuro" Type="double" />
+    <Property Name="ourpricepound" Type="double" />
+    <Property Name="ourpricenigeria" Type="double" />
+    <Property Name="ourpriceangola" Type="double" />
+    <Property Name="ourpriceghana" Type="double" />
+    <Property Name="priceghana" Type="double" />
+    <Property Name="priceangola" Type="double" />
+    <Property Name="pricenigeria" Type="double" />
+  </EntityType>
+</Schema>

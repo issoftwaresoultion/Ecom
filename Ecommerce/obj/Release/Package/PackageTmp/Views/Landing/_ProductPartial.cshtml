@@ -1,0 +1,122 @@
+﻿@model List<Ecommerce.Model.ProductModel>
+<ul class="products row">
+    @foreach (var x in Model)
+    {
+        if (x.ProductPrice != null)
+        {
+            if (x.ProductPrice.Count > 0)
+            {
+                String ProductNameLine1 = "";
+                string ProductNameLine2 = "";
+                if (x.Name.Length > 29)
+                {
+                    string fristString = x.Name.Substring(0, 29);
+                    var index = fristString.LastIndexOf(' ');
+                  x.Name=  x.Name.Insert(index, "-");
+                    ProductNameLine1 = x.Name.Split('-')[0];
+                    ProductNameLine2 = x.Name.Split('-')[1];
+                }
+                else
+                {
+                    ProductNameLine1 = x.Name;
+                }
+                
+        <li class="col-sm-3 first liMargin">
+
+            <div class="">
+                <div class="">
+                    <a href="/products/index/@x.Id">
+                        <img width="263px" height="388px" src="/ProductImages/@x.Image" alt=""></a>
+                </div>
+            </div>
+            <hr style="border-color: #fd638f !important;" />
+            <div style="text-align: center; color: #333;"><strong>@ProductNameLine1</strong> </div>
+            @if (ProductNameLine2!="")
+            {
+             <div style="text-align: center; color: #333;"><strong>@ProductNameLine1</strong> </div>
+            }
+            else
+            {
+             <div style="text-align: center; color: #333;"><strong>&nbsp;</strong> </div>
+            }
+                <table style="font-weight: bold; width: 100%; color: #333; text-align: center;">
+                <tr>
+                    @*<td width="5%" style="text-align: left"></td>*@
+                    <td width="30%" style="text-align: left">
+                        <select style="width: 100%" id="Lengthdd-@x.Id" onchange="getcolordropdown(this,@x.Id)">
+                            @foreach (var z in x.SelectedLengthList)
+                            {
+                                
+                                <option value="@z.id">@z.value</option>
+                               
+                            }
+                        </select>
+                    </td>
+                    @if (Session["currency"].ToString() == "Dollar")
+                    {   
+                        <td style="font-size: 12px;" width="35%">&nbsp;$<strike><span id="ActualPrice-@x.Id">@x.ProductPrice[0].PriceDollar</span></strike></td>
+                        <td width="35%" style="font-size: 15px; color: red;">&nbsp;$<span id="OurPrice-@x.Id">@x.ProductPrice[0].OurPriceDollar</span></td>
+                          
+                    }
+                    @if (Session["currency"].ToString() == "Euro")
+                    {   
+                        <td width="35%" style="font-size: 12px;">&nbsp;&euro;<strike><span id="ActualPrice-@x.Id">@x.ProductPrice[0].PriceEuro</span></strike></td>
+                        <td width="35%" style="font-size: 15px; color: red;">&nbsp;&euro;<span id="OurPrice-@x.Id">@x.ProductPrice[0].OurPriceEuro</span></td>
+                          
+                    }
+                    @if (Session["currency"].ToString() == "Pound")
+                    {   
+                        <td width="35%" style="font-size: 12px;">&nbsp;&pound;<strike><span id="ActualPrice-@x.Id">@x.ProductPrice[0].PricePound</span></strike></td>
+                        <td width="35%" style="font-size: 15px; color: red;">&nbsp;&pound;<span id="OurPrice-@x.Id">@x.ProductPrice[0].OurPricePound</span></td>
+
+                    }
+                    @if (Session["currency"].ToString() == "Naira")
+                    {   
+                        <td width="35%" style="font-size: 12px;">&nbsp;&#8358;<strike><span id="ActualPrice-@x.Id">@x.ProductPrice[0].pricenigeria</span></strike></td>
+                        <td width="35%" style="font-size: 15px; color: red;">&nbsp;&#8358;<span id="OurPrice-@x.Id">@x.ProductPrice[0].ourpricenigeria</span></td>
+
+                    }
+                    @if (Session["currency"].ToString() == "Kwanza")
+                    {   
+                        <td width="35%" style="font-size: 12px;">&nbsp;Kz<strike><span id="ActualPrice-@x.Id">@x.ProductPrice[0].priceangola</span></strike></td>
+                        <td width="35%" style="font-size: 15px; color: red;">&nbsp;Kz<span id="OurPrice-@x.Id"> @x.ProductPrice[0].ourpriceangola</span></td>
+
+                    }
+                    @if (Session["currency"].ToString() == "Cedi")
+                    {   
+                        <td width="35%" style="font-size: 12px;">&nbsp;GH₵<strike><span id="ActualPrice-@x.Id">@x.ProductPrice[0].priceghana</span></strike></td>
+                        <td width="35%" style="font-size: 15px; color: red;">&nbsp;GH₵<span id="OurPrice-@x.Id">@x.ProductPrice[0].ourpriceghana</span></td>
+                    }
+                    <input type="hidden" id="currentSeleted-@x.Id" value="@x.ProductPrice[0].Id"/>
+
+
+                </tr>
+                <tr>
+                    @*<td style="text-align: left"></td>*@
+                    <td colspan="2" style="text-align: left" id="">
+                        <select id="Color-@x.Id" style="width: 90%" onchange="oncolorddChange(this,@x.Id)">
+                            @foreach (var z in x.SelectedColorList)
+                            {
+                               
+                                <option value="@z.id">@z.name</option>
+                               
+                            }
+                        </select>
+
+                    </td>
+                    <td colspan="1">@*class="shopping-cartBucket*@
+                        <input type="button" class="btn btn-primary btn-sm" value="Buy"  onclick="AddToCart(@x.Id)"/></td>
+
+
+                </tr>
+
+
+            </table>
+
+        </li>
+            }
+        }
+    }
+</ul>
+
+

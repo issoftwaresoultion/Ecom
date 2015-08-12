@@ -1,0 +1,57 @@
+﻿@model Ecommerce.Model.LoginModel 
+@{
+    Model.SubscribeForNewLetter = true;
+}
+<div id="UserRegisterMessage" style="color: red;">&nbsp;</div>
+@using (Ajax.BeginForm("RegisterUser", "FrontBase",
+            new AjaxOptions
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "UserRegisterMessage",
+                OnBegin = "showloader",
+                OnComplete = "hideloader"
+
+            }))
+{ 
+    <input type="hidden" name="id" value="0"/>
+    <table>
+        <tr>
+            <td>
+                @Html.TextBoxFor(m => m.FirstName, new { size = 30, @placeholder="First Name"})
+                <div>&nbsp; @Html.ValidationMessageFor(m => m.FirstName)&nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(m => m.LastName, new { size = 30 , @placeholder="Last Name"})
+                <div>&nbsp; @Html.ValidationMessageFor(m => m.LastName)&nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(m => m.RegistrationEmail, new { size = 30, @placeholder="Email Address" })
+                <div>&nbsp; @Html.ValidationMessageFor(m => m.RegistrationEmail)&nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.PasswordFor(m => m.Password, new { size = 30,@placeholder="Password" })
+                <div>&nbsp; @Html.ValidationMessageFor(m => m.Password)&nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.PasswordFor(m => m.rePassword, new { size = 30,@placeholder="Re-enter Password" })
+                <div>&nbsp; @Html.ValidationMessageFor(m => m.rePassword)&nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Yes, send me great deals and offers.</td>
+            <td>
+                @Html.CheckBoxFor(m => m.SubscribeForNewLetter)
+            </td>
+        </tr>
+    </table>
+    <input type="submit" class="btn btn-primary btn-sm" value="Submit" />
+}

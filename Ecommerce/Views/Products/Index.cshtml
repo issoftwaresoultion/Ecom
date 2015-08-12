@@ -1,0 +1,227 @@
+﻿@model Ecommerce.Model.ProductModel
+@{
+    ViewBag.Title = "Product Detail";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<section id="content">
+    <div class="container">
+
+         @Html.Raw( ViewBag.breadcrums)
+
+        <div class="row">
+            <div class="col-sm-5">
+
+                <div id="product-large" class="owl-carousel">
+                    <div class="item" style="overflow: hidden;">
+                        <img width="458px" height="480px" id="zoomimg" src="/ProductImages/@Model.Image">
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-sm-7 summary entry-summary">
+
+                <h1 class="product_title">@Model.Name</h1>
+                <table width="25%">
+                    <tr>
+                        @if (Session["currency"].ToString() == "Dollar")
+                        {   
+                            <td style="font-size: 14px; text-align: left;" width="20%">&nbsp;$<strike><span id="ActualPrice-@Model.Id">@Model.ProductPrice[0].PriceDollar</span></strike></td>
+                            <td width="20%" style="font-size: 18px; color: red; text-align: left;">&nbsp;$<span id="OurPrice-@Model.Id">@Model.ProductPrice[0].OurPriceDollar</span></td>
+                        }
+                        @if (Session["currency"].ToString() == "Euro")
+                        {   
+                            <td width="20%" style="font-size: 14px; text-align: left;">&nbsp;&euro;<strike><span id="ActualPrice-@Model.Id">@Model.ProductPrice[0].PriceEuro</span></strike></td>
+                            <td width="20%" style="font-size: 18px; color: red; text-align: left;">&nbsp;&euro;<span id="OurPrice-@Model.Id">@Model.ProductPrice[0].OurPriceEuro</span></td>
+                          
+                        }
+                        @if (Session["currency"].ToString() == "Pound")
+                        {   
+                            <td width="20%" style="font-size: 14px; text-align: left;">&nbsp;&pound;<strike><span id="ActualPrice-@Model.Id">@Model.ProductPrice[0].PricePound</span></strike></td>
+                            <td width="20%" style="font-size: 18px; color: red; text-align: left;">&nbsp;&pound;<span id="OurPrice-@Model.Id">@Model.ProductPrice[0].OurPricePound</span></td>
+
+                        }
+                        @if (Session["currency"].ToString() == "Naira")
+                        {   
+                            <td width="20%" style="font-size: 14px; text-align: left;">&nbsp;&#8358;<strike><span id="ActualPrice-@Model.Id">@Model.ProductPrice[0].pricenigeria</span></strike></td>
+                            <td width="20%" style="font-size: 18px; text-align: left; color: red;">&nbsp;&#8358;<span id="OurPrice-@Model.Id">@Model.ProductPrice[0].ourpricenigeria</span></td>
+
+                        }
+                        @if (Session["currency"].ToString() == "Kwanza")
+                        {   
+                            <td width="20%" style="font-size: 14px; text-align: left">&nbsp;Kz<strike><span id="ActualPrice-@Model.Id">@Model.ProductPrice[0].priceangola</span></strike></td>
+                            <td width="20%" style="font-size: 18px; color: red; text-align: left">&nbsp;Kz<span id="OurPrice-@Model.Id"> @Model.ProductPrice[0].ourpriceangola</span></td>
+
+                        }
+                        @if (Session["currency"].ToString() == "Cedi")
+                        {   
+                            <td width="20%" style="font-size: 14px; text-align: left;">&nbsp;GH₵<strike><span id="ActualPrice-@Model.Id">@Model.ProductPrice[0].priceghana</span></strike></td>
+                            <td width="20%" style="font-size: 18px; color: red; text-align: left;">&nbsp;GH₵<span id="OurPrice-@Model.Id">@Model.ProductPrice[0].ourpriceghana</span></td>
+                        }
+                    </tr>
+                </table>
+                <input type="hidden" id="currentSeleted-@Model.Id" value="@Model.ProductPrice[0].Id"/>
+
+                @*<p class="price">
+                    <span class="amount" style="color: red">$<strike>15.154</strike></span>
+                    &nbsp;&nbsp;
+            <span class="amount">$11.154</span>
+                </p>*@
+
+                <h3>Description</h3>
+
+                <p>
+                    @Model.Discription
+                </p>
+                <hr>
+
+
+
+                <div class="variations">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            @*Length*@
+               <select class="form-control col-sm-6" style="width: 90%" id="Lengthdd-@Model.Id" onchange="getcolordropdown(this,@Model.Id)">
+                   @foreach (var z in Model.SelectedLengthList)
+                   {
+                       
+                       <option value="@z.id">@z.value</option>
+                       
+                   }
+               </select>
+                        </div>
+                        <div class="col-sm-6">
+                           @* Color*@
+                             <select class="form-control col-sm-6" id="Color-@Model.Id" style="width: 90%" onchange="oncolorddChange(this,@Model.Id)">
+                                 @foreach (var z in Model.SelectedColorList)
+                                 {
+                                     <option value="@z.id">@z.name</option>
+                                   
+                                 }
+                             </select>
+                        </div>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary btn-lg" id="add-to-cart" onclick="AddToCart(@Model.Id)" value="Buy">
+            </div>
+        </div>
+
+        <div class="related">
+            <h2>You May Also Like</h2>
+            @Html.Partial("/Views/Landing/_ProductPartial.cshtml", (List<Ecommerce.Model.ProductModel>)ViewBag.relatedProduct)
+        </div>
+
+        <hr>
+
+        @Html.Action("ProductReview", "Products", new {id=Model.Id })
+        @*<div id="review_form">
+            <h3 id="reply-title" class="comment-reply-title">Add a Review</h3>
+            <form action="#" id="commentform" class="comment-form">
+                <div class="row">
+                    <p class="comment-form-author col-sm-4">
+                        <input type="text" placeholder="Author *" class="form-control">
+                    </p>
+                    <p class="comment-form-email col-sm-4">
+                        <input type="email" placeholder="Email *" class="form-control">
+                    </p>
+                    <p class="comment-form-rating col-sm-4">
+                        <select class="form-control">
+                            <option value="0">Your Rating</option>
+                            <option value="0">Perfect &mdash; 5*</option>
+                            <option value="0">Good &mdash; 4*</option>
+                            <option value="0">Average &mdash; 3*</option>
+                            <option value="0">Not That Bad &mdash; 2*</option>
+                            <option value="0">Very Poor &mdash; 1*</option>
+                        </select>
+                    </p>
+                </div>
+                <p class="comment-form-comment">
+                    <textarea name="review" id="review" class="form-control" cols="30" rows="5" placeholder="Your Review"></textarea>
+                </p>
+                <p class="form-submit">
+                    <input type="submit" class="btn btn-primary btn-lg" name="proceed" value="Post Review">
+                </p>
+            </form>
+        </div>*@
+       @* <hr />
+        <a href="#reviews" data-toggle="tab">
+            <h3>Reviews </h3>
+        </a>
+        <!-- Nav tabs 
+        
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+            <div class="tab-pane active" id="reviews">
+
+                <div>
+                    <ol class="commentlist">
+
+                        <li class="comment">
+                            <div class="comment_container">
+                                <img height="64px" width="64px" src="/img/Avtar.jpg" class="avatar">
+                                <div class="comment-text">
+                                    <div class="start-rating">
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <h5 class="meta">James Koster <span>&mdash; June 7, 2013</span></h5>
+                                    <p>Really happy with this print. The colors are great, and the paper quality is good too.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="comment">
+                            <div class="comment_container">
+                                <img height="64px" width="64px" src="/img/Avtar.jpg" class="avatar">
+                                <div class="comment-text">
+                                    <div class="start-rating">
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <h5 class="meta">Cobus Bester <span>&mdash; June 7, 2013</span></h5>
+                                    <p>You only get the picture, not the person holding it, something they don’t mention in the description, now I’ve got to find my own person.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="comment">
+                            <div class="comment_container">
+                                <img height="64px" width="64px" src="/img/Avtar.jpg" class="avatar">
+                                <div class="comment-text">
+                                    <div class="start-rating">
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <h5 class="meta">Stuart <span>&mdash; June 7, 2013</span></h5>
+                                    <p>This is a fantastic quality print and is happily hanging framed on my wall now.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ol>
+                </div>
+
+
+
+
+
+            </div>
+        </div>*@
+
+
+
+    </div>
+</section>

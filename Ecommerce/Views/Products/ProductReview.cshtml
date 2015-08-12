@@ -1,0 +1,48 @@
+﻿@model Ecommerce.Model.ReviewModel
+<div id="review_form">
+    <h3 id="reply-title" class="comment-reply-title">Add a Review</h3>
+           @using (Ajax.BeginForm("Save", "Products", FormMethod.Post, new AjaxOptions { OnSuccess = "complete" }))
+           {
+        <div class="row">
+            <p class="comment-form-author col-sm-4">
+                @*<input type="text" placeholder="Author *" class="form-control">*@
+                @Html.TextBoxFor(m => m.Name, new { @placeholder = "Author *", @class = "form-control" })
+                <span>&nbsp;
+                            @Html.ValidationMessageFor(m => m.Name)
+                </span>
+            </p>
+            <p class="comment-form-email col-sm-4">
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email *", @class = "form-control" })
+                <span>&nbsp;
+                            @Html.ValidationMessageFor(m => m.Email)
+                </span>
+            </p>
+            <p class="comment-form-rating col-sm-4">
+                @Html.DropDownListFor(m => m.Rating,
+                                     new SelectList(ViewBag.list, "key", "value",5), new { @class = "form-control" })
+            </p>
+        </div>
+        <p class="comment-form-comment">
+            @Html.TextAreaFor(m => m.Message, new { @cols = "30", @rows = "5", @placeholder = "Your Review",style="width:100%" })
+            <span>&nbsp;
+                            @Html.ValidationMessageFor(m => m.Message)
+            </span>
+        </p>
+               @Html.HiddenFor(m => m.ProductId)
+        <p class="form-submit">
+            <input type="submit" class="btn btn-primary btn-lg" name="proceed" value="Post Review">
+        </p>
+           }
+    
+</div>
+@Html.Partial("/Views/Products/_productReviews.cshtml",ViewBag.Reviews as List<Ecommerce.Model.ReviewModel>)
+<script>
+    function complete(e) {
+        if (e == true) {
+            alert("Thankyou for submitting review.");
+        }
+        else {
+            alert("Error!");
+        }
+    }
+</script>

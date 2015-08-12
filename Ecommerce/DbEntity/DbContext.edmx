@@ -1,0 +1,669 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ecommerceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ecommerceModelStoreContainer">
+          <EntitySet Name="brand" EntityType="ecommerceModel.Store.brand" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="category" EntityType="ecommerceModel.Store.category" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="color" EntityType="ecommerceModel.Store.color" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="coupan" EntityType="ecommerceModel.Store.coupan" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="deliverycharges" EntityType="ecommerceModel.Store.deliverycharges" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="deliverydays" EntityType="ecommerceModel.Store.deliverydays" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="images" EntityType="ecommerceModel.Store.images" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="length" EntityType="ecommerceModel.Store.length" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="newletter" EntityType="ecommerceModel.Store.newletter" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="orderdetail" EntityType="ecommerceModel.Store.orderdetail" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="orderheader" EntityType="ecommerceModel.Store.orderheader" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="product" EntityType="ecommerceModel.Store.product" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="productpricing" EntityType="ecommerceModel.Store.productpricing" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="review" EntityType="ecommerceModel.Store.review" store:Type="Tables" Schema="ecommerce" />
+          <EntitySet Name="user" EntityType="ecommerceModel.Store.user" store:Type="Tables" Schema="ecommerce" />
+        </EntityContainer>
+        <EntityType Name="brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="discription" Type="varchar" MaxLength="500" />
+          <Property Name="Code" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="color">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="coupan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="varchar" MaxLength="45" />
+          <Property Name="fromDate" Type="datetime" />
+          <Property Name="toDate" Type="datetime" />
+          <Property Name="discountpercentage" Type="decimal" />
+        </EntityType>
+        <EntityType Name="deliverycharges">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="deliveryDoller" Type="decimal" />
+          <Property Name="freeDeliveryAmountPound" Type="decimal" />
+          <Property Name="deliveryPound" Type="decimal" />
+          <Property Name="freeDeliveryAmountEuro" Type="decimal" />
+          <Property Name="deliveryEuro" Type="decimal" />
+          <Property Name="freeDeliveryAmountNigria" Type="decimal" />
+          <Property Name="deliveryNigria" Type="decimal" />
+          <Property Name="freeDeliveryAmountAngola" Type="decimal" />
+          <Property Name="deliveryAngola" Type="decimal" />
+          <Property Name="freeDeliveryAmountGhana" Type="decimal" />
+          <Property Name="deliveryGhana" Type="decimal" />
+          <Property Name="freeDeliveryAmountDoller" Type="decimal" />
+        </EntityType>
+        <EntityType Name="deliverydays">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="days" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="images">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="image" Type="varchar" MaxLength="200" />
+          <Property Name="imageType" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="length">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="value" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="newletter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="orderdetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductPriceId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="PricePaidInConvertedCurrency" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="ActualPriceInUserSeletedCurrency" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="orderheader">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Userid" Type="int" Nullable="false" />
+          <Property Name="PermotionCode" Type="varchar" MaxLength="45" />
+          <Property Name="CurrencyChoosenByUser" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="AmountInCurrencyChoosenByuser" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="CurrencyInWhichAmmountPaid" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="ActualAmountPaid" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PaymentStatus" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="OrderStatus" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="CreatedDate" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="DeliveryCharges" Type="decimal" Scale="2" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="12" />
+          <Property Name="Address1" Type="varchar" MaxLength="100" />
+          <Property Name="Address2" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="45" />
+          <Property Name="State" Type="varchar" MaxLength="45" />
+          <Property Name="PostCode" Type="varchar" MaxLength="45" />
+          <Property Name="Country" Type="varchar" MaxLength="100" />
+          <Property Name="DAddress1" Type="varchar" MaxLength="100" />
+          <Property Name="DAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="DCity" Type="varchar" MaxLength="45" />
+          <Property Name="DState" Type="varchar" MaxLength="45" />
+          <Property Name="DPostCode" Type="varchar" MaxLength="45" />
+          <Property Name="DCountry" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="catid" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="discription" Type="varchar" MaxLength="500" />
+          <Property Name="image" Type="varchar" MaxLength="100" />
+          <Property Name="brandid" Type="int" />
+          <Property Name="productCode" Type="varchar" MaxLength="250" />
+          <Property Name="keyWord" Type="varchar" MaxLength="45" />
+          <Property Name="isHot" Type="bit" />
+        </EntityType>
+        <EntityType Name="productpricing">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="productid" Type="int" />
+          <Property Name="lengthId" Type="int" />
+          <Property Name="colorId" Type="int" />
+          <Property Name="priceDollar" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="priceeuro" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="pricepound" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="ourpriceDollar" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="ourpriceeuro" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="ourpricepound" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="ourpricenigeria" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="ourpriceangola" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="ourpriceghana" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="priceghana" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="priceangola" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="pricenigeria" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="review">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="message" Type="varchar" MaxLength="250" />
+          <Property Name="rating" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="active" Type="bit" />
+          <Property Name="productid" Type="int" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ContactNumber" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Address1" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Address2" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="City" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="State" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="PostCode" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Country" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DAddress1" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DAddress2" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DCity" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DState" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DPostCode" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DCountry" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Isadmin" Type="bit" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ecommerceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ecommerceEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="brands" EntityType="ecommerceModel.brand" />
+          <EntitySet Name="categories" EntityType="ecommerceModel.category" />
+          <EntitySet Name="colors" EntityType="ecommerceModel.color" />
+          <EntitySet Name="coupans" EntityType="ecommerceModel.coupan" />
+          <EntitySet Name="deliverycharges" EntityType="ecommerceModel.deliverycharge" />
+          <EntitySet Name="deliverydays" EntityType="ecommerceModel.deliveryday" />
+          <EntitySet Name="images" EntityType="ecommerceModel.image" />
+          <EntitySet Name="lengths" EntityType="ecommerceModel.length" />
+          <EntitySet Name="newletters" EntityType="ecommerceModel.newletter" />
+          <EntitySet Name="orderdetails" EntityType="ecommerceModel.orderdetail" />
+          <EntitySet Name="orderheaders" EntityType="ecommerceModel.orderheader" />
+          <EntitySet Name="products" EntityType="ecommerceModel.product" />
+          <EntitySet Name="productpricings" EntityType="ecommerceModel.productpricing" />
+          <EntitySet Name="reviews" EntityType="ecommerceModel.review" />
+          <EntitySet Name="users" EntityType="ecommerceModel.user" />
+        </EntityContainer>
+        <EntityType Name="brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="discription" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Code" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="color">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="coupan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="fromDate" Type="DateTime" Precision="0" />
+          <Property Name="toDate" Type="DateTime" Precision="0" />
+          <Property Name="discountpercentage" Type="Decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="deliverycharge">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="deliveryDoller" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="freeDeliveryAmountPound" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="deliveryPound" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="freeDeliveryAmountEuro" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="deliveryEuro" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="freeDeliveryAmountNigria" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="deliveryNigria" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="freeDeliveryAmountAngola" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="deliveryAngola" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="freeDeliveryAmountGhana" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="deliveryGhana" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="freeDeliveryAmountDoller" Type="Decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="deliveryday">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="days" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="image1" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="imageType" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="length">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="value" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="newletter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="orderdetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductPriceId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="PricePaidInConvertedCurrency" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ActualPriceInUserSeletedCurrency" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="orderheader">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Userid" Type="Int32" Nullable="false" />
+          <Property Name="PermotionCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="CurrencyChoosenByUser" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="AmountInCurrencyChoosenByuser" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="CurrencyInWhichAmmountPaid" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="ActualAmountPaid" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="PaymentStatus" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="DeliveryCharges" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="Address1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="PostCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DAddress1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DAddress2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DCity" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="DState" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="DPostCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="DCountry" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="catid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="discription" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="image" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="brandid" Type="Int32" />
+          <Property Name="productCode" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="keyWord" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="isHot" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="productpricing">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="lengthId" Type="Int32" />
+          <Property Name="colorId" Type="Int32" />
+          <Property Name="priceDollar" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="priceeuro" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="pricepound" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ourpriceDollar" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ourpriceeuro" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ourpricepound" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ourpricenigeria" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ourpriceangola" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ourpriceghana" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="priceghana" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="priceangola" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="pricenigeria" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="review">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="message" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="productid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Address2" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="PostCode" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DAddress1" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DAddress2" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DCity" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DState" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DPostCode" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DCountry" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Isadmin" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ecommerceModelStoreContainer" CdmEntityContainer="ecommerceEntities">
+          <EntitySetMapping Name="brands">
+            <EntityTypeMapping TypeName="ecommerceModel.brand">
+              <MappingFragment StoreEntitySet="brand">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="ecommerceModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="discription" ColumnName="discription" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="colors">
+            <EntityTypeMapping TypeName="ecommerceModel.color">
+              <MappingFragment StoreEntitySet="color">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="coupans">
+            <EntityTypeMapping TypeName="ecommerceModel.coupan">
+              <MappingFragment StoreEntitySet="coupan">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="discountpercentage" ColumnName="discountpercentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deliverycharges">
+            <EntityTypeMapping TypeName="ecommerceModel.deliverycharge">
+              <MappingFragment StoreEntitySet="deliverycharges">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="deliveryDoller" ColumnName="deliveryDoller" />
+                <ScalarProperty Name="freeDeliveryAmountPound" ColumnName="freeDeliveryAmountPound" />
+                <ScalarProperty Name="deliveryPound" ColumnName="deliveryPound" />
+                <ScalarProperty Name="freeDeliveryAmountEuro" ColumnName="freeDeliveryAmountEuro" />
+                <ScalarProperty Name="deliveryEuro" ColumnName="deliveryEuro" />
+                <ScalarProperty Name="freeDeliveryAmountNigria" ColumnName="freeDeliveryAmountNigria" />
+                <ScalarProperty Name="deliveryNigria" ColumnName="deliveryNigria" />
+                <ScalarProperty Name="freeDeliveryAmountAngola" ColumnName="freeDeliveryAmountAngola" />
+                <ScalarProperty Name="deliveryAngola" ColumnName="deliveryAngola" />
+                <ScalarProperty Name="freeDeliveryAmountGhana" ColumnName="freeDeliveryAmountGhana" />
+                <ScalarProperty Name="deliveryGhana" ColumnName="deliveryGhana" />
+                <ScalarProperty Name="freeDeliveryAmountDoller" ColumnName="freeDeliveryAmountDoller" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deliverydays">
+            <EntityTypeMapping TypeName="ecommerceModel.deliveryday">
+              <MappingFragment StoreEntitySet="deliverydays">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="days" ColumnName="days" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="images">
+            <EntityTypeMapping TypeName="ecommerceModel.image">
+              <MappingFragment StoreEntitySet="images">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image1" ColumnName="image" />
+                <ScalarProperty Name="imageType" ColumnName="imageType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lengths">
+            <EntityTypeMapping TypeName="ecommerceModel.length">
+              <MappingFragment StoreEntitySet="length">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="value" ColumnName="value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="newletters">
+            <EntityTypeMapping TypeName="ecommerceModel.newletter">
+              <MappingFragment StoreEntitySet="newletter">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderdetails">
+            <EntityTypeMapping TypeName="ecommerceModel.orderdetail">
+              <MappingFragment StoreEntitySet="orderdetail">
+                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductPriceId" ColumnName="ProductPriceId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PricePaidInConvertedCurrency" ColumnName="PricePaidInConvertedCurrency" />
+                <ScalarProperty Name="ActualPriceInUserSeletedCurrency" ColumnName="ActualPriceInUserSeletedCurrency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderheaders">
+            <EntityTypeMapping TypeName="ecommerceModel.orderheader">
+              <MappingFragment StoreEntitySet="orderheader">
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="PermotionCode" ColumnName="PermotionCode" />
+                <ScalarProperty Name="CurrencyChoosenByUser" ColumnName="CurrencyChoosenByUser" />
+                <ScalarProperty Name="AmountInCurrencyChoosenByuser" ColumnName="AmountInCurrencyChoosenByuser" />
+                <ScalarProperty Name="CurrencyInWhichAmmountPaid" ColumnName="CurrencyInWhichAmmountPaid" />
+                <ScalarProperty Name="ActualAmountPaid" ColumnName="ActualAmountPaid" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DeliveryCharges" ColumnName="DeliveryCharges" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="DAddress1" ColumnName="DAddress1" />
+                <ScalarProperty Name="DAddress2" ColumnName="DAddress2" />
+                <ScalarProperty Name="DCity" ColumnName="DCity" />
+                <ScalarProperty Name="DState" ColumnName="DState" />
+                <ScalarProperty Name="DPostCode" ColumnName="DPostCode" />
+                <ScalarProperty Name="DCountry" ColumnName="DCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="ecommerceModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="catid" ColumnName="catid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="discription" ColumnName="discription" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="brandid" ColumnName="brandid" />
+                <ScalarProperty Name="productCode" ColumnName="productCode" />
+                <ScalarProperty Name="keyWord" ColumnName="keyWord" />
+                <ScalarProperty Name="isHot" ColumnName="isHot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productpricings">
+            <EntityTypeMapping TypeName="ecommerceModel.productpricing">
+              <MappingFragment StoreEntitySet="productpricing">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="lengthId" ColumnName="lengthId" />
+                <ScalarProperty Name="colorId" ColumnName="colorId" />
+                <ScalarProperty Name="priceDollar" ColumnName="priceDollar" />
+                <ScalarProperty Name="priceeuro" ColumnName="priceeuro" />
+                <ScalarProperty Name="pricepound" ColumnName="pricepound" />
+                <ScalarProperty Name="ourpriceDollar" ColumnName="ourpriceDollar" />
+                <ScalarProperty Name="ourpriceeuro" ColumnName="ourpriceeuro" />
+                <ScalarProperty Name="ourpricepound" ColumnName="ourpricepound" />
+                <ScalarProperty Name="ourpricenigeria" ColumnName="ourpricenigeria" />
+                <ScalarProperty Name="ourpriceangola" ColumnName="ourpriceangola" />
+                <ScalarProperty Name="ourpriceghana" ColumnName="ourpriceghana" />
+                <ScalarProperty Name="priceghana" ColumnName="priceghana" />
+                <ScalarProperty Name="priceangola" ColumnName="priceangola" />
+                <ScalarProperty Name="pricenigeria" ColumnName="pricenigeria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reviews">
+            <EntityTypeMapping TypeName="ecommerceModel.review">
+              <MappingFragment StoreEntitySet="review">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="ecommerceModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="DName" ColumnName="DName" />
+                <ScalarProperty Name="DAddress1" ColumnName="DAddress1" />
+                <ScalarProperty Name="DAddress2" ColumnName="DAddress2" />
+                <ScalarProperty Name="DCity" ColumnName="DCity" />
+                <ScalarProperty Name="DState" ColumnName="DState" />
+                <ScalarProperty Name="DPostCode" ColumnName="DPostCode" />
+                <ScalarProperty Name="DCountry" ColumnName="DCountry" />
+                <ScalarProperty Name="Isadmin" ColumnName="Isadmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

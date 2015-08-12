@@ -1,0 +1,19 @@
+﻿@model List<Ecommerce.Model.ExtendedCategory>
+<div class="navbar-collapse collapse main-nav">
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" style="font-size:larger;">
+            <a href="/Landing/Index" >Home</a>
+
+        </li>
+
+        @foreach (var x in Model)
+        {
+            <li style="font-size:larger;">
+
+                <a href="/Landing/Index/@x.Code" >@x.name</a>
+            </li>
+        }
+
+
+    </ul>
+</div>

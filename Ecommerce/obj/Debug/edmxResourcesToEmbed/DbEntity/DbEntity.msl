@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ecommerceModelStoreContainer" CdmEntityContainer="ecommerceEntities">
+    <EntitySetMapping Name="brands">
+      <EntityTypeMapping TypeName="ecommerceModel.brand">
+        <MappingFragment StoreEntitySet="brand">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="ecommerceModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="discription" ColumnName="discription" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="colors">
+      <EntityTypeMapping TypeName="ecommerceModel.color">
+        <MappingFragment StoreEntitySet="color">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lengths">
+      <EntityTypeMapping TypeName="ecommerceModel.length">
+        <MappingFragment StoreEntitySet="length">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="ecommerceModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="catid" ColumnName="catid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="discription" ColumnName="discription" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="brandid" ColumnName="brandid" />
+          <ScalarProperty Name="productCode" ColumnName="productCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productpricings">
+      <EntityTypeMapping TypeName="ecommerceModel.productpricing">
+        <MappingFragment StoreEntitySet="productpricing">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="lengthId" ColumnName="lengthId" />
+          <ScalarProperty Name="colorId" ColumnName="colorId" />
+          <ScalarProperty Name="pricedollor" ColumnName="pricedollor" />
+          <ScalarProperty Name="priceeuro" ColumnName="priceeuro" />
+          <ScalarProperty Name="pricepound" ColumnName="pricepound" />
+          <ScalarProperty Name="ourpricedollor" ColumnName="ourpricedollor" />
+          <ScalarProperty Name="ourpriceeuro" ColumnName="ourpriceeuro" />
+          <ScalarProperty Name="ourpricepound" ColumnName="ourpricepound" />
+          <ScalarProperty Name="ourpricenigeria" ColumnName="ourpricenigeria" />
+          <ScalarProperty Name="ourpriceangola" ColumnName="ourpriceangola" />
+          <ScalarProperty Name="ourpriceghana" ColumnName="ourpriceghana" />
+          <ScalarProperty Name="priceghana" ColumnName="priceghana" />
+          <ScalarProperty Name="priceangola" ColumnName="priceangola" />
+          <ScalarProperty Name="pricenigeria" ColumnName="pricenigeria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ecommerceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ecommerceEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="brands" EntityType="ecommerceModel.brand" />
+    <EntitySet Name="categories" EntityType="ecommerceModel.category" />
+    <EntitySet Name="colors" EntityType="ecommerceModel.color" />
+    <EntitySet Name="coupans" EntityType="ecommerceModel.coupan" />
+    <EntitySet Name="deliverycharges" EntityType="ecommerceModel.deliverycharge" />
+    <EntitySet Name="deliverydays" EntityType="ecommerceModel.deliveryday" />
+    <EntitySet Name="images" EntityType="ecommerceModel.image" />
+    <EntitySet Name="lengths" EntityType="ecommerceModel.length" />
+    <EntitySet Name="newletters" EntityType="ecommerceModel.newletter" />
+    <EntitySet Name="orderdetails" EntityType="ecommerceModel.orderdetail" />
+    <EntitySet Name="orderheaders" EntityType="ecommerceModel.orderheader" />
+    <EntitySet Name="products" EntityType="ecommerceModel.product" />
+    <EntitySet Name="productpricings" EntityType="ecommerceModel.productpricing" />
+    <EntitySet Name="reviews" EntityType="ecommerceModel.review" />
+    <EntitySet Name="users" EntityType="ecommerceModel.user" />
+  </EntityContainer>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandName" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="discription" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Code" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="color">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="coupan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="fromDate" Type="DateTime" Precision="0" />
+    <Property Name="toDate" Type="DateTime" Precision="0" />
+    <Property Name="discountpercentage" Type="Decimal" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="deliverycharge">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="deliveryDoller" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="freeDeliveryAmountPound" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="deliveryPound" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="freeDeliveryAmountEuro" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="deliveryEuro" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="freeDeliveryAmountNigria" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="deliveryNigria" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="freeDeliveryAmountAngola" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="deliveryAngola" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="freeDeliveryAmountGhana" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="deliveryGhana" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="freeDeliveryAmountDoller" Type="Decimal" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="deliveryday">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="days" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="image1" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="imageType" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="length">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="value" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="newletter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="orderdetail">
+    <Key>
+      <PropertyRef Name="OrderDetailId" />
+    </Key>
+    <Property Name="OrderDetailId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="ProductPriceId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="PricePaidInConvertedCurrency" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="ActualPriceInUserSeletedCurrency" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="orderheader">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Userid" Type="Int32" Nullable="false" />
+    <Property Name="PermotionCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="CurrencyChoosenByUser" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="AmountInCurrencyChoosenByuser" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="CurrencyInWhichAmmountPaid" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="ActualAmountPaid" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="PaymentStatus" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="DeliveryCharges" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="Address1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Address2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="PostCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="DAddress1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="DAddress2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="DCity" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="DState" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="DPostCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="DCountry" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="catid" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="discription" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="image" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="brandid" Type="Int32" />
+    <Property Name="productCode" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="keyWord" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="isHot" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="productpricing">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="productid" Type="Int32" />
+    <Property Name="lengthId" Type="Int32" />
+    <Property Name="colorId" Type="Int32" />
+    <Property Name="priceDollar" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="priceeuro" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="pricepound" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="ourpriceDollar" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="ourpriceeuro" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="ourpricepound" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="ourpricenigeria" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="ourpriceangola" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="ourpriceghana" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="priceghana" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="priceangola" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="pricenigeria" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="message" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="rating" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="productid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Address1" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Address2" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="PostCode" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Country" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DAddress1" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DAddress2" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DCity" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DState" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DPostCode" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DCountry" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Isadmin" Type="Boolean" />
+  </EntityType>
+</Schema>

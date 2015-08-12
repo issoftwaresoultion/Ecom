@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Check out";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<section id="content">
+    <div class="container">
+        <table width="100%">
+            <tr>
+                <td width="75%">
+        <ol class="breadcrumb">
+            <li><a href="/Landing/Index">Home</a></li>
+            <li>Cart Detail</li>
+        </ol>
+                    </td>
+                 <td width="25%"  style="vertical-align:top;">
+                     <img src="/img/CartStep1.JPG"  />
+                 </td>
+                </tr>
+            </table>
+         <a href="/landing/Index" class="btn btn-primary btn-lg">Continue Shoping</a>
+        <br />
+@*<h3 class="page-title">Cart Details</h3>*@
+@*        <table width="95%">
+            <tr>
+                <td width="50%">
+        <h3 class="page-title" ></h3>
+        </td>
+                <td width="50%" style="float:right;">
+                    
+                </td>
+                    </tr>
+                </table>*@
+       
+            <div id="CartDiv">
+            @Html.Action("CheckoutPartial", "Cart")
+        </div>
+    </div>
+    <input type="hidden" id="coupanValidates" value="false" />
+ 
+</section>
+<script>
+
+    function DeleteItemFromCheckOutCart(countid) {
+        $.ajaxSetup({ async: false });
+        $.post("/Cart/DeleteItemFromCheckOutCart?countid=" + countid, function (partial) {
+            $('#CartDiv').html(partial);
+        });
+    }
+    function ApplyCoupan() {
+        var check = $("#coupanValidates").val();
+       
+        if (check=='false') {
+            $("#ErrorMessage").html("Invalid coupan")
+            return;
+        }
+        else {
+            $("#ErrorMessage").html("")
+        }
+        var coupancode = $("#coupancode").val();
+        $.ajaxSetup({ async: false });
+        $.post("/Cart/UpdateCoupan/" + coupancode, function (partial) {
+            $('#CartDiv').html(partial);
+        });
+    }
+
+    function ValidateCoupan() {
+        var coupancode = $("#coupancode").val();
+
+        $.ajax({
+            "url": "/Cart/ValidateCoupan/" + coupancode,
+            "async": false,
+            "dataType": "json",
+            "success": function (json) {
+                if (!json) {
+                    $("#ErrorMessage").html("Invalid Promotion Code")
+                }
+                else {
+                    $("#ErrorMessage").html("")
+                }
+                $("#coupanValidates").val(json);
+            }
+        });
+       
+    }
+
+</script>

@@ -1,0 +1,271 @@
+﻿@model Ecommerce.Model.ProductModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
+
+
+    bool IsSelected = false;
+    decimal PriceDollar = 0;
+    decimal PriceEuro = 0;
+    decimal PricePound = 0;
+    decimal pricenigeria = 0;
+    decimal priceangola = 0;
+    decimal priceghana = 0;
+
+    decimal OurPriceDollar = 0;
+    decimal OurPriceEuro = 0;
+    decimal OurPricePound = 0;
+    decimal ourpricenigeria = 0;
+    decimal ourpriceangola = 0;
+    decimal ourpriceghana = 0;
+    int ColorId = 0;
+    int LengthId = 0;
+
+}
+<div class="row">
+    <div class="col-lg-12">
+        @if (TempData["message"] != null)
+        {
+            <div class="panel panel-info" id="infoPannal">
+                <div class="panel-heading">
+                    Info
+                </div>
+                <div class="panel-body">
+                    @Html.Raw(TempData["message"].ToString())
+                </div>
+            </div>
+        }
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Add new Product
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Save", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(m => m.Id)
+                    <input type="hidden" name="RequestType" id="RequestType" value="@ViewBag.RequestType"/>
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="form-group">
+                                <label>Product Name</label>
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", maxlength = "100" })
+                                @Html.ValidationMessageFor(m => m.Name)
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description</label>
+                                @Html.TextAreaFor(m => m.Discription, new { @class = "form-control", maxlength = "500" })
+                                @Html.ValidationMessageFor(m => m.Discription)
+                            </div>
+
+                            <div class="form-group">
+                                <label>KeyWord(Use to get the Related product)</label>
+                                @Html.TextBoxFor(m => m.KeyWord, new { @class = "form-control", maxlength = "50" })
+                                
+                            </div>
+
+                            <div class="form-group">
+                                <label>Hot Products (if the product is hot it will shown on home page)</label>
+                                @Html.CheckBoxFor(m => m.Ishot)
+                                
+                            </div>
+
+                            <div class="form-group">
+                                <label>Category</label>
+                                @Html.DropDownListFor(m => m.CatId,
+                                     new SelectList(Model.CategoryList, "id", "name"), new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(m => m.CatId)
+                            </div>
+
+                            @*<div class="form-group">
+                                <label>Brand</label>
+                                @Html.DropDownListFor(m => m.BrandId,
+                                     new SelectList(Model.brandList, "id", "BrandName"), new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(m => m.BrandId)
+                            </div>*@
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input type="file" name="Image" id="Image" />
+                                        @Html.HiddenFor(m => m.Image)
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    @if (Model.Id > 0)
+                                    {
+                                        <img width="150px" height="200px" src="/ProductImages/@Model.Image" />
+                                    }
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Add Product Attribute
+                                </div>
+                                <div class="panel-body">
+                                    <div id="ProductPrice">
+
+
+                                        @for (int i = 0; i < Model.LengthList.Count; i++)
+                                        {
+                                            <div class="panel panel-green">
+                                                <div class="panel-heading">
+                                                    <strong>Length&nbsp:-</strong>
+                                                    @{
+                                            var length = Model.SelectedLengthList.Where(m => m.id == Model.LengthList[i].id).FirstOrDefault();
+                                            if (length != null)
+                                            {
+                                                Model.LengthList[i].IsSelected = true;
+                                            }
+                                            else
+                                            {
+                                                Model.LengthList[i].IsSelected = false;
+                                            }
+                                                    }
+                                                    @Html.Raw(Model.LengthList[i].value)
+
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div>
+                                                        <table>
+                                                            <tr>
+                                                                <td>Color</td>
+                                                                <td>Dollar</td>
+                                                                <td>Euro</td>
+                                                                <td>Pound</td>
+                                                                <td>Nigeria</td>
+                                                                <td>Angola</td>
+                                                                <td>Ghana</td>
+
+                                                            </tr>
+                                                            @for (int z = 0; z < Model.ColorList.Count; z++)
+                                                            {
+
+                                                                //   @Html.HiddenFor(m => , new { value = Model.LengthList[i].id })
+                                                                
+                                                                <input type="hidden" value = '@Model.LengthList[i].id' name="ColorList[@z].LengthId" />
+                                                                
+                                                                var color = Model.SelectedColorList.Where(m => m.id == Model.ColorList[z].id && m.LengthId == Model.LengthList[i].id).FirstOrDefault();
+                                                                if (color != null)
+                                                                {
+                                                                    IsSelected = true;
+                                                                    PriceDollar = color.PriceDollar;
+                                                                    PriceEuro = color.PriceEuro;
+                                                                    PricePound = color.PricePound;
+                                                                    pricenigeria = color.pricenigeria;
+                                                                    priceangola = color.priceangola;
+                                                                    priceghana = color.priceghana;
+                                                                    OurPriceDollar = color.OurPriceDollar;
+                                                                    OurPriceEuro = color.OurPriceEuro;
+                                                                    OurPricePound = color.OurPricePound;
+                                                                    ourpricenigeria = color.ourpricenigeria;
+                                                                    ourpriceangola = color.ourpriceangola;
+                                                                    ourpriceghana = color.ourpriceghana;
+                                                                    ColorId = color.id;
+                                                                    LengthId = Model.LengthList[i].id;
+                                                                }
+                                                                else
+                                                                {
+                                                                    IsSelected = false;
+                                                                    PriceDollar = 0;
+                                                                    PriceEuro = 0;
+                                                                    PricePound = 0;
+                                                                    pricenigeria = 0;
+                                                                    priceangola = 0;
+                                                                    priceghana = 0;
+                                                                    OurPriceDollar = 0;
+                                                                    OurPriceEuro = 0;
+                                                                    OurPricePound = 0;
+                                                                    ourpricenigeria = 0;
+                                                                    ourpriceangola = 0;
+                                                                    ourpriceghana = 0;
+                                                                    ColorId = Model.ColorList[z].id;
+                                                                    LengthId = Model.LengthList[i].id;
+                                                                }
+                                                               <input type="hidden" name="colorid-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@ColorId" />
+                                                                <input type="hidden" name="LengthId-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@LengthId" />
+
+                                                                <tr>
+                                                                    <td>
+                                                                        @if(IsSelected)
+                                                                        {
+                                                                        <input type="checkbox" checked="checked" name="Chk-@Model.ColorList[z].id-@Model.LengthList[i].id"/>  
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                        <input type="checkbox"  name="Chk-@Model.ColorList[z].id-@Model.LengthList[i].id"/>  
+                                                                        }
+                                                                         &nbsp @Html.Raw(Model.ColorList[z].name)</td>
+                                                                    <td> <input type="text" name="PriceDollar-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@PriceDollar" /></td>
+                                                                    <td> <input type="text" name="PriceEuro-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@PriceEuro" /></td>
+                                                                    <td> <input type="text" name="PricePound-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@PricePound" /></td>
+                                                                    <td> <input type="text" name="pricenigeria-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@pricenigeria" /></td>
+                                                                    <td> <input type="text" name="priceangola-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@priceangola" /></td>
+                                                                    <td> <input type="text" name="priceghana-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@priceghana" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>&nbsp;</td>
+                                                                    <td> <input type="text" name="OurPriceDollar-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@OurPriceDollar" /></td>
+                                                                    <td> <input type="text" name="OurPriceEuro-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@OurPriceEuro" /></td>
+                                                                    <td> <input type="text" name="OurPricePound-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@OurPricePound" /></td>
+                                                                    <td> <input type="text" name="ourpricenigeria-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@ourpricenigeria" /></td>
+                                                                    <td> <input type="text" name="ourpriceangola-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@ourpriceangola" /></td>
+                                                                    <td> <input type="text" name="ourpriceghana-@Model.ColorList[z].id-@Model.LengthList[i].id" size="7" value="@ourpriceghana" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="7"></td>
+                                                                </tr>
+                                                            }
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>                            
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(HideInfo, 3500);
+    });
+    function HideInfo() {
+        $("#infoPannal").hide();
+    }
+    function DeleteProductPrice(e) {
+        var id = $("#Id").val();
+        var type = $("#RequestType").val();
+        $.ajax({
+            "url": "/admin/Product/DeleteProductPrice/" + e,
+            "async": false,
+            "dataType": "json",
+            "success": function (json) {
+                if (json) {
+                    window.location.href = "admin/Product/Edit?tId=" + id + "&type=" + type;
+
+                }
+                else {
+                    alert("Error while deleting");
+                }
+
+            }
+        });
+    }
+</script>
+

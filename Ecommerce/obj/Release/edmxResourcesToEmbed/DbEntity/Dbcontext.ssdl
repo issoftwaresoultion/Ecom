@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ecommerceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ecommerceModelStoreContainer">
+    <EntitySet Name="brand" EntityType="ecommerceModel.Store.brand" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="category" EntityType="ecommerceModel.Store.category" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="color" EntityType="ecommerceModel.Store.color" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="coupan" EntityType="ecommerceModel.Store.coupan" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="deliverycharges" EntityType="ecommerceModel.Store.deliverycharges" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="deliverydays" EntityType="ecommerceModel.Store.deliverydays" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="images" EntityType="ecommerceModel.Store.images" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="length" EntityType="ecommerceModel.Store.length" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="newletter" EntityType="ecommerceModel.Store.newletter" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="orderdetail" EntityType="ecommerceModel.Store.orderdetail" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="orderheader" EntityType="ecommerceModel.Store.orderheader" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="product" EntityType="ecommerceModel.Store.product" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="productpricing" EntityType="ecommerceModel.Store.productpricing" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="review" EntityType="ecommerceModel.Store.review" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="user" EntityType="ecommerceModel.Store.user" store:Type="Tables" Schema="ecommerce" />
+  </EntityContainer>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BrandName" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="discription" Type="varchar" MaxLength="500" />
+    <Property Name="Code" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="color">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="coupan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="varchar" MaxLength="45" />
+    <Property Name="fromDate" Type="datetime" />
+    <Property Name="toDate" Type="datetime" />
+    <Property Name="discountpercentage" Type="decimal" />
+  </EntityType>
+  <EntityType Name="deliverycharges">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="deliveryDoller" Type="decimal" />
+    <Property Name="freeDeliveryAmountPound" Type="decimal" />
+    <Property Name="deliveryPound" Type="decimal" />
+    <Property Name="freeDeliveryAmountEuro" Type="decimal" />
+    <Property Name="deliveryEuro" Type="decimal" />
+    <Property Name="freeDeliveryAmountNigria" Type="decimal" />
+    <Property Name="deliveryNigria" Type="decimal" />
+    <Property Name="freeDeliveryAmountAngola" Type="decimal" />
+    <Property Name="deliveryAngola" Type="decimal" />
+    <Property Name="freeDeliveryAmountGhana" Type="decimal" />
+    <Property Name="deliveryGhana" Type="decimal" />
+    <Property Name="freeDeliveryAmountDoller" Type="decimal" />
+  </EntityType>
+  <EntityType Name="deliverydays">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="days" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="images">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="image" Type="varchar" MaxLength="200" />
+    <Property Name="imageType" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="length">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="value" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="newletter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="orderdetail">
+    <Key>
+      <PropertyRef Name="OrderDetailId" />
+    </Key>
+    <Property Name="OrderDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="ProductPriceId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="PricePaidInConvertedCurrency" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ActualPriceInUserSeletedCurrency" Type="decimal" Nullable="false" Scale="2" />
+  </EntityType>
+  <EntityType Name="orderheader">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Userid" Type="int" Nullable="false" />
+    <Property Name="PermotionCode" Type="varchar" MaxLength="45" />
+    <Property Name="CurrencyChoosenByUser" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="AmountInCurrencyChoosenByuser" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="CurrencyInWhichAmmountPaid" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="ActualAmountPaid" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="PaymentStatus" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="OrderStatus" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="CreatedDate" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="DeliveryCharges" Type="decimal" Scale="2" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="ContactNumber" Type="varchar" MaxLength="12" />
+    <Property Name="Address1" Type="varchar" MaxLength="100" />
+    <Property Name="Address2" Type="varchar" MaxLength="100" />
+    <Property Name="City" Type="varchar" MaxLength="45" />
+    <Property Name="State" Type="varchar" MaxLength="45" />
+    <Property Name="PostCode" Type="varchar" MaxLength="45" />
+    <Property Name="Country" Type="varchar" MaxLength="100" />
+    <Property Name="DAddress1" Type="varchar" MaxLength="100" />
+    <Property Name="DAddress2" Type="varchar" MaxLength="100" />
+    <Property Name="DCity" Type="varchar" MaxLength="45" />
+    <Property Name="DState" Type="varchar" MaxLength="45" />
+    <Property Name="DPostCode" Type="varchar" MaxLength="45" />
+    <Property Name="DCountry" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="catid" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="discription" Type="varchar" MaxLength="500" />
+    <Property Name="image" Type="varchar" MaxLength="100" />
+    <Property Name="brandid" Type="int" />
+    <Property Name="productCode" Type="varchar" MaxLength="250" />
+    <Property Name="keyWord" Type="varchar" MaxLength="45" />
+    <Property Name="isHot" Type="bit" />
+  </EntityType>
+  <EntityType Name="productpricing">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="productid" Type="int" />
+    <Property Name="lengthId" Type="int" />
+    <Property Name="colorId" Type="int" />
+    <Property Name="priceDollar" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="priceeuro" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="pricepound" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ourpriceDollar" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ourpriceeuro" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ourpricepound" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ourpricenigeria" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ourpriceangola" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ourpriceghana" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="priceghana" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="priceangola" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="pricenigeria" Type="decimal" Nullable="false" Scale="2" />
+  </EntityType>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="message" Type="varchar" MaxLength="250" />
+    <Property Name="rating" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="active" Type="bit" />
+    <Property Name="productid" Type="int" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="ContactNumber" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Address1" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Address2" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="City" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="State" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="PostCode" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Country" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DName" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DAddress1" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DAddress2" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DCity" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DState" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DPostCode" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DCountry" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Isadmin" Type="bit" />
+  </EntityType>
+</Schema>
