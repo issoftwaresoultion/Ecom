@@ -20,7 +20,8 @@ namespace Ecommerce.DataAccess
                     OrderId=obj.OrderId,
                     PricePaidInConvertedCurrency=obj.PricePaidInConvertedCurrency,
                     ProductPriceId=obj.ProductPriceId,
-                    Quantity=obj.Quantity
+                    Quantity=obj.Quantity,
+                    ProductName=obj.ProductName
                 });
                 context.SaveChanges();
             }
@@ -44,7 +45,8 @@ namespace Ecommerce.DataAccess
                     OrderId = obj.OrderId,
                     PricePaidInConvertedCurrency = obj.PricePaidInConvertedCurrency,
                     ProductPriceId = obj.ProductPriceId,
-                    Quantity = obj.Quantity
+                    Quantity = obj.Quantity,
+                    ProductName=obj.ProductName
                 });
             }
             return _OrderDetail;

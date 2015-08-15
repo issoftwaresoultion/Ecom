@@ -93,6 +93,7 @@
     <EntitySetMapping Name="orderdetails">
       <EntityTypeMapping TypeName="ecommerceModel.orderdetail">
         <MappingFragment StoreEntitySet="orderdetail">
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="ProductPriceId" ColumnName="ProductPriceId" />

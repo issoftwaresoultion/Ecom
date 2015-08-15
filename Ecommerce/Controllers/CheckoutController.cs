@@ -16,9 +16,17 @@ namespace Ecommerce.Controllers
 
         public ActionResult Index(string id)
         {
+            var user = new SignupModel();
             ViewBag.DeliveryDays = DeliveryDaysDal.Get();
             ViewBag.RemoveDelete = "yes";
             ViewBag.id = 0;
+            if (TempData != null)
+            {
+                if (TempData["Invalidlogin"] == "Invalid Username and password")
+                {
+                    return View();
+                }
+            }
             if (Request.IsAuthenticated)
             {
                 if (GetLoginUserdata().id > 0)
@@ -31,28 +39,19 @@ namespace Ecommerce.Controllers
             ViewBag.User = new Ecommerce.Model.SignupModel();
             if (id != null)
             {
-                var user = UserDal.GetById(Convert.ToInt32(id));
+                user = UserDal.GetById(Convert.ToInt32(id));
                 ViewBag.User = user;
                 ViewBag.id = user.id;
-                if (String.IsNullOrEmpty(Convert.ToString(Session["OrderId"])))
-                {
-                    Session["OrderId"] = CartDal.SaveOrUpdateCartAsOrder((CartModel)Session["Cart"], Convert.ToString(Session["currency"]), user.id, 0);
-                }
-                else
-                {
-                    Session["OrderId"] = CartDal.SaveOrUpdateCartAsOrder((CartModel)Session["Cart"], Convert.ToString(Session["currency"]), user.id, Convert.ToInt32(Session["OrderId"]));
-                }
+            }
+
+            if (String.IsNullOrEmpty(Convert.ToString(Session["OrderId"])))
+            {
+                Session["OrderId"] = CartDal.SaveOrUpdateCartAsOrder((CartModel)Session["Cart"], Convert.ToString(Session["currency"]), user.id, 0);
             }
             else
             {
-                if (String.IsNullOrEmpty(Convert.ToString(Session["OrderId"])))
-                {
-                    Session["OrderId"] = CartDal.SaveOrUpdateCartAsOrder((CartModel)Session["Cart"], Convert.ToString(Session["currency"]), 0, 0);
-                }
-                else
-                {
-                    Session["OrderId"] = CartDal.SaveOrUpdateCartAsOrder((CartModel)Session["Cart"], Convert.ToString(Session["currency"]), 0, Convert.ToInt32(Session["OrderId"]));
-                }
+                Session["OrderId"] = CartDal.SaveOrUpdateCartAsOrder((CartModel)Session["Cart"], Convert.ToString(Session["currency"]), user.id, Convert.ToInt32(Session["OrderId"]));
+
             }
             return View();
         }
@@ -60,12 +59,25 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public ActionResult Save(SignupModel obj)
         {
+            int userId = 0;
+            var check = true;
             TempData["Message"] = "";
             obj.Password = Guid.NewGuid().ToString().Substring(0, 6);
             obj.Isadmin = false;
-            var check = UserDal.Create(obj);
+            if (obj.id > 0)
+            {
+                check = UserDal.Update(obj);
+                
+            }
+            else
+            {
+
+                check = UserDal.Create(obj, out userId);
+            }
+
             check = OrderDal.UpdateUserAddressInOrder(new OrderHeader
             {
+               Userid=userId,
                 Address1 = obj.Address1,
                 Address2 = obj.Address2,
                 City = obj.City,
@@ -93,7 +105,7 @@ namespace Ecommerce.Controllers
                 TempData["Message"] = "Error! Unable to save";
                 // Take reference from other web site 
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("IPIN","Payment");
         }
 
 

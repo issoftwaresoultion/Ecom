@@ -115,6 +115,7 @@
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\FrontBaseController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShareController.cs" />
     <Compile Include="DataAccess\AdminUserDal.cs" />
@@ -1871,6 +1872,10 @@
     <Content Include="Views\Cart\Ordersummery.cshtml" />
     <Content Include="Views\Shared\ForgetPassword.cshtml" />
     <Content Include="Views\Shared\RegistrationForm.cshtml" />
+    <Content Include="Views\Payment\IPIN.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\RedirectFromPaypal.cshtml" />
+    <Content Include="Views\Payment\Status.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

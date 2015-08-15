@@ -1,0 +1,71 @@
+﻿@model Ecommerce.Model.OrderHeader 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>RedirectToPayPal</title>
+    <script src="../../Scripts/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <form action="https://www.Sandbox.paypal.com/cgi-bin/webscr" method="post">
+            @*<form action="https://www.paypal.com/cgi-bin/webscr" method="post">*@
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="business" value="kashyapishu-facilitator@ymail.com">
+            @{
+                Dictionary<string, string> obj = new Dictionary<string, string>();
+            
+            }
+
+            @for (int i = 0; i < Model.OrderDetail.Count; i++)
+            {
+                string count = Convert.ToString(i + 1);
+                obj.Add(String.Concat("item_name_", count), Model.OrderDetail[i].ProductName);
+                obj.Add(String.Concat("item_number_", count), count);
+                obj.Add(String.Concat("amount_", count), Convert.ToString(Model.OrderDetail[i].PricePaidInConvertedCurrency));
+                obj.Add(String.Concat("quantity", count), Convert.ToString(Model.OrderDetail[i].Quantity));
+            }
+
+
+            @foreach (KeyValuePair<string, string> item in obj)
+            {
+                <input type="hidden" name='@item.Key' value="@item.Value"/>
+            }
+
+
+@*            <input type="hidden" name="shipping" value="0.00">
+           <input type="hidden" name="shipping2" value="@Model.DeliveryCharges">*@
+
+            <input type="hidden" name="handling_cart" value="@Model.DeliveryCharges">
+           @* <input type="hidden" name="amount" value="@Model.ActualAmountPaid" />*@
+            <input type="hidden" name="upload" value="1">
+            @if (Model.CurrencyInWhichAmmountPaid == "Dollar")
+            {
+                <input type="hidden" name="currency_code" value="USD" />
+            }
+            else if (Model.CurrencyInWhichAmmountPaid == "Euro")
+            {
+                <input type="hidden" name="currency_code" value="EUR" />
+            }
+            else if (Model.CurrencyInWhichAmmountPaid == "Pound")
+            {
+                <input type="hidden" name="currency_code" value="GBP" />
+            }
+            else
+            {
+             <input type="hidden" name="currency_code" value="USD" />
+            }
+            
+            <input type="hidden" name="return" value="http://www.ecom.issoftwaresolution.com/Payment/Status">
+            <input type="hidden" name="notify_url" value="http://www.ecom.issoftwaresolution.com/Payment/NotifyFromPaypal">
+            <input type="hidden" name="at" value="y7ZcW_xHLi8M4r-wrjKgo4VbL77UCsZMduSN882ne14ziDszva4hkZehHDO" />
+        <input type="submit" />
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        //$("form").submit();
+    });
+</script>

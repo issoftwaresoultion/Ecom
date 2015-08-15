@@ -186,15 +186,17 @@ namespace Ecommerce.DataAccess
                     Orderheaderobj.CurrencyInWhichAmmountPaid = "Dollar";
                     Orderheaderobj.ActualAmountPaid = Utility.GetConvertedPrice(obj.Total,Currency,"USD");
                     Orderheaderobj.AmountInCurrencyChoosenByuser = obj.Total;
-                    Orderheaderobj.DeliveryCharges = obj.DelivierCharges;
+                    Orderheaderobj.DeliveryCharges = Utility.GetConvertedPrice(obj.DelivierCharges, Currency, "USD");
                     foreach (var x in obj.Product)
                     {
                             Orderheaderobj.OrderDetail.Add(new OrderDetail { 
                             ActualPriceInUserSeletedCurrency=x.Price.TotalPrice,
                             PricePaidInConvertedCurrency=Utility.GetConvertedPrice(x.Price.TotalPrice,Currency,"USD"),
                             ProductPriceId=x.Price.Id,
-                            Quantity = x.Price.Quantity
-                        });
+                            Quantity = x.Price.Quantity,
+                            //ProductName = x.Name + " | Length: " + x.Price.LengthName + " inch | Color: " + x.Price.ColorName,
+                            ProductName = x.Name 
+                            });
                     }
                 }
                 else
@@ -203,6 +205,7 @@ namespace Ecommerce.DataAccess
                     Orderheaderobj.CurrencyInWhichAmmountPaid = Currency;
                     Orderheaderobj.ActualAmountPaid = obj.Total;
                     Orderheaderobj.AmountInCurrencyChoosenByuser = obj.Total;
+                    Orderheaderobj.DeliveryCharges = obj.DelivierCharges;
                     foreach (var x in obj.Product)
                     {
                         Orderheaderobj.OrderDetail.Add(new OrderDetail
@@ -210,7 +213,8 @@ namespace Ecommerce.DataAccess
                             ActualPriceInUserSeletedCurrency = x.Price.TotalPrice,
                             PricePaidInConvertedCurrency = x.Price.TotalPrice,
                             ProductPriceId = x.Price.Id,
-                            Quantity = x.Price.Quantity
+                            Quantity = x.Price.Quantity,
+                            ProductName=x.Name,
                         });
                     }
                 }

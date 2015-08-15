@@ -116,12 +116,17 @@ namespace Ecommerce.DataAccess
                 Order.PermotionCode = obj.PermotionCode;
                 Order.Userid = obj.Userid;
                 Order.DeliveryCharges = obj.DeliveryCharges;
-                context.orderheaders.Add(Order);
+                //context.orderheaders.Add(Order);
                 context.SaveChanges();
                 var OrderDetail = context.orderdetails.Where(m => m.OrderId == obj.orderID).ToList();
                 foreach (orderdetail x in OrderDetail)
                 {
                     context.orderdetails.Remove(x);
+                }
+                foreach (var x in obj.OrderDetail)
+                {
+                    x.OrderId = orderId;
+                    OrderDetailDal.Create(x);
                 }
                 context.SaveChanges();
             }

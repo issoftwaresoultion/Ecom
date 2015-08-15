@@ -9,38 +9,41 @@ namespace Ecommerce.DataAccess
 {
     public static class UserDal
     {
-        public static bool Create(SignupModel obj)
+        public static bool Create(SignupModel obj, out int  userid)
         {
 
             bool check = true;
             try
             {
                 var context = new Ecommerce.DbEntity.ecommerceEntities();
-                context.users.Add(new DbEntity.user
-                {
-                    Address1 = obj.Address1,
-                    Address2 = obj.Address2,
-                    City = obj.City,
-                    ContactNumber = obj.ContactNumber,
-                    Country = obj.Country,
-                    DAddress1 = obj.DAddress1,
-                    DAddress2 = obj.DAddress2,
-                    DCity = obj.DCity,
-                    DCountry = obj.DCountry,
-                    DName = obj.DName,
-                    DPostCode = obj.DPostCode,
-                    DState = obj.DState,
-                    Email = obj.Email,
-                    Name = obj.Name,
-                    Password = obj.Password,
-                    PostCode = obj.PostCode,
-                    State = obj.State,
-                    Isadmin=obj.Isadmin
-                });
+                
+                var user =new DbEntity.user();
+               
+                    user.Address1 = obj.Address1;
+                    user.Address2 = obj.Address2;
+                    user.City = obj.City;
+                    user.ContactNumber = obj.ContactNumber;
+                   user. Country = obj.Country;
+                   user. DAddress1 = obj.DAddress1;
+                   user. DAddress2 = obj.DAddress2;
+                   user. DCity = obj.DCity;
+                   user. DCountry = obj.DCountry;
+                  user.  DName = obj.DName;
+                   user. DPostCode = obj.DPostCode;
+                  user.  DState = obj.DState;
+                  user.  Email = obj.Email;
+                  user.  Name = obj.Name;
+                  user.  Password = obj.Password;
+                  user.  PostCode = obj.PostCode;
+                  user.  State = obj.State;
+                  user.  Isadmin=obj.Isadmin;
+               context.users.Add(user);
                 context.SaveChanges();
+                userid = user.id;
             }
             catch (Exception ex)
             {
+                userid = 0;
                 check = false;
             }
             return check;
