@@ -21,6 +21,5 @@ namespace Ecommerce.DbEntity
         public decimal PricePaidInConvertedCurrency { get; set; }
         public decimal ActualPriceInUserSeletedCurrency { get; set; }
         public string ProductName { get; set; }
-
     }
 }

@@ -39,6 +39,7 @@ namespace Ecommerce.DbEntity
         public DbSet<product> products { get; set; }
         public DbSet<productpricing> productpricings { get; set; }
         public DbSet<review> reviews { get; set; }
+        public DbSet<staticpage> staticpages { get; set; }
         public DbSet<user> users { get; set; }
     }
 }

@@ -93,13 +93,13 @@
     <EntitySetMapping Name="orderdetails">
       <EntityTypeMapping TypeName="ecommerceModel.orderdetail">
         <MappingFragment StoreEntitySet="orderdetail">
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="ProductPriceId" ColumnName="ProductPriceId" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="PricePaidInConvertedCurrency" ColumnName="PricePaidInConvertedCurrency" />
           <ScalarProperty Name="ActualPriceInUserSeletedCurrency" ColumnName="ActualPriceInUserSeletedCurrency" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -182,6 +182,16 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="active" ColumnName="active" />
           <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staticpages">
+      <EntityTypeMapping TypeName="ecommerceModel.staticpage">
+        <MappingFragment StoreEntitySet="staticpages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Groupby" ColumnName="Groupby" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

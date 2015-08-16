@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -52,6 +61,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -95,9 +108,14 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminStaticpageController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
@@ -133,67 +151,72 @@
     <Compile Include="DataAccess\ProductDal.cs" />
     <Compile Include="DataAccess\ProductPricingDal.cs" />
     <Compile Include="DataAccess\ReviewDal.cs" />
+    <Compile Include="DataAccess\StaticPagesDal.cs" />
     <Compile Include="DbEntity\brand.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\category.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\color.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\coupan.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbEntity\DbContext.Context.cs">
+    <Compile Include="DbEntity\dbcontext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbContext.Context.tt</DependentUpon>
+      <DependentUpon>dbcontext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbEntity\DbContext.cs">
+    <Compile Include="DbEntity\dbcontext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbEntity\DbContext.Designer.cs">
+    <Compile Include="DbEntity\dbcontext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbContext.edmx</DependentUpon>
+      <DependentUpon>dbcontext.edmx</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\deliverycharge.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\deliveryday.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\image.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\length.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\newletter.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\orderdetail.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\orderheader.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\product.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\productpricing.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\review.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbEntity\staticpage.cs">
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\user.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\adminUser.cs" />
+    <Compile Include="Model\Classes\ReCalculateCart.cs" />
     <Compile Include="Model\OrderDetail.cs" />
     <Compile Include="Model\OrderHeader.cs" />
     <Compile Include="Model\ReviewModel.cs" />
@@ -1788,23 +1811,25 @@
     <Content Include="Areas\Admin\Views\DeliveryDays\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ReviewAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ReviewAdmin\Create.cshtml" />
-    <EntityDeploy Include="DbEntity\DbContext.edmx">
+    <EntityDeploy Include="DbEntity\dbcontext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbContext.Designer.cs</LastGenOutput>
+      <LastGenOutput>dbcontext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DbEntity\DbContext.Context.tt">
+    <Content Include="DbEntity\dbcontext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbContext.edmx</DependentUpon>
-      <LastGenOutput>DbContext.Context.cs</LastGenOutput>
+      <DependentUpon>dbcontext.edmx</DependentUpon>
+      <LastGenOutput>dbcontext.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DbEntity\DbContext.edmx.diagram">
-      <DependentUpon>DbContext.edmx</DependentUpon>
+    <Content Include="DbEntity\dbcontext.edmx.diagram">
+      <DependentUpon>dbcontext.edmx</DependentUpon>
     </Content>
-    <Content Include="DbEntity\DbContext.tt">
+    <Content Include="DbEntity\dbcontext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbContext.edmx</DependentUpon>
-      <LastGenOutput>DbContext.cs</LastGenOutput>
+      <DependentUpon>dbcontext.edmx</DependentUpon>
+      <LastGenOutput>dbcontext.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Admin\Views\AdminStaticpage\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminStaticpage\Create.cshtml" />
     <None Include="Properties\PublishProfiles\Ecommerse.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1876,6 +1901,7 @@
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\RedirectFromPaypal.cshtml" />
     <Content Include="Views\Payment\Status.cshtml" />
+    <Content Include="Views\Shared\Faq.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

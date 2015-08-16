@@ -7,7 +7,7 @@
 <section id="content">
     <div class="container">
 
-         @Html.Raw( ViewBag.breadcrums)
+        @Html.Raw(ViewBag.breadcrums)
 
         <div class="row">
             <div class="col-sm-5">
@@ -81,27 +81,45 @@
 
                 <div class="variations">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             @*Length*@
-               <select class="form-control col-sm-6" style="width: 90%" id="Lengthdd-@Model.Id" onchange="getcolordropdown(this,@Model.Id)">
-                   @foreach (var z in Model.SelectedLengthList)
-                   {
+                            <select class="form-control col-sm-4" style="width: 90%" id="Lengthdd-@Model.Id" onchange="getcolordropdown(this,@Model.Id)">
+                                @foreach (var z in Model.SelectedLengthList)
+                                {
                        
-                       <option value="@z.id">@z.value</option>
+                                    <option value="@z.id">@z.value</option>
                        
-                   }
-               </select>
+                                }
+                            </select>
                         </div>
-                        <div class="col-sm-6">
-                           @* Color*@
-                             <select class="form-control col-sm-6" id="Color-@Model.Id" style="width: 90%" onchange="oncolorddChange(this,@Model.Id)">
-                                 @foreach (var z in Model.SelectedColorList)
-                                 {
-                                     <option value="@z.id">@z.name</option>
+                        <div class="col-sm-4">
+                            @* Color*@
+                            <select class="form-control col-sm-4" id="Color-@Model.Id" style="width: 90%" onchange="oncolorddChange(this,@Model.Id)">
+                                @foreach (var z in Model.SelectedColorList)
+                                {
+                                    <option value="@z.id">@z.name</option>
                                    
-                                 }
-                             </select>
+                                }
+                            </select>
                         </div>
+
+                        <div class="col-sm-4">
+                            @* Color*@
+                            <select id="Quantity-@Model.Id" style="width: 90%" class="form-control col-sm-4">
+                                @for (int i = 0; i <= 15; i++)
+                                {
+                                    if (i == 0)
+                                    {
+                                    <option value="@i">QTY</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+
                     </div>
                 </div>
                 <input type="button" class="btn btn-primary btn-lg" id="add-to-cart" onclick="AddToCart(@Model.Id)" value="Buy">
@@ -115,7 +133,7 @@
 
         <hr>
 
-        @Html.Action("ProductReview", "Products", new {id=Model.Id })
+        @Html.Action("ProductReview", "Products", new { id = Model.Id })
         @*<div id="review_form">
             <h3 id="reply-title" class="comment-reply-title">Add a Review</h3>
             <form action="#" id="commentform" class="comment-form">
@@ -145,7 +163,7 @@
                 </p>
             </form>
         </div>*@
-       @* <hr />
+        @* <hr />
         <a href="#reviews" data-toggle="tab">
             <h3>Reviews </h3>
         </a>

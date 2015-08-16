@@ -5,7 +5,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ecom</title>
-        <link href="../../FrontEndContent/Css/jquery-ui.css" rel="stylesheet" />
+    <link href="../../FrontEndContent/Css/jquery-ui.css" rel="stylesheet" />
     <link href="/FrontEndContent/Css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../Content/css/font-awesome.css" rel="stylesheet" />
     <link href="/FrontEndContent/Css/config.css" rel="stylesheet" />
@@ -27,28 +27,40 @@
                         @if (Session["currency"].ToString() == "Dollar")
                         {   
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/img/USA.png"/>&nbsp;Dollar 
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="/img/USA.png" />&nbsp;Dollar 
                                 <b class="caret"></b></a>
                                 <ul role="menu" class="dropdown-menu">
-                                    <li><a href="/Landing/ChangeCurrency/Euro"><img src="/img/Euro.png"/>&nbsp;Euro</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Pound"><img src="/img/UK.png"/>&nbsp;GBP</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Naira"><img src="/img/Nigeria.png"/>&nbsp;Naira </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Kwanza"><img src="/img/Angola.png"/>&nbsp;Kwanza </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Cedi"><img src="/img/Ghana.png"/>&nbsp;Cedi</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Euro">
+                                        <img src="/img/Euro.png" />&nbsp;Euro</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Pound">
+                                        <img src="/img/UK.png" />&nbsp;GBP</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Naira">
+                                        <img src="/img/Nigeria.png" />&nbsp;Naira </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Kwanza">
+                                        <img src="/img/Angola.png" />&nbsp;Kwanza </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Cedi">
+                                        <img src="/img/Ghana.png" />&nbsp;Cedi</a></li>
                                 </ul>
                             </li>
                         }
                         @if (Session["currency"].ToString() == "Euro")
                         {   
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/img/Euro.png"/>&nbsp;Euro
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="/img/Euro.png" />&nbsp;Euro
                                 <b class="caret"></b></a>
                                 <ul role="menu" class="dropdown-menu">
-                                    <li><a href="/Landing/ChangeCurrency/Dollar"><img src="/img/USA.png"/>&nbsp;Dollar</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Pound"><img src="/img/UK.png"/>&nbsp;GBP</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Naira"><img src="/img/Nigeria.png"/>&nbsp;Naira </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Kwanza"><img src="/img/Angola.png"/>&nbsp;Kwanza </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Cedi"><img src="/img/Ghana.png"/>&nbsp;Cedi </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Dollar">
+                                        <img src="/img/USA.png" />&nbsp;Dollar</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Pound">
+                                        <img src="/img/UK.png" />&nbsp;GBP</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Naira">
+                                        <img src="/img/Nigeria.png" />&nbsp;Naira </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Kwanza">
+                                        <img src="/img/Angola.png" />&nbsp;Kwanza </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Cedi">
+                                        <img src="/img/Ghana.png" />&nbsp;Cedi </a></li>
                                 </ul>
                             </li>
                         }
@@ -56,14 +68,20 @@
                         @if (Session["currency"].ToString() == "Pound")
                         {   
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/img/UK.png"/>&nbsp;GBP
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="/img/UK.png" />&nbsp;GBP
                                 <b class="caret"></b></a>
                                 <ul role="menu" class="dropdown-menu">
-                                    <li><a href="/Landing/ChangeCurrency/Dollar"><img src="/img/USA.png"/>&nbsp;Dollar</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Euro"><img src="/img/Euro.png"/>&nbsp;Euro</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Naira"><img src="/img/Nigeria.png"/>&nbsp;Naira </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Kwanza"><img src="/img/Angola.png"/>&nbsp;Kwanza </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Cedi"><img src="/img/Ghana.png"/>&nbsp;Cedi</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Dollar">
+                                        <img src="/img/USA.png" />&nbsp;Dollar</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Euro">
+                                        <img src="/img/Euro.png" />&nbsp;Euro</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Naira">
+                                        <img src="/img/Nigeria.png" />&nbsp;Naira </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Kwanza">
+                                        <img src="/img/Angola.png" />&nbsp;Kwanza </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Cedi">
+                                        <img src="/img/Ghana.png" />&nbsp;Cedi</a></li>
                                 </ul>
                             </li>
                         }
@@ -71,14 +89,20 @@
                         @if (Session["currency"].ToString() == "Naira")
                         {   
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/img/Nigeria.png"/>&nbsp;Naira
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="/img/Nigeria.png" />&nbsp;Naira
                                 <b class="caret"></b></a>
                                 <ul role="menu" class="dropdown-menu">
-                                    <li><a href="/Landing/ChangeCurrency/Dollar"><img src="/img/USA.png"/>&nbsp;Dollar</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Euro"><img src="/img/Euro.png"/>&nbsp;Euro</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Pound"><img src="/img/UK.png"/>&nbsp;GBP </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Kwanza"><img src="/img/Angola.png"/>&nbsp;Kwanza </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Cedi"><img src="/img/Ghana.png"/>&nbsp;Cedi </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Dollar">
+                                        <img src="/img/USA.png" />&nbsp;Dollar</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Euro">
+                                        <img src="/img/Euro.png" />&nbsp;Euro</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Pound">
+                                        <img src="/img/UK.png" />&nbsp;GBP </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Kwanza">
+                                        <img src="/img/Angola.png" />&nbsp;Kwanza </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Cedi">
+                                        <img src="/img/Ghana.png" />&nbsp;Cedi </a></li>
                                 </ul>
                             </li>
                         }
@@ -86,14 +110,20 @@
                         @if (Session["currency"].ToString() == "Kwanza")
                         {   
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/img/Angola.png"/>&nbsp;Kwanza
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="/img/Angola.png" />&nbsp;Kwanza
                                 <b class="caret"></b></a>
                                 <ul role="menu" class="dropdown-menu">
-                                    <li><a href="/Landing/ChangeCurrency/Dollar"><img src="/img/USA.png"/>&nbsp;Dollar</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Euro"><img src="/img/Euro.png"/>&nbsp;Euro</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Pound"><img src="/img/UK.png"/>&nbsp;GBP </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Naira"><img src="/img/Nigeria.png"/>&nbsp;Naira </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Cedi"><img src="/img/Ghana.png"/>&nbsp;Cedi</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Dollar">
+                                        <img src="/img/USA.png" />&nbsp;Dollar</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Euro">
+                                        <img src="/img/Euro.png" />&nbsp;Euro</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Pound">
+                                        <img src="/img/UK.png" />&nbsp;GBP </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Naira">
+                                        <img src="/img/Nigeria.png" />&nbsp;Naira </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Cedi">
+                                        <img src="/img/Ghana.png" />&nbsp;Cedi</a></li>
                                 </ul>
                             </li>
                         }
@@ -101,22 +131,28 @@
                         @if (Session["currency"].ToString() == "Cedi")
                         {   
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/img/Ghana.png"/>&nbsp;Cedi 
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="/img/Ghana.png" />&nbsp;Cedi 
                                 <b class="caret"></b></a>
                                 <ul role="menu" class="dropdown-menu">
-                                    <li><a href="/Landing/ChangeCurrency/Dollar"><img src="/img/USA.png"/>&nbsp;Dollar</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Euro"><img src="/img/Euro.png"/>&nbsp;Euro</a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Pound"><img src="/img/UK.png"/>&nbsp;GBP </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Naira"><img src="/img/Nigeria.png"/>&nbsp;Naira </a></li>
-                                    <li><a href="/Landing/ChangeCurrency/Kwanza"><img src="/img/Angola.png"/>&nbsp;Kwanza </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Dollar">
+                                        <img src="/img/USA.png" />&nbsp;Dollar</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Euro">
+                                        <img src="/img/Euro.png" />&nbsp;Euro</a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Pound">
+                                        <img src="/img/UK.png" />&nbsp;GBP </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Naira">
+                                        <img src="/img/Nigeria.png" />&nbsp;Naira </a></li>
+                                    <li><a href="/Landing/ChangeCurrency/Kwanza">
+                                        <img src="/img/Angola.png" />&nbsp;Kwanza </a></li>
                                 </ul>
                             </li>
                         }
                     </ul>
                 </nav>
 
-                <nav id="shopping-cart" style="cursor:pointer;" class="shopping-cartBucket" onclick="Getcart();">
-                    <div style="color:black!important;">
+                <nav id="shopping-cart" style="cursor: pointer;" class="shopping-cartBucket" onclick="Getcart();">
+                    <div style="color: black!important;">
                         <i class="fa fa-shopping-cart fa-lg"></i>Cart
                         <span class="fa-stack">
                             <i class="fa fa-circle fa-stack-2x"></i>
@@ -128,23 +164,22 @@
                                 else
                                 {
                                     Ecommerce.Model.CartModel obj = (Ecommerce.Model.CartModel)Session["Cart"];
-                                    if (obj.Product!=null)
+                                    if (obj.Product != null)
                                     { 
-                                     @Html.Raw(obj.Product.Count().ToString())
-                                        }
-                                        else
-                                        {
+                                    @Html.Raw(obj.Product.Count().ToString())
+                                    }
+                                    else
+                                    {
                                     @Html.Raw("0")
                                     }
-                                 }
+                                }
                             </i>
                             <div id="jPanelMenu-menu" class="panel-left">
-          
-    </div>
+                            </div>
                         </span>
                     </div>
 
-                     
+
                 </nav>
 
                 <nav id="top-nav" role="navigation" class="navbar">
@@ -158,26 +193,27 @@
                     </div>
                     <div class="collapse navbar-collapse top-nav">
                         <ul class="nav navbar-nav">
-                             
-                             <li>
-                                 
-                                 <table>
-                                     <tr>
-                                        <td rowspan="2"><img src="/img/van.png" />&nbsp;</td>
-                                          <td >
-                                          
-                                          <p style="margin-bottom: 0px;height:15px;"><strong style="color:blue;font-size:15px;"> FREE DELIVERY </strong></p>
-                                 <p  style="margin-bottom: 0px;padding:0px"><span style="color:black;">ON ORDERS ABOVE @Html.Action("GetFreeDeleveryCharges","FrontBase")</span></p>
-                                          </td>
-                                     </tr>
-                                     <tr>
-                                         <td></td>
-                                     </tr>
-                                    
-                                 </table>
 
-                             </li>
-                             <li>&nbsp;</li>
+                            <li>
+
+                                <table>
+                                    <tr>
+                                        <td rowspan="2">
+                                            <img src="/img/van.png" />&nbsp;</td>
+                                        <td>
+
+                                            <p style="margin-bottom: 0px; height: 15px;"><strong style="color: blue; font-size: 15px;">FREE DELIVERY </strong></p>
+                                            <p style="margin-bottom: 0px; padding: 0px"><span style="color: black;">ON ORDERS ABOVE @Html.Action("GetFreeDeleveryCharges", "FrontBase")</span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+
+                                </table>
+
+                            </li>
+                            <li>&nbsp;</li>
                             <li>&nbsp;</li>
                             <li>&nbsp;</li>
                             <li>&nbsp;</li>
@@ -185,14 +221,14 @@
                             <li><a href="#">About</a></li>
 
                             <li><a href="#">Contact</a></li>
-                           @if(Request.IsAuthenticated)
-                           {
-                             <li>
-                                <a href="contact.html">Order History</a>
-                            </li>
-                           }
-                            @Html.Action("GetSignup","FrontBase")
-  
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li>
+                                    <a href="contact.html">Order History</a>
+                                </li>
+                            }
+                            @Html.Action("GetSignup", "FrontBase")
+
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -216,7 +252,7 @@
                         <a class="navbar-brand" href="/Landing/Index">
                             <img src="/img/logo.png" alt="Garbini" class="img-responsive"></a>
                     </div>
-                    
+
                     @Html.Action("MainMenu", "Share")
                 </div>
             </div>
@@ -228,47 +264,47 @@
 
     <!-- ========== SLIDER START ========== -->
     @if (ViewBag.Hompage == "true")
-        {
-    <section id="slider">
-        <div id="bs-carousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#bs-carousel" data-slide-to="1"></li>
-                <li data-target="#bs-carousel" data-slide-to="2"></li>
-            </ol>
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <a href="#">
-                        <img style="width: 1200px; height: 350px;" src="/img/Bannar1.jpg" alt=""></a>
+    {
+        <section id="slider">
+            <div id="bs-carousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#bs-carousel" data-slide-to="1"></li>
+                    <li data-target="#bs-carousel" data-slide-to="2"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <a href="#">
+                            <img style="width: 1200px; height: 350px;" src="/img/Bannar1.jpg" alt=""></a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img style="width: 1200px; height: 350px;" src="/img/Bannar2.jpg" alt=""></a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img style="width: 1600px; height: 350px;" src="/img/Bannar3.jpg" alt=""></a>
+                    </div>
                 </div>
-                <div class="item">
-                    <a href="#">
-                        <img style="width: 1200px; height: 350px;" src="/img/Bannar2.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href="#">
-                        <img style="width: 1600px; height: 350px;" src="/img/Bannar3.jpg" alt=""></a>
-                </div>
-            </div>
 
-            <!-- Controls -->
-            <a class="left carousel-control" href="#bs-carousel" data-slide="prev">
-                <i class="fa fa-angle-left"></i>
-                <!--span class="glyphicon glyphicon-chevron-left"></span-->
-            </a>
-            <a class="right carousel-control" href="#bs-carousel" data-slide="next">
-                <i class="fa fa-angle-right"></i>
-                <!--span class="glyphicon glyphicon-chevron-right"></span-->
-            </a>
-        </div>
-    </section>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#bs-carousel" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                    <!--span class="glyphicon glyphicon-chevron-left"></span-->
+                </a>
+                <a class="right carousel-control" href="#bs-carousel" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                    <!--span class="glyphicon glyphicon-chevron-right"></span-->
+                </a>
+            </div>
+        </section>
     }
     else
     {
-        <div class="container" style=" height: 0px;">
-     @Html.Raw(ViewBag.breadcrums)
+        <div class="container" style="height: 0px;">
+            @Html.Raw(ViewBag.breadcrums)
 
         </div>
     }
@@ -283,7 +319,7 @@
 
 
         <div id="copyright">
-                        <div class="container">&copy; Copyright Ecommerce Site | All Rights Reserved | Designed and developed by <a  target="_blank" href="http://www.issoftwaresolution.com/">IS-Software solution</a></div>
+            <div class="container">&copy; Copyright Ecommerce Site | All Rights Reserved | Designed and developed by <a target="_blank" href="http://www.issoftwaresolution.com/">IS-Software solution</a></div>
         </div>
 
     </footer>
@@ -291,40 +327,52 @@
     <!-- ========== FOOTER END ========== -->
 
 
-
-<div id="ForgetPassworddialog" title="Forgot password">
+    <div id="ReturnPolicy" title="Return Policy">
         <div class="panel panel-default">
-           
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.Action("ReturnPolicy", "FrontBase")
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="ForgetPassworddialog" title="Forgot password">
+        <div class="panel panel-default">
+
             <div class="panel-body">
                 <div class="form-group">
                     @Html.Partial("/Views/Shared/ForgetPassword.cshtml")
                 </div>
             </div>
         </div>
-</div>
+    </div>
 
 
-        <div id="registerUserdialog" title="Registration">
+    <div id="registerUserdialog" title="Registration">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="form-group">
-                    @Html.Partial("/Views/Shared/RegistrationForm.cshtml",new Ecommerce.Model.LoginModel())
+                    @Html.Partial("/Views/Shared/RegistrationForm.cshtml", new Ecommerce.Model.LoginModel())
                 </div>
             </div>
         </div>
-</div>
+    </div>
 
 
-    <div id="page_loader" >&nbsp;
+    <div id="page_loader">
+        &nbsp;
 
     </div>
     <script src="../../Scripts/jquery-1.9.1.min.js"></script>
-     <script src="/FrontEndContent/JavaScript/bootstrap.min.js"></script>
+    <script src="/FrontEndContent/JavaScript/bootstrap.min.js"></script>
     <script src="/FrontEndContent/JavaScript/main.js"></script>
     <script src="/FrontEndContent/JavaScript/owl.carousel.min.js"></script>
     <script src="../../Scripts/jquery.validate.js"></script>
     <script src="../../Scripts/jquery.validate.unobtrusive.js"></script>
-     <script src="../../Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="../../Scripts/jquery.unobtrusive-ajax.js"></script>
+
     <script src="../../Scripts/jquery-ui-1.8.24.js"></script>
 </body>
 
@@ -334,12 +382,12 @@
     $(function () {
         $("#ForgetPassworddialog").dialog({ autoOpen: false, width: 400 });
         $("#registerUserdialog").dialog({ autoOpen: false, width: 375 });
-
+        $('#ReturnPolicy').dialog({ autoOpen: false, width: 400 })
     });
 
-var timer = 5000;
+    var timer = 5000;
     var check = false;
-    $(document).ready(function () { 
+    $(document).ready(function () {
         $("#jPanelMenu-menu").mouseover(function (e) {
             check = true;
             clearTimeout(timer);
@@ -350,11 +398,13 @@ var timer = 5000;
         });
         $('#ui-dialog-title-ForgetPassworddialog').next().html("<img style='vertical-align:initial!important' src='/img/close.png'/>");
         $('#ui-dialog-title-registerUserdialog').next().html("<img style='vertical-align:initial!important' src='/img/close.png'/>");
+        $('#ui-dialog-title-ReturnPolicy').next().html("<img style='vertical-align:initial!important' src='/img/close.png'/>");
 
+        
     });
 
 
-   
+
     function ShowForGotPassword() {
         $("#ForgetPassworddialog").dialog("open");
     }
@@ -413,13 +463,19 @@ var timer = 5000;
         var lengthId = $("#Lengthdd-" + e).val();
         GetPrice(colorId, productId, lengthId)
     }
-   
+
 
     function AddToCart(e) {
         $('#page_loader').show();
         var selectedProductPriceId = $("#currentSeleted-" + e).val();
+        var Quantity = $("#Quantity-" + e).val();
+        if (Quantity == 0) {
+            alert("Please select Quantity");
+            $('#page_loader').hide();
+            return;
+        }
         $.ajaxSetup({ async: false });
-        $.post("/Cart/AddToCart/" + selectedProductPriceId, function (partial) {
+        $.post("/Cart/AddToCart/" + selectedProductPriceId + "?Quantity=" + Quantity, function (partial) {
             $('#jPanelMenu-menu').html(partial);
             $("#shopping-cart").trigger("click");
             var itemcount = $("#ItemCount").val();
@@ -460,15 +516,16 @@ var timer = 5000;
         $('#page_loader').hide();
     }
 
-   
-        
-   
+
+
+
+
     function HideInfo() {
         if (!check) {
             $("#jPanelMenu-menu").hide();
         }
-       }
-    
+    }
+
     if ($().owlCarousel) {
         if ($(".image-carousel").length) {
             $(".image-carousel").owlCarousel({
@@ -484,5 +541,9 @@ var timer = 5000;
                 pagination: true
             });
         }
+    }
+
+    function showReturnPolicy() {
+        $("#ReturnPolicy").dialog("open");
     }
 </script>

@@ -53,6 +53,7 @@ namespace Ecommerce.Controllers
                 Session["OrderId"] = CartDal.SaveOrUpdateCartAsOrder((CartModel)Session["Cart"], Convert.ToString(Session["currency"]), user.id, Convert.ToInt32(Session["OrderId"]));
 
             }
+            ViewBag.Faq = StaticPagesDal.GetBygroupId("Faq");
             return View();
         }
 

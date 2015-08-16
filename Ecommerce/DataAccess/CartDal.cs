@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Model;
+using Ecommerce.Model.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Ecommerce.DataAccess
 {
     public static class CartDal
     {
-        public static CartModel AddItemTocart(int productPriceId, CartModel obj, string Currency)
+        public static CartModel AddItemTocart(int productPriceId, CartModel obj, string Currency, int? quantity)
         {
             bool check = true;
             decimal total = 0;
@@ -24,12 +25,15 @@ namespace Ecommerce.DataAccess
                 obj.Product = new List<ProductModel>();
             }
 
-            for (int i = 0; i < obj.Product.Count; i++)
+            if (quantity.HasValue)
             {
-                if (obj.Product[i].Price.Id == productPriceId)
+                for (int i = 0; i < obj.Product.Count; i++)
                 {
-                    obj.Product[i].Price.Quantity = obj.Product[i].Price.Quantity + 1;
-                    check = false;
+                    if (obj.Product[i].Price.Id == productPriceId)
+                    {
+                        obj.Product[i].Price.Quantity = Convert.ToInt32(quantity);
+                        check = false;
+                    }
                 }
             }
 
@@ -42,10 +46,14 @@ namespace Ecommerce.DataAccess
             product.Price = productPrice;
             if (check)
             {
-                product.Price.Quantity = 1;
+                if (quantity.HasValue)
+                {
+                    product.Price.Quantity = Convert.ToInt32(quantity);
+                }
                 obj.Product.Add(product);
+
             }
-            
+
             var deliveryCharges = DeliveryDal.Get();
             if (Currency == "Dollar")
             {
@@ -112,40 +120,31 @@ namespace Ecommerce.DataAccess
 
         public static CartModel UpdateCurrencyChange(CartModel obj, string Currency)
         {
-            List<int> productPriceIds = new List<int>();
+            List<ReCalculateCart> qtyList = new List<ReCalculateCart>();
             if (obj == null)
             {
                 obj = new CartModel();
                 obj.Product = new List<ProductModel>();
             }
+            obj = new CartModel();
             if (obj.Product != null)
             {
                 foreach (var x in obj.Product)
                 {
-                    if (x.Price.Quantity > 1)
-                    {
-                        for (int i = 0; i < x.Price.Quantity; i++)
-                        {
-                            productPriceIds.Add(x.Price.Id);
-                        }
-                    }
-                    else
-                    {
-                        productPriceIds.Add(x.Price.Id);
-                    }
+                    qtyList.Add(new ReCalculateCart { Id = x.Price.Id, Quantity = x.Price.Quantity });
                 }
-                obj = new CartModel();
-                foreach (var x in productPriceIds)
-                {
-                    AddItemTocart(x, obj, Currency);
-                }
+           }
+            obj = new CartModel();
+            foreach (var x in qtyList)
+            {
+                AddItemTocart(x.Id, obj, Currency, x.Quantity);
             }
             return obj;
         }
 
         public static CartModel Delete(CartModel obj, string Currency, int rowid)
         {
-            List<int> productPriceIds = new List<int>();
+            List<ReCalculateCart> qtyList = new List<ReCalculateCart>();
             if (obj == null)
             {
                 obj = new CartModel();
@@ -155,83 +154,104 @@ namespace Ecommerce.DataAccess
             {
                 if (!(x.CountId == rowid))
                 {
-                    if (x.Price.Quantity > 1)
-                    {
-                        for (int i = 0; i < x.Price.Quantity; i++)
-                        {
-                            productPriceIds.Add(x.Price.Id);
-                        }
-                    }
-                    else
-                    {
-                        productPriceIds.Add(x.Price.Id);
-                    }
+                    qtyList.Add(new ReCalculateCart { Id = x.Price.Id, Quantity = x.Price.Quantity });
                 }
             }
             obj = new CartModel();
-            foreach (var x in productPriceIds)
+            foreach (var x in qtyList)
             {
-                AddItemTocart(x, obj, Currency);
+                AddItemTocart(x.Id, obj, Currency, x.Quantity);
             }
             return obj;
         }
 
-        public static int SaveOrUpdateCartAsOrder(CartModel obj, string Currency,int userid,int orderId)
+        public static CartModel UpdateQuantity(CartModel obj, string Currency, int rowid, int quantity)
         {
-             OrderHeader Orderheaderobj=new OrderHeader();
-             Orderheaderobj.OrderDetail = new List<OrderDetail>();
+            List<ReCalculateCart> qtyList = new List<ReCalculateCart>();
+            if (obj == null)
+            {
+                obj = new CartModel();
+                obj.Product = new List<ProductModel>();
+            }
+            foreach (var x in obj.Product)
+            {
+                if (!(x.CountId == rowid))
+                {
+                    qtyList.Add(new ReCalculateCart { Id = x.Price.Id, Quantity = x.Price.Quantity });
+                }
+                else
+                {
+                    qtyList.Add(new ReCalculateCart { Id = x.Price.Id, Quantity = quantity });
+                }
+            }
+            obj = new CartModel();
+            foreach (var x in qtyList)
+            {
+                AddItemTocart(x.Id, obj, Currency, x.Quantity);
+            }
+            return obj;
+        }
+
+        public static int SaveOrUpdateCartAsOrder(CartModel obj, string Currency, int userid, int orderId)
+        {
+            OrderHeader Orderheaderobj = new OrderHeader();
+            Orderheaderobj.OrderDetail = new List<OrderDetail>();
             if ((Currency != "Dollar") && (Currency != "Euro") && (Currency != "Pound"))
+            {
+                Orderheaderobj.CurrencyChoosenByUser = Currency;
+                Orderheaderobj.CurrencyInWhichAmmountPaid = "Dollar";
+                Orderheaderobj.ActualAmountPaid = Utility.GetConvertedPrice(obj.Total, Currency, "USD");
+                Orderheaderobj.AmountInCurrencyChoosenByuser = obj.Total;
+                Orderheaderobj.DeliveryCharges = Utility.GetConvertedPrice(obj.DelivierCharges, Currency, "USD");
+                foreach (var x in obj.Product)
                 {
-                    Orderheaderobj.CurrencyChoosenByUser = Currency;
-                    Orderheaderobj.CurrencyInWhichAmmountPaid = "Dollar";
-                    Orderheaderobj.ActualAmountPaid = Utility.GetConvertedPrice(obj.Total,Currency,"USD");
-                    Orderheaderobj.AmountInCurrencyChoosenByuser = obj.Total;
-                    Orderheaderobj.DeliveryCharges = Utility.GetConvertedPrice(obj.DelivierCharges, Currency, "USD");
-                    foreach (var x in obj.Product)
+                    Orderheaderobj.OrderDetail.Add(new OrderDetail
                     {
-                            Orderheaderobj.OrderDetail.Add(new OrderDetail { 
-                            ActualPriceInUserSeletedCurrency=x.Price.TotalPrice,
-                            PricePaidInConvertedCurrency=Utility.GetConvertedPrice(x.Price.TotalPrice,Currency,"USD"),
-                            ProductPriceId=x.Price.Id,
-                            Quantity = x.Price.Quantity,
-                            //ProductName = x.Name + " | Length: " + x.Price.LengthName + " inch | Color: " + x.Price.ColorName,
-                            ProductName = x.Name 
-                            });
-                    }
+                        ActualPriceInUserSeletedCurrency = x.Price.TotalPrice,
+                        PricePaidInConvertedCurrency = Utility.GetConvertedPrice(x.Price.TotalPrice, Currency, "USD"),
+                        ProductPriceId = x.Price.Id,
+                        Quantity = x.Price.Quantity,
+                        //ProductName = x.Name + " | Length: " + x.Price.LengthName + " inch | Color: " + x.Price.ColorName,
+                        ProductName = x.Name
+                    });
                 }
-                else
+            }
+            else
+            {
+                Orderheaderobj.CurrencyChoosenByUser = Currency;
+                Orderheaderobj.CurrencyInWhichAmmountPaid = Currency;
+                Orderheaderobj.ActualAmountPaid = obj.Total;
+                Orderheaderobj.AmountInCurrencyChoosenByuser = obj.Total;
+                Orderheaderobj.DeliveryCharges = obj.DelivierCharges;
+                foreach (var x in obj.Product)
                 {
-                    Orderheaderobj.CurrencyChoosenByUser = Currency;
-                    Orderheaderobj.CurrencyInWhichAmmountPaid = Currency;
-                    Orderheaderobj.ActualAmountPaid = obj.Total;
-                    Orderheaderobj.AmountInCurrencyChoosenByuser = obj.Total;
-                    Orderheaderobj.DeliveryCharges = obj.DelivierCharges;
-                    foreach (var x in obj.Product)
+                    Orderheaderobj.OrderDetail.Add(new OrderDetail
                     {
-                        Orderheaderobj.OrderDetail.Add(new OrderDetail
-                        {
-                            ActualPriceInUserSeletedCurrency = x.Price.TotalPrice,
-                            PricePaidInConvertedCurrency = x.Price.TotalPrice,
-                            ProductPriceId = x.Price.Id,
-                            Quantity = x.Price.Quantity,
-                            ProductName=x.Name,
-                        });
-                    }
+                        ActualPriceInUserSeletedCurrency = x.Price.TotalPrice,
+                        PricePaidInConvertedCurrency = x.Price.TotalPrice,
+                        ProductPriceId = x.Price.Id,
+                        Quantity = x.Price.Quantity,
+                        ProductName = x.Name,
+                    });
                 }
-                Orderheaderobj.CreatedDate = DateTime.Now.ToShortDateString();
-                Orderheaderobj.OrderStatus = "Pending";
-                Orderheaderobj.PaymentStatus = "Not Recived";
-                Orderheaderobj.PermotionCode = obj.DiscountCoupan;
-                Orderheaderobj.Userid = userid;
-                if (orderId > 0)
-                {
-                    Orderheaderobj.orderID = orderId;
-                    return OrderDal.Update(Orderheaderobj);
-                }
-                else
-                {
-                    return OrderDal.Create(Orderheaderobj);
-                }
-         }
+            }
+            Orderheaderobj.CreatedDate = DateTime.Now.ToShortDateString();
+            Orderheaderobj.OrderStatus = "Pending";
+            Orderheaderobj.PaymentStatus = "Not Recived";
+            Orderheaderobj.PermotionCode = obj.DiscountCoupan;
+            Orderheaderobj.Userid = userid;
+            if (orderId > 0)
+            {
+                Orderheaderobj.orderID = orderId;
+                return OrderDal.Update(Orderheaderobj);
+            }
+            else
+            {
+                return OrderDal.Create(Orderheaderobj);
+            }
+        }
+
+
+
     }
 }

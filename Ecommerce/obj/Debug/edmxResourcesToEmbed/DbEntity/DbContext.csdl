@@ -15,6 +15,7 @@
     <EntitySet Name="products" EntityType="ecommerceModel.product" />
     <EntitySet Name="productpricings" EntityType="ecommerceModel.productpricing" />
     <EntitySet Name="reviews" EntityType="ecommerceModel.review" />
+    <EntitySet Name="staticpages" EntityType="ecommerceModel.staticpage" />
     <EntitySet Name="users" EntityType="ecommerceModel.user" />
   </EntityContainer>
   <EntityType Name="brand">
@@ -107,7 +108,7 @@
     <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="PricePaidInConvertedCurrency" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
     <Property Name="ActualPriceInUserSeletedCurrency" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-    <Property Type="String" Name="ProductName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
   </EntityType>
   <EntityType Name="orderheader">
     <Key>
@@ -123,7 +124,7 @@
     <Property Name="PaymentStatus" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="CreatedDate" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-    <Property Name="DeliveryCharges" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="DeliveryCharges" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
     <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
     <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
     <Property Name="ContactNumber" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
@@ -186,6 +187,15 @@
     <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
     <Property Name="active" Type="Boolean" />
     <Property Name="productid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="staticpage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Content" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <Property Name="Groupby" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
   </EntityType>
   <EntityType Name="user">
     <Key>

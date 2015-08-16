@@ -134,5 +134,11 @@ namespace Ecommerce.Controllers
             check = UserDal.RegisterUser(obj);
             return Json("You have successfully registered");
         }
+
+        public ContentResult ReturnPolicy()
+        {
+            string policy = StaticPagesDal.GetByHeading("Return policy").Content;
+            return (Content(policy));
+        }
     }
 }

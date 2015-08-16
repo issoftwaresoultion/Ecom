@@ -15,6 +15,7 @@
     <EntitySet Name="product" EntityType="ecommerceModel.Store.product" store:Type="Tables" Schema="ecommerce" />
     <EntitySet Name="productpricing" EntityType="ecommerceModel.Store.productpricing" store:Type="Tables" Schema="ecommerce" />
     <EntitySet Name="review" EntityType="ecommerceModel.Store.review" store:Type="Tables" Schema="ecommerce" />
+    <EntitySet Name="staticpages" EntityType="ecommerceModel.Store.staticpages" store:Type="Tables" Schema="ecommerce" />
     <EntitySet Name="user" EntityType="ecommerceModel.Store.user" store:Type="Tables" Schema="ecommerce" />
   </EntityContainer>
   <EntityType Name="brand">
@@ -186,6 +187,15 @@
     <Property Name="email" Type="varchar" MaxLength="100" />
     <Property Name="active" Type="bit" />
     <Property Name="productid" Type="int" />
+  </EntityType>
+  <EntityType Name="staticpages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="varchar" MaxLength="200" />
+    <Property Name="Content" Type="varchar" />
+    <Property Name="Groupby" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="user">
     <Key>

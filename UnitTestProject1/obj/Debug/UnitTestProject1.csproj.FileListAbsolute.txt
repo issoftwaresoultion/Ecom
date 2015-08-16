@@ -16,3 +16,4 @@ D:\IsSoftwareSolution\Ecom\Ecom\UnitTestProject1\bin\Debug\EntityFramework.xml
 D:\IsSoftwareSolution\Ecom\Ecom\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
 D:\IsSoftwareSolution\Ecom\Ecom\UnitTestProject1\obj\Debug\UnitTestProject1.dll
 D:\IsSoftwareSolution\Ecom\Ecom\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+D:\IsSoftwareSolution\Ecom\Ecom\UnitTestProject1\bin\Debug\UnitTestProject1.dll.config

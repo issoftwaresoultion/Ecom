@@ -91,7 +91,12 @@ namespace Ecommerce.Controllers
             {
                 Session["currency"] = "Dollar";
             }
-            Session["Cart"] = CartDal.AddItemTocart(id, (CartModel)Session["Cart"], (string)Session["currency"]);
+            int Quantity = 1;
+            if (Request.QueryString["Quantity"] != null)
+            {
+                Quantity= Convert.ToInt32(Request.QueryString["Quantity"]);
+            }
+            Session["Cart"] = CartDal.AddItemTocart(id, (CartModel)Session["Cart"], (string)Session["currency"], Quantity);
             return RedirectToAction("MiniIndex");
             //return Json(true,JsonRequestBehavior.AllowGet);
         }
@@ -155,6 +160,18 @@ namespace Ecommerce.Controllers
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult UpdateQuantity()
+        {
+            if (Session["currency"] == null)
+            {
+                Session["currency"] = "Dollar";
+            }
+            int rowid = Convert.ToInt32(Request.QueryString["countid"]);
+            int Quantity = Convert.ToInt32(Request.QueryString["Quantity"]);
+            Session["Cart"] = CartDal.UpdateQuantity((CartModel)Session["Cart"], (string)Session["currency"], rowid, Quantity);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        
 
     }
 }
