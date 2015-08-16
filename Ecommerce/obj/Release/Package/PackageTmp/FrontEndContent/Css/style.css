@@ -30,6 +30,18 @@ h6 > a:hover { text-decoration: none; }
 .gap-50 { height: 50px; }
 .gap-60 { height: 60px; }
 
+.panel-default>.panel-SigeUpHeading {
+    color: #FFF;
+    background-color: #fd638f;
+    border-color: #FFF;
+}
+
+.panel-SigeUpHeading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
 .field-validation-error {
 color:red;
 }

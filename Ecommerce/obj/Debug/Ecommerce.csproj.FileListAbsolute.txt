@@ -46,3 +46,4 @@ D:\IsSoftwareSolution\Ecom\Ecom\Ecommerce\bin\WebGrease.dll
 D:\IsSoftwareSolution\Ecom\Ecom\Ecommerce\bin\Antlr3.Runtime.pdb
 D:\IsSoftwareSolution\Ecom\Ecom\Ecommerce\bin\Newtonsoft.Json.xml
 D:\IsSoftwareSolution\Ecom\Ecom\Ecommerce\bin\System.Web.Optimization.xml
+D:\IsSoftwareSolution\Ecom\Ecom\Ecommerce\obj\Debug\Ecommerce.csprojResolveAssemblyReference.cache

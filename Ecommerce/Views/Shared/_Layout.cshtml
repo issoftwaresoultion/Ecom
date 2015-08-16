@@ -22,7 +22,7 @@
         <div id="top-bar">
             <div class="container">
 
-                <nav id="language-selector">
+                <nav id="language-selector" style="width: 265px;">
                     <ul class="nav nav-pills">
                         @if (Session["currency"].ToString() == "Dollar")
                         {   
@@ -149,6 +149,16 @@
                             </li>
                         }
                     </ul>
+                      @using (Html.BeginForm("Search", "Landing"))
+                        {
+                    <table style="float:right;margin-top: -20px;">
+                        <tr>
+                            <td><input class="dropdown" type="text" name="id" placeholder="Search" style="width:140px;"/></td>
+                            <td><input type="submit" value="GO" class="btn btn-primary btn-sm"/></td>
+                        </tr>
+                    </table>
+                      }
+                    
                 </nav>
 
                 <nav id="shopping-cart" style="cursor: pointer;" class="shopping-cartBucket" onclick="Getcart();">
@@ -179,7 +189,7 @@
                         </span>
                     </div>
 
-
+                   
                 </nav>
 
                 <nav id="top-nav" role="navigation" class="navbar">
@@ -213,11 +223,7 @@
                                 </table>
 
                             </li>
-                            <li>&nbsp;</li>
-                            <li>&nbsp;</li>
-                            <li>&nbsp;</li>
-                            <li>&nbsp;</li>
-                            <li>&nbsp;</li>
+                             
                             <li><a href="#">About</a></li>
 
                             <li><a href="#">Contact</a></li>
@@ -251,8 +257,10 @@
                         </button>
                         <a class="navbar-brand" href="/Landing/Index">
                             <img src="/img/logo.png" alt="Garbini" class="img-responsive"></a>
-                    </div>
 
+                        
+                    </div>
+                    
                     @Html.Action("MainMenu", "Share")
                 </div>
             </div>

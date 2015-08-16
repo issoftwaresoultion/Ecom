@@ -271,5 +271,49 @@ namespace Ecommerce.DataAccess
             }
             return Obj;
         }
+
+        public static List<ProductModel> GetAllProducts(string keyword)
+        {
+            List<ProductModel> Obj = new List<ProductModel>();
+            var context = new Ecommerce.DbEntity.ecommerceEntities();
+            var product = context.products.Where(m => m.name.Contains(keyword)).ToList();
+            foreach (var x in product)
+            {
+                Obj.Add(new ProductModel
+                {
+                    //Brand = BrandDal.GetById(Convert.ToInt32(x.brandid)).BrandName,
+                    Category = CategoryDal.GetById(Convert.ToInt32(x.catid)).name,
+                    Discription = x.discription,
+                    Image = x.image != null ? x.image : "NoImage.jpg",
+                    Name = x.name,
+                    Id = x.id,
+                    ProductPrice = ProductPricingDal.GetAllByProductId(x.id),
+
+                });
+            }
+            return Obj;
+        }
+
+        //public static List<ProductModel> Search(string Keyword)
+        //{
+        //    List<ProductModel> Obj = new List<ProductModel>();
+        //    var product = GetAllProducts();// || m.Category.Contains(Keyword)
+        //    var SearchProduct = product.Where(m => m.Name.Contains(Keyword)).ToList();
+        //    foreach (var x in SearchProduct)
+        //    {
+        //        Obj.Add(new ProductModel
+        //        {
+        //            //Brand = BrandDal.GetById(Convert.ToInt32(x.brandid)).BrandName,
+        //            Category = x.Category,
+        //            Discription = x.Discription,
+        //            Image = x.Image ,
+        //            Name = x.Name,
+        //            Id = x.Id,
+        //            ProductPrice = ProductPricingDal.GetAllByProductId(x.Id),
+
+        //        });
+        //    }
+        //    return Obj;
+        //}
     }
 }

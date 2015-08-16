@@ -55,18 +55,38 @@
             </div>
             
             <div class="row">
-                <div class="col-lg-7">
+                <div class="col-lg-6">
                     @Html.Partial("/Views/Checkout/SignupPartial.cshtml", ViewBag.User as Ecommerce.Model.SignupModel)
                 </div>
+                <div class="col-lg-1">
+                    </div>
                 <div class="col-lg-5">
                     <span>&nbsp;       
                 </span>
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Order Summary
+                        <div class="panel-SigeUpHeading">
+                          <strong>   Order Summary</strong> 
                         </div>
                         <div class="panel-body">
                             @Html.Action("Ordersummery", "Cart")
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-SigeUpHeading">
+                          <strong onclick="showReturnPolicy();">14 Days Return Policy</strong> 
+                        </div>
+                       
+                    </div>
+
+                     <div class="panel panel-default">
+                        <div class="panel-SigeUpHeading">
+                          <strong>Checkout Help</strong> 
+                        </div>
+                       <div class="panel-body">
+
+                              @Html.Partial("Faq",(List<Ecommerce.DbEntity.staticpage>)ViewBag.Faq)
+
                         </div>
                     </div>
                 </div>
@@ -78,6 +98,6 @@
 </section>
 
 <script>
-
-
+ 
+    
 </script>

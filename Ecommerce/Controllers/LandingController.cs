@@ -121,9 +121,38 @@ namespace Ecommerce.Controllers
             }
             else
             {
-                TempData["ErrorMessage"] = "Invalid Username and password";
+                TempData["Invalidlogin"] = "Invalid Username and password";
                 return RedirectToAction("Index", "Checkout");
             }
         }
+
+
+        public ActionResult Search(string id)
+        {
+
+            if (Session["currency"] == null)
+            {
+                Session["currency"] = "Dollar";
+            }
+
+            ViewBag.Hompage = "";
+            ViewBag.Productmodel = new List<ProductModel>();
+           
+                Session["pageType"] = "home";
+                ViewBag.breadcrums = "<ol class='breadcrumb'><li><a href='#'>Home</a></li></ol>";
+                ViewBag.Hompage = "true";
+                var hotproduct = ProductDal.GetAllProducts(Convert.ToString(id));
+                foreach (var x in hotproduct)
+                {
+                    x.SelectedLengthList = LengthDal.GetAllLengthByProductId(x.Id).Where(m => m.id > 0).Distinct().ToList();
+
+                    x.SelectedColorList = ColorDal.GetColorByProductandLength(x.Id, x.SelectedLengthList[0].id).ToList();
+                }
+                ViewBag.Productmodel = hotproduct;
+           
+           
+            return View("index");
+        }
+       
     }
 }

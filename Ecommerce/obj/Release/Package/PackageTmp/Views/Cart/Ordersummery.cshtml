@@ -4,7 +4,7 @@
     if (Model.Product!=null)
     {
     <aside class="widget_shopping_cart">
-        <ul class="cart_list" style="list-style:none;">
+        <ul class="cart_list" style="list-style:none;margin-left: -25px;">
             @foreach (var x in Model.Product)
             {
                 <li>
@@ -15,7 +15,13 @@
                                     <img height="60px" width="60px" alt="" src="/ProductImages/@x.Image">
                                 </a>
                             </td>
-                            <td colspan="2"><strong>@x.Name</strong></td>
+                             <td width="65%"  style="vertical-align: top;"><strong style="color: #fd638f;">@x.Name</strong>
+                                <br />
+                                Length: &nbsp;@x.Price.LengthName&nbsp;|&nbsp;Color:@x.Price.ColorName
+                                <br />
+                                &nbsp;&nbsp;&nbsp;QTY:&nbsp;@x.Price.Quantity
+                            </td>
+                            @*<td colspan="2"><strong>@x.Name</strong></td>*@
                             <td>&nbsp;</td>
                             <td>
 
@@ -51,18 +57,6 @@
                                  
                                 
                                       </td>
-                        </tr>
-                        <tr>
-                            <td>Length : &nbsp;@x.Price.LengthName</td>
-                            <td> </td>
-                            <td>&nbsp;</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Color : &nbsp;@x.Price.ColorName</td>
-                            <td></td>
-                            <td>&nbsp;</td>
-                            <td></td>
                         </tr>
                     </table>
 

@@ -8,34 +8,31 @@
              Html.Raw(TempData["Message"].ToString());
          }
                 </span>
+    <span style="font-size:8pt">(Fields (*) marked are required.)</span>
     <div class="panel panel-default">
-        <div class="panel-heading">
-            Contact Details
+        <div class="panel-SigeUpHeading">
+           <strong>Contact Details</strong> 
         </div>
         <div class="panel-body">
             <table style="width:100%">
                 <tr>
-                   
-                    <td style="width:30%">Email</td>
-                    <td style="width:70%">@Html.TextBoxFor(m => m.Email, new { @class = "form-control input-sm", @placeholder = "Email Address" })
+                   <td style="width:9%">&nbsp</td>
+                    <td style="width:16%" align="right" >Email Address<span style="color:#fd638f">*</span></td>
+                     <td style="width:2%">&nbsp;</td>
+                    <td style="width:40%">@Html.TextBoxFor(m => m.Email, new { @class = "form-control input-sm"})
                         <span>&nbsp
                          @Html.ValidationMessageFor(m => m.Email)
                         </span>
                     </td>
+                    <td style="width:9%">&nbsp</td>
                 </tr>
-                @*<tr>
-                    <td>Password</td>
-                    <td>@Html.PasswordFor(m => m.Password, new { @class = "form-control input-sm", @placeholder = "Password" })
-                        <span>&nbsp
-                         @Html.ValidationMessageFor(m => m.Password)
-
-                        </span>
-                    </td>
-                </tr>*@
                 <tr>
-                    <td>Contact</td>
-                    <td>@Html.TextBoxFor(m => m.ContactNumber, new { @class = "form-control input-sm", @placeholder = "Contact Number" })
+                     <td >&nbsp</td>
+                    <td align="right">Contact Number<span style="color:#fd638f">*</span> </td>
+                    <td>&nbsp;</td>
+                    <td>@Html.TextBoxFor(m => m.ContactNumber, new { @class = "form-control input-sm"})
                         <span>&nbsp @Html.ValidationMessageFor(m => m.ContactNumber)</span></td>
+                    <td >&nbsp</td>
                 </tr>
             </table>
         </div>
@@ -43,73 +40,93 @@
 
 
     <div class="panel panel-default">
-        <div class="panel-heading">
-            Billing Address
+        <div class="panel-SigeUpHeading">
+        <strong>    Billing Address </strong>
         </div>
         <div class="panel-body">
             <table style="width:100%">
                 <tr>
-                    <td style="width:30%">Name</td>
-                    <td style="width:70%">@Html.TextBoxFor(m => m.Name, new { @class = "form-control input-sm", @placeholder = "Name" })
+                    <td style="width:9%">&nbsp</td>
+                    <td style="width:15%" align="right" >Name<span style="color:#fd638f">*</span></td>
+                     <td style="width:2%">&nbsp</td>
+                    <td style="width:40%">@Html.TextBoxFor(m => m.Name, new { @class = "form-control input-sm"})
                         <span>
                             &nbsp;
                             @Html.ValidationMessageFor(m => m.Name)
                         </span>
                     </td>
+                    <td style="width:9%">&nbsp</td>
                 </tr>
 
                 <tr>
-                    <td>Address 1</td>
-                    <td>@Html.TextBoxFor(m => m.Address1, new { @class = "form-control input-sm", @placeholder = "Address 1" })
+                     <td >&nbsp</td>
+                    <td align="right" >Address 1<span style="color:#fd638f">*</span></td>
+                     <td >&nbsp</td>
+                    <td>@Html.TextBoxFor(m => m.Address1, new { @class = "form-control input-sm"})
                         <span>
                             &nbsp;
                             @Html.ValidationMessageFor(m => m.Address1)
                         </span>
                     </td>
+                     <td >&nbsp</td>
                 </tr>
 
                  <tr>
-                    <td>Address 2</td>
-                    <td>@Html.TextBoxFor(m => m.Address2, new { @class = "form-control input-sm", @placeholder = "Address 2" })
+                      <td >&nbsp</td>
+                    <td align="right" >Address 2</td>
+                      <td >&nbsp</td>
+                    <td>@Html.TextBoxFor(m => m.Address2, new { @class = "form-control input-sm"})
                    <span>
                             &nbsp;
                           
                         </span>
                     </td>
+                      <td >&nbsp</td>
                 </tr>
 
                  <tr>
-                    <td>City</td>
-                    <td>@Html.TextBoxFor(m => m.City, new { @class = "form-control input-sm", @placeholder = "City" })
+                      <td >&nbsp</td>
+                    <td align="right" >City<span style="color:#fd638f">*</span></td>
+                      <td >&nbsp</td>
+                    <td>@Html.TextBoxFor(m => m.City, new { @class = "form-control input-sm"})
                         <span>
                             &nbsp;
                             @Html.ValidationMessageFor(m => m.City)
                         </span>
                    </td>
+                      <td >&nbsp</td>
                 </tr>
 
                  <tr>
-                    <td>State</td>
-                    <td>@Html.TextBoxFor(m => m.State, new { @class = "form-control input-sm", @placeholder = "State" })
+                      <td >&nbsp</td>
+                    <td align="right" >State<span style="color:#fd638f">*</span></td>
+                      <td >&nbsp</td>
+                    <td>@Html.TextBoxFor(m => m.State, new { @class = "form-control input-sm"})
                         <span>
                             &nbsp;
                             @Html.ValidationMessageFor(m => m.State)
                         </span>
                    </td>
+                      <td >&nbsp</td>
                 </tr>
 
                  <tr>
-                    <td>PostCode</td>
-                    <td>@Html.TextBoxFor(m => m.PostCode, new { @class = "form-control input-sm", @placeholder = "PostCode" })
+                      <td >&nbsp</td>
+                    <td align="right" >PostCode<span style="color:#fd638f">*</span></td>
+                      <td >&nbsp</td>
+                    <td>@Html.TextBoxFor(m => m.PostCode, new { @class = "form-control input-sm"})
                         <span>
                             &nbsp;
                             @Html.ValidationMessageFor(m => m.PostCode)
                         </span>
                    </td>
+                      <td >&nbsp</td>
                 </tr>
 
                 <tr>
-                    <td>Country</td>
+                     <td >&nbsp</td>
+                    <td align="right" >Country<span style="color:#fd638f">*</span></td>
+                     <td >&nbsp</td>
                     <td>
 
                         <select class="form-control input-sm"  id="Country" name="Country">
@@ -354,6 +371,7 @@
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select>
                    </td>
+                     <td >&nbsp</td>
                 </tr>
 
 
@@ -366,74 +384,94 @@
 
 
     <div class="panel panel-default">
-        <div class="panel-heading">
-            Delivery Address <span style="float: right;">Same as billing address &nbsp;
+        <div class="panel-SigeUpHeading">
+           <strong>  Delivery Address </strong> <span style="float: right;">Same as billing address &nbsp;
                 <input type="checkbox" id="checkSameDelivery"  onchange ="SameBilling(this)"/></span>
         </div>
         <div class="panel-body">
             <table style="width:100%">
                 <tr>
-                    <td style="width:30%">Name</td>
-                    <td style="width:70%">@Html.TextBoxFor(m => m.DName, new { @class = "form-control input-sm", @placeholder = "Name" })
+                      <td style="width:9%">&nbsp</td>
+                    <td style="width:15%" align="right" >Name<span style="color:#fd638f">*</span></td>
+                      <td style="width:2%">&nbsp</td>
+                    <td style="width:40%">@Html.TextBoxFor(m => m.DName, new { @class = "form-control input-sm"})
                         <span>
                             &nbsp;
                             @Html.ValidationMessageFor(m => m.DName)
                         </span>
                     </td>
+                    <td style="width:9%">&nbsp</td>
                 </tr>
 
                 <tr>
-                    <td>Address 1</td>
-                    <td>@Html.TextBoxFor(m => m.DAddress1, new { @class = "form-control input-sm", @placeholder = "Address 1" })
+                     <td >&nbsp</td>
+                    <td align="right" >Address 1<span style="color:#fd638f">*</span></td>
+                     <td >&nbsp</td>
+                    <td>@Html.TextBoxFor(m => m.DAddress1, new { @class = "form-control input-sm"})
                         <span>
                             &nbsp;
                             @Html.ValidationMessageFor(m => m.DAddress1)
                         </span>
                     </td>
+                     <td >&nbsp</td>
                 </tr>
 
                  <tr>
-                    <td>Address 2</td>
-                    <td>@Html.TextBoxFor(m => m.DAddress2, new { @class = "form-control input-sm", @placeholder = "Address 2" })
+                      <td >&nbsp</td>
+                    <td align="right" >Address 2</td>
+                      <td >&nbsp</td>
+                    <td>@Html.TextBoxFor(m => m.DAddress2, new { @class = "form-control input-sm"})
                    <span>
                             &nbsp;
                          
                         </span>
                     </td>
+                      <td >&nbsp</td>
                 </tr>
 
                  <tr>
-                    <td>City</td>
-                    <td>@Html.TextBoxFor(m => m.DCity, new { @class = "form-control input-sm", @placeholder = "City" })
+                      <td >&nbsp</td>
+                    <td align="right" >City<span style="color:#fd638f">*</span></td>
+                      <td >&nbsp</td>
+                    <td>@Html.TextBoxFor(m => m.DCity, new { @class = "form-control input-sm"})
                         <span>
                             &nbsp;
                             @Html.ValidationMessageFor(m => m.DCity)
                         </span>
                    </td>
+                      <td >&nbsp</td>
                 </tr>
 
                  <tr>
-                    <td>State</td>
-                    <td>@Html.TextBoxFor(m => m.DState, new { @class = "form-control input-sm", @placeholder = "State" })
+                      <td >&nbsp</td>
+                    <td align="right" >State<span style="color:#fd638f">*</span></td>
+                      <td >&nbsp</td>
+                    <td>@Html.TextBoxFor(m => m.DState, new { @class = "form-control input-sm"})
                         <span>
                             &nbsp;
                             @Html.ValidationMessageFor(m => m.DState)
                         </span>
                    </td>
+                      <td >&nbsp</td>
                 </tr>
 
                  <tr>
-                    <td>PostCode</td>
-                    <td>@Html.TextBoxFor(m => m.DPostCode, new { @class = "form-control input-sm", @placeholder = "PostCode" })
+                      <td >&nbsp</td>
+                    <td align="right" >PostCode<span style="color:#fd638f">*</span></td>
+                      <td >&nbsp</td>
+                    <td>@Html.TextBoxFor(m => m.DPostCode, new { @class = "form-control input-sm"})
                         <span>
                             &nbsp;
                             @Html.ValidationMessageFor(m => m.DPostCode)
                         </span>
                    </td>
+                      <td >&nbsp</td>
                 </tr>
 
                 <tr>
-                    <td>Country</td>
+                     <td >&nbsp</td>
+                    <td align="right" >Country<span style="color:#fd638f">*</span></td>
+                     <td >&nbsp</td>
                     <td>
 
                         <select class="form-control input-sm" id="DCountry" name="DCountry">
@@ -678,6 +716,7 @@
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select>
                    </td>
+                     <td >&nbsp</td>
                 </tr>
 
 

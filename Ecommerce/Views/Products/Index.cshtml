@@ -106,16 +106,9 @@
                         <div class="col-sm-4">
                             @* Color*@
                             <select id="Quantity-@Model.Id" style="width: 90%" class="form-control col-sm-4">
-                                @for (int i = 0; i <= 15; i++)
+                                @for (int i = 1; i <= 15; i++)
                                 {
-                                    if (i == 0)
-                                    {
-                                    <option value="@i">QTY</option>
-                                    }
-                                    else
-                                    {
                                     <option value="@i">@i</option>
-                                    }
                                 }
                             </select>
                         </div>

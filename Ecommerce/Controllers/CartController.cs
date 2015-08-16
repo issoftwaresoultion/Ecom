@@ -61,7 +61,12 @@ namespace Ecommerce.Controllers
         {
             CartModel obj = new CartModel();
             obj.Product = new List<ProductModel>();
-            var order = OrderDal.GetByOrderId((int)Session["OrderId"]);
+            var order = new OrderHeader();
+            order.OrderDetail = new List<OrderDetail>();
+            if (Session["OrderId"] != null)
+            {
+                order = OrderDal.GetByOrderId((int)Session["OrderId"]);
+            }
             obj.Total = order.AmountInCurrencyChoosenByuser;
             obj.DelivierCharges = order.DeliveryCharges;
             foreach (var x in order.OrderDetail)

@@ -1,0 +1,88 @@
+﻿@model List<Ecommerce.DbEntity.staticpage>
+@{
+
+    Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
+    string cssclass = "gradeA odd";
+}
+<link href="../../../../Content/css/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="../../../../Content/css/dataTables.responsive.css" rel="stylesheet" />
+<script src="../../../../Scripts/Datatable/jquery.dataTables.js"></script>
+<script src="../../../../Scripts/Datatable/dataTables.bootstrap.js"></script>
+@if (Model.Count() > 0)
+{
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+             <div class="row">
+          <div class="col-sm-6"> <strong> Static</strong></div><div class="col-sm-6"><a href="/Admin/AdminStaticpage/Create/0" class="btn btn-primary fright">Add Page</a> </div>
+                 </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <div class="row">
+                        
+                        @*<div class="col-sm-6">
+                            <div id="dataTables-example_filter" class="dataTables_filter">
+                                <label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label></div>
+                        </div>*@
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 10%;">Heading</th>
+                                        <th tabindex="0" aria-controls="dataTables-example"   style="width: 30%;">Content</th>
+                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 20%;">Code</th>
+                                        <th  tabindex="0" aria-controls="dataTables-example"  style="width: 40%;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.Count(); i++)
+                                    {
+                                        if (i % 2 == 0)
+                                        {
+                                            cssclass = "gradeA even";
+                                        } 
+                                    <tr class="@cssclass" role="row">
+                                        <td class="">@Html.Raw(Model[i].Heading)</td>
+                                        <td>@Html.Raw(Model[i].Content)</td>
+                                        <td>@Html.Raw(Model[i].Groupby)</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Create", "AdminStaticpage", new {id=Model[i].id }, new { @class = "btn btn-success" })&nbsp;
+                                        </td>
+                                    </tr>
+                                    }
+                                     
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    
+ 
+}
+else
+{
+    
+    <div class="panel panel-yellow">
+        <div class="panel-heading">
+             <div class="row">
+          <div class="col-sm-6"> Page List</div><div class="col-sm-6"><a href="/Admin/AdminStaticpage/Create/0" class="btn btn-primary fright">Add Page</a> </div>
+                 </div>
+        </div>
+        <div class="panel-body">
+            <p>No Page is add yet!</p>
+        </div>
+
+    </div>
+}
+

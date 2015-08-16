@@ -20,6 +20,7 @@ namespace Ecommerce.Controllers
             ViewBag.DeliveryDays = DeliveryDaysDal.Get();
             ViewBag.RemoveDelete = "yes";
             ViewBag.id = 0;
+            ViewBag.Faq = StaticPagesDal.GetBygroupId("Faq");
             if (TempData != null)
             {
                 if (TempData["Invalidlogin"] == "Invalid Username and password")
@@ -53,7 +54,7 @@ namespace Ecommerce.Controllers
                 Session["OrderId"] = CartDal.SaveOrUpdateCartAsOrder((CartModel)Session["Cart"], Convert.ToString(Session["currency"]), user.id, Convert.ToInt32(Session["OrderId"]));
 
             }
-            ViewBag.Faq = StaticPagesDal.GetBygroupId("Faq");
+            
             return View();
         }
 

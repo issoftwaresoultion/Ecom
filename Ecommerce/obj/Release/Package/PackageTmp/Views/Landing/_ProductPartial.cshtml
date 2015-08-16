@@ -12,7 +12,7 @@
                 {
                     string fristString = x.Name.Substring(0, 29);
                     var index = fristString.LastIndexOf(' ');
-                  x.Name=  x.Name.Insert(index, "-");
+                    x.Name = x.Name.Insert(index, "-");
                     ProductNameLine1 = x.Name.Split('-')[0];
                     ProductNameLine2 = x.Name.Split('-')[1];
                 }
@@ -31,15 +31,15 @@
             </div>
             <hr style="border-color: #fd638f !important;" />
             <div style="text-align: center; color: #333;"><strong>@ProductNameLine1</strong> </div>
-            @if (ProductNameLine2!="")
+            @if (ProductNameLine2 != "")
             {
-             <div style="text-align: center; color: #333;"><strong>@ProductNameLine1</strong> </div>
+                <div style="text-align: center; color: #333;"><strong>@ProductNameLine1</strong> </div>
             }
             else
             {
-             <div style="text-align: center; color: #333;"><strong>&nbsp;</strong> </div>
+                <div style="text-align: center; color: #333;"><strong>&nbsp;</strong> </div>
             }
-                <table style="font-weight: bold; width: 100%; color: #333; text-align: center;">
+            <table style="font-weight: bold; width: 100%; color: #333; text-align: center;">
                 <tr>
                     @*<td width="5%" style="text-align: left"></td>*@
                     <td width="30%" style="text-align: left">
@@ -94,7 +94,7 @@
                 <tr>
                     @*<td style="text-align: left"></td>*@
                     <td colspan="2" style="text-align: left" id="">
-                        <select id="Color-@x.Id" style="width: 90%" onchange="oncolorddChange(this,@x.Id)">
+                        <select id="Color-@x.Id" style="width: 45%" onchange="oncolorddChange(this,@x.Id)">
                             @foreach (var z in x.SelectedColorList)
                             {
                                
@@ -102,6 +102,21 @@
                                
                             }
                         </select>
+
+                        &nbsp;
+
+                         <select id="Quantity-@x.Id" style="width: 40%">
+
+                             @for (int i = 1; i <= 15; i++)
+                             {
+                                
+                                 <option value="@i">@i</option>
+                                
+                             }
+
+
+
+                         </select>
 
                     </td>
                     <td colspan="1">@*class="shopping-cartBucket*@

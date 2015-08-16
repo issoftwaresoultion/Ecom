@@ -5,15 +5,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ecom</title>
-    
 
-     <link href="../../FrontEndContent/Css/jquery-ui.css" rel="stylesheet" />
+
+    <link href="../../FrontEndContent/Css/jquery-ui.css" rel="stylesheet" />
     <link href="/FrontEndContent/Css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../Content/css/font-awesome.css" rel="stylesheet" />
     <link href="/FrontEndContent/Css/config.css" rel="stylesheet" />
     <link href="/FrontEndContent/Css/style.css" rel="stylesheet" />
-
-
+    <script src="../../Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../../Scripts/jquery-ui-1.8.24.js"></script>
 </head>
 <body>
     <header id="header">
@@ -22,7 +22,7 @@
         <div id="top-bar">
             <div class="container">
 
-                <nav id="language-selector">
+                <nav id="language-selector" style="width: 250px;">
                     <ul class="nav nav-pills">
                         @if (Session["currency"] == null)
                         {
@@ -153,10 +153,19 @@
                             </li>
                         }
                     </ul>
+                    @using (Html.BeginForm("Search", "Landing"))
+                        {
+                    <table style="float:right;margin-top: -20px;">
+                        <tr>
+                            <td><input class="dropdown" type="text" name="id" placeholder="Search" style="width:140px;"/></td>
+                            <td><input type="submit" value="GO" class="btn btn-primary btn-sm"/></td>
+                        </tr>
+                    </table>
+                    }
                 </nav>
 
-                <nav id="shopping-cart" style="cursor:pointer;" class="shopping-cartBucket" onclick="Getcart();">
-                    <div style="color:black!important;">
+                <nav id="shopping-cart" style="cursor: pointer;" class="shopping-cartBucket" onclick="Getcart();">
+                    <div style="color: black!important;">
                         <i class="fa fa-shopping-cart fa-lg"></i>Cart
                         <span class="fa-stack">
                             <i class="fa fa-circle fa-stack-2x"></i>
@@ -168,23 +177,22 @@
                                 else
                                 {
                                     Ecommerce.Model.CartModel obj = (Ecommerce.Model.CartModel)Session["Cart"];
-                                    if (obj.Product!=null)
+                                    if (obj.Product != null)
                                     { 
-                                     @Html.Raw(obj.Product.Count().ToString())
-                                        }
-                                        else
-                                        {
+                                    @Html.Raw(obj.Product.Count().ToString())
+                                    }
+                                    else
+                                    {
                                     @Html.Raw("0")
                                     }
-                                 }
+                                }
                             </i>
                             <div id="jPanelMenu-menu" class="panel-left">
-          
-    </div>
+                            </div>
                         </span>
                     </div>
 
-                     
+
                 </nav>
 
                 <nav id="top-nav" role="navigation" class="navbar">
@@ -216,11 +224,7 @@
                                 </table>
 
                             </li>
-                            <li>&nbsp;</li>
-                            <li>&nbsp;</li>
-                            <li>&nbsp;</li>
-                            <li>&nbsp;</li>
-                            <li>&nbsp;</li>
+                           
                             <li><a href="about-us.html">About</a></li>
 
                             <li><a href="contact.html">Contact</a></li>
@@ -255,34 +259,7 @@
                         <a class="navbar-brand" href="/Landing/Index">
                             <img src="/img/logo.png" alt="Garbini" class="img-responsive"></a>
                     </div>
-                    @* <div class="navbar-collapse collapse main-nav">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="index-1.html" class="dropdown-toggle" data-toggle="dropdown">Home</a>
-
-                            </li>
-                            <li class="dropdown">
-                                <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Peruvian Hair</a>
-
-                            </li>
-                            <li class="dropdown">
-                                <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Brazilian Hair</a>
-                              <ul class="dropdown-menu">
-                                    <li><a href="category.html">Subcat #1</a></li>
-                                    <li><a href="category.html">Subcat #2</a></li>
-                                    <li><a href="category.html">Subcat #3</a></li>
-                                    <li><a href="category.html">Subcat #4</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Indian Hair</a>
-
-                            </li>
-                            <li class="dropdown">
-                                <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Wigs</a>
-                            </li>
-                        </ul>
-                    </div>*@
+                   
                     @Html.Action("MainMenu", "Share")
                 </div>
             </div>
@@ -315,44 +292,55 @@
     <!-- ========== FOOTER END ========== -->
 
     <!-- ========== PopUps ========== -->
-    
-<div id="ForgetPassworddialog" title="Forgot Password">
+
+    <div id="ReturnPolicy" title="Return Policy">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="form-group">
-                    @Html.Partial("/Views/Shared/ForgetPassword.cshtml",new Ecommerce.Model.LoginModel())
+                    @Html.Action("ReturnPolicy", "FrontBase")
                 </div>
             </div>
         </div>
-</div>
+    </div>
+
+
+    <div id="ForgetPassworddialog" title="Forgot Password">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.Partial("/Views/Shared/ForgetPassword.cshtml", new Ecommerce.Model.LoginModel())
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="registerUserdialog" title="Registration">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="form-group">
-                    @Html.Partial("/Views/Shared/RegistrationForm.cshtml",new Ecommerce.Model.LoginModel())
+                    @Html.Partial("/Views/Shared/RegistrationForm.cshtml", new Ecommerce.Model.LoginModel())
                 </div>
             </div>
         </div>
-</div>
+    </div>
 
 
-     <div id="page_loader" >&nbsp;
+    <div id="page_loader">
+        &nbsp;
 
     </div>
     <!-- ========== End ========== -->
 
 
-    <script src="../../Scripts/jquery-1.9.1.min.js"></script>
+
     <script src="../../FrontEndContent/JavaScript/zoomIn.js"></script>
     <script src="/FrontEndContent/JavaScript/bootstrap.min.js"></script>
-
     @* <script src="../../Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
     <script src="../../Scripts/jquery.validate.js"></script>
     <script src="../../Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="/FrontEndContent/JavaScript/main.js"></script>
     <script src="../../Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        <script src="../../Scripts/jquery-ui-1.8.24.js"></script>
+
     <link href="../../FrontEndContent/Css/jquery-ui.css" rel="stylesheet" />
 
 
@@ -365,6 +353,7 @@
     $(function () {
         $("#ForgetPassworddialog").dialog({ autoOpen: false, width: 375 });
         $("#registerUserdialog").dialog({ autoOpen: false, width: 375 });
+        $('#ReturnPolicy').dialog({ autoOpen: false, width: 400 })
     });
 
     var timer = 5000;
@@ -381,6 +370,7 @@
         });
         $('#ui-dialog-title-ForgetPassworddialog').next().html("<img style='vertical-align:initial!important' src='/img/close.png'/>");
         $('#ui-dialog-title-registerUserdialog').next().html("<img style='vertical-align:initial!important' src='/img/close.png'/>");
+        $('#ui-dialog-title-ReturnPolicy').next().html("<img style='vertical-align:initial!important' src='/img/close.png'/>");
 
     });
 
@@ -454,8 +444,14 @@
     function AddToCart(e) {
         $('#page_loader').show();
         var selectedProductPriceId = $("#currentSeleted-" + e).val();
+        var Quantity = $("#Quantity-" + e).val();
+        if (Quantity == 0) {
+            alert("Please select Quantity");
+            $('#page_loader').hide();
+            return;
+        }
         $.ajaxSetup({ async: false });
-        $.post("/Cart/AddToCart/" + selectedProductPriceId, function (partial) {
+        $.post("/Cart/AddToCart/" + selectedProductPriceId + "?Quantity=" + Quantity, function (partial) {
             $('#jPanelMenu-menu').html(partial);
             $("#shopping-cart").trigger("click");
             var itemcount = $("#ItemCount").val();
@@ -495,10 +491,26 @@
         $('#page_loader').hide();
     }
 
+    function UpdateQuantity(e, countid) {
+        $('#page_loader').show();
+        $.ajaxSetup({ async: false });
+        var Quantity = $(e).val();
+        alert(Quantity);
+        $.post("/Cart/UpdateQuantity?countid=" + countid + "&Quantity=" + Quantity, function () {
+            window.location.href = "/Cart/CheckOut";
+        });
+        $('#page_loader').hide();
+    }
+
+
     function HideInfo() {
         if (!check) {
             $("#jPanelMenu-menu").hide();
         }
     }
 
+
+    function showReturnPolicy() {
+        $("#ReturnPolicy").dialog("open");
+    }
 </script>
