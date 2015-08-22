@@ -17,8 +17,46 @@ namespace Ecommerce.Areas.Admin.Controllers
         {
             if (Request.IsAuthenticated)
             {
-                DeliveryModel obj = new DeliveryModel();
-                obj = DeliveryDal.Get();
+                List<DeliveryModel> obj = new List<DeliveryModel>();
+                obj = DeliveryDal.GetAll();
+                for (int i = 0; i < 10; i++)
+                {
+                    if (obj.Count == 0)
+                    {
+                        obj.Add(new DeliveryModel
+                        {
+                            Active = true,
+                            Default = true,
+                            freeDeliveryAmountAngola = 0,
+                            freeDeliveryAmountDoller = 0,
+                            freeDeliveryAmountEuro = 0,
+                            freeDeliveryAmountGhana = 0,
+                            freeDeliveryAmountNigria = 0,
+                            freeDeliveryAmountPound = 0,
+                            DeliveryDays="Default",
+                        });
+                    }
+
+                    if (obj.Count < 5)
+                    {
+                        obj.Add(new DeliveryModel
+                        {
+                            Active = false,
+                            Default = false,
+                            freeDeliveryAmountAngola = 0,
+                            freeDeliveryAmountDoller = 0,
+                            freeDeliveryAmountEuro = 0,
+                            freeDeliveryAmountGhana = 0,
+                            freeDeliveryAmountNigria = 0,
+                            freeDeliveryAmountPound = 0
+                        });
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                }
                 return View(obj);
             }
             else
@@ -26,14 +64,29 @@ namespace Ecommerce.Areas.Admin.Controllers
                 return RedirectToAction("index", "home");
             }
         }
+
         [HttpPost]
-        public ActionResult Save(DeliveryModel obj)
+        public ActionResult Save(List<DeliveryModel> obj)
         {
             bool check = true;
             if (Request.IsAuthenticated)
             {
-                check = DeliveryDal.Update(obj);
-                if (check)
+                foreach (var x in obj)
+                {
+                    if (x.id > 0)
+                    {
+                        check = DeliveryDal.Update(x);
+                    }
+                    else
+                    {
+                        check = DeliveryDal.Create(x);
+                    }
+                    if (!check)
+                    {
+                        break;
+                    }
+                }
+                    if (check)
                 {
                     TempData["message"] = "Saved successfully";
                 }

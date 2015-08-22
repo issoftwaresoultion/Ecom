@@ -82,60 +82,33 @@
                 <td>
                     &nbsp;
                     <span class="amount"><strong>
-                @if (Model.Difference > 0)
-                {
-                    if (Session["currency"].ToString() == "Dollar")
+               
+                    @if (Session["currency"].ToString() == "Dollar")
                     {   
                     @Html.Raw("$" +Math.Round(Model.DelivierCharges,2))                          
                     }
-                    if (Session["currency"].ToString() == "Euro")
+                    @if (Session["currency"].ToString() == "Euro")
                     {   
                     @Html.Raw("&euro" + Math.Round(Model.DelivierCharges,2))
                     }
-                    if (Session["currency"].ToString() == "Pound")
+                    @if (Session["currency"].ToString() == "Pound")
                     {   
                     @Html.Raw("&pound;" + Math.Round(Model.DelivierCharges,2))
                     }
-                    if (Session["currency"].ToString() == "Naira")
+                    @if (Session["currency"].ToString() == "Naira")
                     {   
                     @Html.Raw("&#8358;" + Math.Round(Model.DelivierCharges,2))
                     }
-                    if (Session["currency"].ToString() == "Kwanza")
+                    @if (Session["currency"].ToString() == "Kwanza")
                     {   
                     @Html.Raw("Kz" + Math.Round(Model.DelivierCharges,2))
                     }
-                    if (Session["currency"].ToString() == "Cedi")
+                    @if (Session["currency"].ToString() == "Cedi")
                     {   
                     @Html.Raw("GH₵" + Math.Round(Model.DelivierCharges,2))
                     }
-                }
-                else
-                {
-                    if (Session["currency"].ToString() == "Dollar")
-                    {   
-                    @Html.Raw("$" + 0)                          
-                    }
-                    if (Session["currency"].ToString() == "Euro")
-                    {   
-                    @Html.Raw("&euro" + 0)
-                    }
-                    if (Session["currency"].ToString() == "Pound")
-                    {   
-                    @Html.Raw("&pound;" + 0)
-                    }
-                    if (Session["currency"].ToString() == "Naira")
-                    {   
-                    @Html.Raw("&#8358;" + 0)
-                    }
-                    if (Session["currency"].ToString() == "Kwanza")
-                    {   
-                    @Html.Raw("Kz" + 0)
-                    }
-                    if (Session["currency"].ToString() == "Cedi")
-                    {   
-                    @Html.Raw("GH₵" + 0)
-                    }
-                }
+                
+                
             </strong>
             </span>
                 </td>

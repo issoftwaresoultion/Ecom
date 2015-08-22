@@ -17,7 +17,7 @@ namespace Ecommerce.Controllers
         public ActionResult Index(string id)
         {
             var user = new SignupModel();
-            ViewBag.DeliveryDays = DeliveryDaysDal.Get();
+            ViewBag.DeliveryDays = DeliveryDal.GetDefault();
             ViewBag.RemoveDelete = "yes";
             ViewBag.id = 0;
             ViewBag.Faq = StaticPagesDal.GetBygroupId("Faq");

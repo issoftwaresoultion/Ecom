@@ -34,7 +34,7 @@ namespace Ecommerce.Controllers
                 Session["currency"] = "Dollar";
             }
             var obj = (CartModel)Session["Cart"];
-            ViewBag.DeliveryDays = DeliveryDaysDal.Get().days;
+            ViewBag.DeliveryDays = DeliveryDal.GetAllActive();
             return PartialView("_CheckOutPartial", obj);
         }
         public ActionResult MiniIndex()
@@ -101,7 +101,7 @@ namespace Ecommerce.Controllers
             {
                 Quantity= Convert.ToInt32(Request.QueryString["Quantity"]);
             }
-            Session["Cart"] = CartDal.AddItemTocart(id, (CartModel)Session["Cart"], (string)Session["currency"], Quantity);
+            Session["Cart"] = CartDal.AddItemTocart(id, (CartModel)Session["Cart"], (string)Session["currency"], Quantity,0);
             return RedirectToAction("MiniIndex");
             //return Json(true,JsonRequestBehavior.AllowGet);
         }
@@ -177,6 +177,11 @@ namespace Ecommerce.Controllers
             return Json(true, JsonRequestBehavior.AllowGet);
         }
         
-
-    }
+        public ActionResult UpdateDelivery()
+        {
+           string radio= Request.Form["rdDelivery"].ToString();
+           Session["Cart"] = CartDal.UpdateDelivery((CartModel)Session["Cart"], (string)Session["currency"], Convert.ToInt32(radio));
+            return RedirectToAction("Checkout");
+        }
+   }
 }

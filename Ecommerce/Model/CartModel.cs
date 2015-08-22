@@ -10,6 +10,8 @@ namespace Ecommerce.Model
     {
         int id { get; set; }
         public List<ProductModel> Product { get; set; }
+        public string DelivierDays { get; set; }
+        public int DelivierId { get; set; }
         public decimal DelivierCharges { get; set; }
         public decimal Total { get; set; }
         public decimal SubTotalTotal { get; set; }

@@ -73,6 +73,9 @@
           <Property Name="freeDeliveryAmountGhana" Type="decimal" />
           <Property Name="deliveryGhana" Type="decimal" />
           <Property Name="freeDeliveryAmountDoller" Type="decimal" />
+          <Property Name="DeliveryDays" Type="varchar" MaxLength="100" />
+          <Property Name="Default" Type="bit" />
+          <Property Name="Active" Type="bit" />
         </EntityType>
         <EntityType Name="deliverydays">
           <Key>
@@ -298,6 +301,9 @@
           <Property Name="freeDeliveryAmountGhana" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="deliveryGhana" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="freeDeliveryAmountDoller" Type="Decimal" Precision="10" Scale="0" />
+          <Property Type="String" Name="DeliveryDays" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Default" />
+          <Property Type="Boolean" Name="Active" />
         </EntityType>
         <EntityType Name="deliveryday">
           <Key>
@@ -497,6 +503,9 @@
           <EntitySetMapping Name="deliverycharges">
             <EntityTypeMapping TypeName="ecommerceModel.deliverycharge">
               <MappingFragment StoreEntitySet="deliverycharges">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Default" ColumnName="Default" />
+                <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="deliveryDoller" ColumnName="deliveryDoller" />
                 <ScalarProperty Name="freeDeliveryAmountPound" ColumnName="freeDeliveryAmountPound" />

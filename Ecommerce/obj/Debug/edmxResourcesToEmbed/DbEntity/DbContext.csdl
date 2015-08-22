@@ -68,6 +68,9 @@
     <Property Name="freeDeliveryAmountGhana" Type="Decimal" Precision="10" Scale="0" />
     <Property Name="deliveryGhana" Type="Decimal" Precision="10" Scale="0" />
     <Property Name="freeDeliveryAmountDoller" Type="Decimal" Precision="10" Scale="0" />
+    <Property Type="String" Name="DeliveryDays" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="Default" />
+    <Property Type="Boolean" Name="Active" />
   </EntityType>
   <EntityType Name="deliveryday">
     <Key>

@@ -122,7 +122,6 @@
     <Compile Include="Areas\Admin\Controllers\ColorController.cs" />
     <Compile Include="Areas\Admin\Controllers\CoupanController.cs" />
     <Compile Include="Areas\Admin\Controllers\DeliveryController.cs" />
-    <Compile Include="Areas\Admin\Controllers\DeliveryDaysController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\LengthController.cs" />
@@ -142,7 +141,6 @@
     <Compile Include="DataAccess\CategoryDal.cs" />
     <Compile Include="DataAccess\ColorDal.cs" />
     <Compile Include="DataAccess\CoupanDal.cs" />
-    <Compile Include="DataAccess\DeliveryDaysDal.cs" />
     <Compile Include="DataAccess\DeliveryDal.cs" />
     <Compile Include="DataAccess\ImageDal.cs" />
     <Compile Include="DataAccess\LengthDal.cs" />
@@ -1808,7 +1806,6 @@
     <Content Include="Areas\Admin\Views\Coupan\Create.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\DeliveryDays\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ReviewAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ReviewAdmin\Create.cshtml" />
     <EntityDeploy Include="DbEntity\dbcontext.edmx">

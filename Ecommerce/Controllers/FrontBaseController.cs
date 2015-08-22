@@ -2,6 +2,7 @@
 using Ecommerce.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -47,7 +48,7 @@ namespace Ecommerce.Controllers
 
         public ActionResult GetFreeDeleveryCharges()
         {
-            var Model = DeliveryDal.Get();
+            var Model = DeliveryDal.GetDefault();
             string charge = "";
             if (Session["currency"].ToString() == "Dollar")
             {
@@ -95,14 +96,14 @@ namespace Ecommerce.Controllers
             var user = UserDal.GetByemail(obj.EmailForgotPassword);
             if (user.Name != null)
             {
-                MailAddress fromAddress = new MailAddress("postmaster@speedexam.in", "Ecommerce");
+                MailAddress fromAddress = new MailAddress(ConfigurationManager.AppSettings["Email"], "Ecommerce");
                 MailAddress toAddress = new MailAddress(obj.EmailForgotPassword, "Ishu");
-                string fromPassword = "s_022113";
+                string fromPassword = ConfigurationManager.AppSettings["Password"];
                 string subject = "Your New Password";
                 string body = "your new password is " + user.Email;
                 var smtp = new SmtpClient
                 {
-                    Host = "mail.speedexam.in",
+                    Host = ConfigurationManager.AppSettings["Host"],
                     Port = 8889,
                     EnableSsl = false,
                     DeliveryMethod = SmtpDeliveryMethod.Network,

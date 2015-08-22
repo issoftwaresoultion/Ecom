@@ -41,6 +41,9 @@
     <EntitySetMapping Name="deliverycharges">
       <EntityTypeMapping TypeName="ecommerceModel.deliverycharge">
         <MappingFragment StoreEntitySet="deliverycharges">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Default" ColumnName="Default" />
+          <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="deliveryDoller" ColumnName="deliveryDoller" />
           <ScalarProperty Name="freeDeliveryAmountPound" ColumnName="freeDeliveryAmountPound" />

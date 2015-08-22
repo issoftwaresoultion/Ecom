@@ -68,6 +68,9 @@
     <Property Name="freeDeliveryAmountGhana" Type="decimal" />
     <Property Name="deliveryGhana" Type="decimal" />
     <Property Name="freeDeliveryAmountDoller" Type="decimal" />
+    <Property Name="DeliveryDays" Type="varchar" MaxLength="100" />
+    <Property Name="Default" Type="bit" />
+    <Property Name="Active" Type="bit" />
   </EntityType>
   <EntityType Name="deliverydays">
     <Key>

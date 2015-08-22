@@ -153,7 +153,7 @@
 
 <div class="cart-collaterals" style="width:100%">
 <div style="width:60%"> <img src="/img/PaymentMethod.PNG"  /></div>
-    <div style="width:30%;float:right"> 
+    <div style="float:right"> 
     <table class="totals" style="margin-top:-35px">
         <tbody>
             <tr class="cart-subtotal">
@@ -189,46 +189,61 @@
 
                 </span></td>
             </tr>
-     
-
+            @{
+     List<Ecommerce.Model.DeliveryModel> obj=ViewBag.DeliveryDays as List<Ecommerce.Model.DeliveryModel>;
+     }
+               <form action="/Cart/UpdateDelivery" method="post" id="UpdateForm">
+              
+                   @for (int i = 0; i < obj.Count; i++)
+                   {
             <tr class="shipping">
-                <th>
-                    <input type="radio" checked="checked" />
-                    @ViewBag.DeliveryDays days Delivery</th>
+                
+                <th style="text-align:left;">
+
+                   @if (obj[i].id==Model.DelivierId)
+                   {
+                       <input type="radio" checked="checked" name="rdDelivery" onchange = "SubmitNewdelivery()" value="@obj[i].id"/>
+                   }
+                   else
+                   {
+                       <input type="radio"  name="rdDelivery" onchange = "SubmitNewdelivery()" value="@obj[i].id"/>                  
+                   }
+                    
+                     
+
+                    @obj[i].DeliveryDays</th>
                 <td>
-                    @if (Model.Difference > 0)
-                    {
-                        if (Session["currency"].ToString() == "Dollar")
+                   
+                        @if (Session["currency"].ToString() == "Dollar")
                         {   
-                        @Html.Raw("$" + Model.DelivierCharges)                          
+                        @Html.Raw("$" + obj[i].deliveryDoller)                          
                         }
-                        if (Session["currency"].ToString() == "Euro")
+                        @if (Session["currency"].ToString() == "Euro")
                         {   
-                        @Html.Raw("&euro" + Model.DelivierCharges)
+                        @Html.Raw("&euro" + obj[i].deliveryEuro)
                         }
-                        if (Session["currency"].ToString() == "Pound")
+                        @if (Session["currency"].ToString() == "Pound")
                         {   
-                        @Html.Raw("&pound;" + Model.DelivierCharges)
+                        @Html.Raw("&pound;" + obj[i].deliveryPound)
                         }
-                        if (Session["currency"].ToString() == "Naira")
+                        @if (Session["currency"].ToString() == "Naira")
                         {   
-                        @Html.Raw("&#8358;" + Model.DelivierCharges)
+                        @Html.Raw("&#8358;" + obj[i].deliveryNigria)
                         }
-                        if (Session["currency"].ToString() == "Kwanza")
+                        @if (Session["currency"].ToString() == "Kwanza")
                         {   
-                        @Html.Raw("Kz" + Model.DelivierCharges)
+                        @Html.Raw("Kz" + obj[i].deliveryAngola)
                         }
-                        if (Session["currency"].ToString() == "Cedi")
+                        @if (Session["currency"].ToString() == "Cedi")
                         {   
-                        @Html.Raw("GH₵" + Model.DelivierCharges)
+                        @Html.Raw("GH₵" + obj[i].deliveryGhana)
                         }
-                    }
-                    else
-                    {
-                        @Html.Raw("Free Shipping")
-                    }
+                   
                 </td>
+               
+
             </tr>
+                   }
             <tr class="order-total">
                 <th>Order Total</th>
                 <td><span class="amount">
@@ -259,7 +274,17 @@
                     }
                 </span></td>
             </tr>
+               </form>
+
         </tbody>
     </table>
         </div>
 </div>
+
+<script type="text/javascript">
+    function SubmitNewdelivery() {
+        alert('a');
+        $('#UpdateForm').submit();
+    }
+
+</script>

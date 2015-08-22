@@ -21,5 +21,8 @@ namespace Ecommerce.Model
         public Nullable<decimal> freeDeliveryAmountNigria { get; set; }
         public Nullable<decimal> freeDeliveryAmountAngola { get; set; }
         public Nullable<decimal> freeDeliveryAmountGhana { get; set; }
+        public string DeliveryDays { get; set; }
+        public bool Default { get; set; }
+        public bool Active { get; set; }
     }
 }

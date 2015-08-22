@@ -10,7 +10,7 @@ namespace Ecommerce.DataAccess
 {
     public static class CartDal
     {
-        public static CartModel AddItemTocart(int productPriceId, CartModel obj, string Currency, int? quantity)
+        public static CartModel AddItemTocart(int productPriceId, CartModel obj, string Currency, int? quantity, int? deliverId)
         {
             bool check = true;
             decimal total = 0;
@@ -53,22 +53,39 @@ namespace Ecommerce.DataAccess
                 obj.Product.Add(product);
 
             }
-
-            var deliveryCharges = DeliveryDal.Get();
+            var deliveryCharges = new DeliveryModel();
+            if (deliverId > 0)
+            {
+                deliveryCharges = DeliveryDal.GetById(Convert.ToInt32(deliverId));
+            }
+            else
+            {
+                if (obj.DelivierId == 0)
+                {
+                    deliveryCharges = DeliveryDal.GetDefault();
+                }
+                else
+                {
+                    deliveryCharges = DeliveryDal.GetById(Convert.ToInt32(obj.DelivierId));
+                }
+            }
+            obj.DelivierDays = deliveryCharges.DeliveryDays;
+            obj.DelivierId = deliveryCharges.id;
             if (Currency == "Dollar")
             {
                 obj.DelivierCharges = (decimal)deliveryCharges.deliveryDoller;
                 MinFreeDeliverammount = (decimal)deliveryCharges.freeDeliveryAmountDoller;
             }
-            else if (Currency == "Euro")
-            {
-                obj.DelivierCharges = (decimal)deliveryCharges.deliveryEuro;
-                MinFreeDeliverammount = (decimal)deliveryCharges.freeDeliveryAmountEuro;
-            }
+
             else if (Currency == "Pound")
             {
                 obj.DelivierCharges = (decimal)deliveryCharges.deliveryPound;
                 MinFreeDeliverammount = (decimal)deliveryCharges.freeDeliveryAmountPound;
+            }
+            else if (Currency == "Euro")
+            {
+                obj.DelivierCharges = (decimal)deliveryCharges.deliveryEuro;
+                MinFreeDeliverammount = (decimal)deliveryCharges.freeDeliveryAmountEuro;
             }
             else if (Currency == "Naira")
             {
@@ -99,7 +116,6 @@ namespace Ecommerce.DataAccess
             if (obj.Difference <= 0)
             {
                 obj.Difference = 0;
-                obj.DelivierCharges = 0;
             }
 
             obj.SubTotalTotal = total;
@@ -133,11 +149,11 @@ namespace Ecommerce.DataAccess
                 {
                     qtyList.Add(new ReCalculateCart { Id = x.Price.Id, Quantity = x.Price.Quantity });
                 }
-           }
+            }
             obj = new CartModel();
             foreach (var x in qtyList)
             {
-                AddItemTocart(x.Id, obj, Currency, x.Quantity);
+                AddItemTocart(x.Id, obj, Currency, x.Quantity,0);
             }
             return obj;
         }
@@ -160,7 +176,7 @@ namespace Ecommerce.DataAccess
             obj = new CartModel();
             foreach (var x in qtyList)
             {
-                AddItemTocart(x.Id, obj, Currency, x.Quantity);
+                AddItemTocart(x.Id, obj, Currency, x.Quantity,0);
             }
             return obj;
         }
@@ -187,7 +203,7 @@ namespace Ecommerce.DataAccess
             obj = new CartModel();
             foreach (var x in qtyList)
             {
-                AddItemTocart(x.Id, obj, Currency, x.Quantity);
+                AddItemTocart(x.Id, obj, Currency, x.Quantity,0);
             }
             return obj;
         }
@@ -251,7 +267,25 @@ namespace Ecommerce.DataAccess
             }
         }
 
-
+        public static CartModel UpdateDelivery(CartModel obj,  string Currency, int deliverId)
+        {
+            List<ReCalculateCart> qtyList = new List<ReCalculateCart>();
+            if (obj == null)
+            {
+                obj = new CartModel();
+                obj.Product = new List<ProductModel>();
+            }
+            foreach (var x in obj.Product)
+            {
+                qtyList.Add(new ReCalculateCart { Id = x.Price.Id, Quantity = x.Price.Quantity });
+            }
+            obj = new CartModel();
+            foreach (var x in qtyList)
+            {
+                AddItemTocart(x.Id, obj, Currency, x.Quantity, deliverId);
+            }
+            return obj;
+        }
 
     }
 }

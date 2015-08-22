@@ -27,5 +27,9 @@ namespace Ecommerce.DbEntity
         public Nullable<decimal> freeDeliveryAmountGhana { get; set; }
         public Nullable<decimal> deliveryGhana { get; set; }
         public Nullable<decimal> freeDeliveryAmountDoller { get; set; }
+        public string DeliveryDays { get; set; }
+        public bool Default { get; set; }
+        public bool Active { get; set; }
+
     }
 }
