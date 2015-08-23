@@ -34,7 +34,7 @@ namespace Ecommerce.Controllers
 
         public ActionResult Status()
         {
-            int orderId = 1;//Convert.ToInt32(Session["OrderId"]);
+            int orderId = Convert.ToInt32(Session["OrderId"]);
             OrderDal.UpdatePaymentStatusInOrder(orderId, Convert.ToString(Request.QueryString["st"]), Convert.ToString(Request.QueryString["tx"]));
             var order = OrderDal.GetByOrderId(orderId);
             string url = ConfigurationManager.AppSettings["WebsiteUrl"].ToString() + "/payment/index/" + orderId;
