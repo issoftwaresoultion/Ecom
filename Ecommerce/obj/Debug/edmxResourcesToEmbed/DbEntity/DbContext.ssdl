@@ -143,6 +143,10 @@
     <Property Name="DState" Type="varchar" MaxLength="45" />
     <Property Name="DPostCode" Type="varchar" MaxLength="45" />
     <Property Name="DCountry" Type="varchar" MaxLength="100" />
+    <Property Name="TransId" Type="varchar" MaxLength="100" />
+    <Property Name="TotalProductCostInUserCurrency" Type="decimal" Scale="2" />
+    <Property Name="TotalProductCostInConvertedrCurrency" Type="decimal" Scale="2" />
+    <Property Name="Discount" Type="decimal" Scale="2" />
   </EntityType>
   <EntityType Name="product">
     <Key>

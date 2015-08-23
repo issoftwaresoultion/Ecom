@@ -148,6 +148,10 @@
           <Property Name="DState" Type="varchar" MaxLength="45" />
           <Property Name="DPostCode" Type="varchar" MaxLength="45" />
           <Property Name="DCountry" Type="varchar" MaxLength="100" />
+          <Property Name="TransId" Type="varchar" MaxLength="100" />
+          <Property Name="TotalProductCostInUserCurrency" Type="decimal" Scale="2" />
+          <Property Name="TotalProductCostInConvertedrCurrency" Type="decimal" Scale="2" />
+          <Property Name="Discount" Type="decimal" Scale="2" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -376,6 +380,10 @@
           <Property Name="DState" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="DPostCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="DCountry" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="TransId" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="TotalProductCostInUserCurrency" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="TotalProductCostInConvertedrCurrency" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Discount" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -571,6 +579,10 @@
           <EntitySetMapping Name="orderheaders">
             <EntityTypeMapping TypeName="ecommerceModel.orderheader">
               <MappingFragment StoreEntitySet="orderheader">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="TotalProductCostInConvertedrCurrency" ColumnName="TotalProductCostInConvertedrCurrency" />
+                <ScalarProperty Name="TotalProductCostInUserCurrency" ColumnName="TotalProductCostInUserCurrency" />
+                <ScalarProperty Name="TransId" ColumnName="TransId" />
                 <ScalarProperty Name="orderID" ColumnName="orderID" />
                 <ScalarProperty Name="Userid" ColumnName="Userid" />
                 <ScalarProperty Name="PermotionCode" ColumnName="PermotionCode" />

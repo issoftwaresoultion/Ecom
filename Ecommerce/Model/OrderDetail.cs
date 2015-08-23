@@ -15,6 +15,7 @@ namespace Ecommerce.Model
         public decimal PricePaidInConvertedCurrency { get; set; }
         public decimal ActualPriceInUserSeletedCurrency { get; set; }
         public string ProductName { get; set; }
+        public decimal UnitPrice { get; set; }
 
     }
 }

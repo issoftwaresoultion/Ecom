@@ -143,6 +143,10 @@
     <Property Name="DState" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="DPostCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="DCountry" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Type="String" Name="TransId" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="TotalProductCostInUserCurrency" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="TotalProductCostInConvertedrCurrency" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="Discount" Precision="10" Scale="2" />
   </EntityType>
   <EntityType Name="product">
     <Key>

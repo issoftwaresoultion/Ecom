@@ -109,6 +109,10 @@
     <EntitySetMapping Name="orderheaders">
       <EntityTypeMapping TypeName="ecommerceModel.orderheader">
         <MappingFragment StoreEntitySet="orderheader">
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="TotalProductCostInConvertedrCurrency" ColumnName="TotalProductCostInConvertedrCurrency" />
+          <ScalarProperty Name="TotalProductCostInUserCurrency" ColumnName="TotalProductCostInUserCurrency" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
           <ScalarProperty Name="orderID" ColumnName="orderID" />
           <ScalarProperty Name="Userid" ColumnName="Userid" />
           <ScalarProperty Name="PermotionCode" ColumnName="PermotionCode" />

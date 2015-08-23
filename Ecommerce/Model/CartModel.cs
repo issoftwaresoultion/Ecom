@@ -16,7 +16,7 @@ namespace Ecommerce.Model
         public decimal Total { get; set; }
         public decimal SubTotalTotal { get; set; }
         public decimal Difference { get; set; }
-        public int Price { get; set; }
+        public decimal AllProductPrice { get; set; }
         public string DiscountCoupan { get; set; }
         public decimal DiscountAmmount { get; set; }
     }

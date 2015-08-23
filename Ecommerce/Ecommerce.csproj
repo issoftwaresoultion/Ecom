@@ -1896,7 +1896,6 @@
     <Content Include="Views\Shared\RegistrationForm.cshtml" />
     <Content Include="Views\Payment\IPIN.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
-    <Content Include="Views\Payment\RedirectFromPaypal.cshtml" />
     <Content Include="Views\Payment\Status.cshtml" />
     <Content Include="Views\Shared\Faq.cshtml" />
   </ItemGroup>

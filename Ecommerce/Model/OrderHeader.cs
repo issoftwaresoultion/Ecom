@@ -36,5 +36,9 @@ namespace Ecommerce.Model
         public string DState { get; set; }
         public string DPostCode { get; set; }
         public string DCountry { get; set; }
+        public string TransId { get; set; }
+        public decimal TotalProductCostInUserCurrency { get; set; }
+        public decimal TotalProductCostInConvertedrCurrency { get; set; }
+        public decimal Discount { get; set; }
     }
 }

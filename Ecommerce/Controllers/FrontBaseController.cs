@@ -96,29 +96,7 @@ namespace Ecommerce.Controllers
             var user = UserDal.GetByemail(obj.EmailForgotPassword);
             if (user.Name != null)
             {
-                MailAddress fromAddress = new MailAddress(ConfigurationManager.AppSettings["Email"], "Ecommerce");
-                MailAddress toAddress = new MailAddress(obj.EmailForgotPassword, "Ishu");
-                string fromPassword = ConfigurationManager.AppSettings["Password"];
-                string subject = "Your New Password";
-                string body = "your new password is " + user.Email;
-                var smtp = new SmtpClient
-                {
-                    Host = ConfigurationManager.AppSettings["Host"],
-                    Port = 8889,
-                    EnableSsl = false,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                    Timeout = 20000
-                };
-                using (var message = new MailMessage(fromAddress, toAddress)
-                {
-                    Subject = subject,
-                    Body = body
-                })
-                {
-                    smtp.Send(message);
-
-                }
+                Utility.SendEmail(user.Email, "Message", "Password Recovery " + ConfigurationManager.AppSettings["WebsiteName"].ToString(), user.Name);
                 OutputMessage = "Password is send at your email address.";
             }
             else

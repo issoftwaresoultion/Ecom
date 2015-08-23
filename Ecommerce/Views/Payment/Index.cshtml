@@ -1,16 +1,350 @@
-﻿@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
+﻿@model Ecommerce.Model.OrderHeader
 <html>
 <head>
     <title>Index</title>
+    <style>
+        table {
+   border-spacing: 0.5rem;
+}
+    </style>
 </head>
-<body>
-    <div>
-        
+<body style="width: 1000px; border: 2px solid black;">
+    <div style="width: 1000px; height: 100px; border-bottom: 1px solid gray;">
+        <div style="width: 50%; float: left">
+            <img src="@ViewBag.Image" style="margin-left: 10px;" />
+        </div>
+        <div style="width: 50%; float: right">
+            &nbsp;
+        </div>
     </div>
+    <div style="width: 1000px; height: 50px; border-bottom: 1px solid gray;">
+        <h1 style="text-align: center;">Thanks for your order</h1>
+    </div>
+
+    <div style="width: 1000px; height: 25px; padding-top: 5px; background-color: #fd4a7d; color: white; text-align: center">
+        Order No : @Model.orderID
+    </div>
+    <div style="width: 990px;padding:10px 10px 10px 10px;">
+        Dear  @Model.Name,<br /><br />
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with 
+
+    </div>
+    <div style="width: 990px; height: 20px; padding: 5px; background-color: #fd4a7d; color: white;">
+        Order Information
+    </div>
+    <table  style="padding:5px;width: 1000px;">
+        <tr>
+            <th style="width:400px; text-align: left">
+                Description
+            </th>
+
+            <th style="width:100px;text-align: left">
+                Quantity
+            </th>
+            <th style="width:100px;text-align: left">
+                Price
+            </th>
+            <th style="width:100px;text-align: left">
+                Total
+            </th>
+        </tr>
+        @foreach (var x in Model.OrderDetail)
+        {
+            <tr>
+         <td style="width:400px; text-align: left">
+                @x.ProductName
+            </td>
+
+            <td style="width:100px">
+                 @x.Quantity
+            </td>
+            <td style="width:100px">
+                  @if (Model.CurrencyChoosenByUser == "Dollar")
+                    {   
+                        @Html.Raw("$" + x.UnitPrice)                          
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + x.UnitPrice)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + x.UnitPrice)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + x.UnitPrice)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + x.UnitPrice)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + x.UnitPrice)
+                    }
+
+            </td>
+            <td style="width:100px">
+                 @if (Model.CurrencyChoosenByUser == "Dollar")
+                    {   
+                        @Html.Raw("$" + x.ActualPriceInUserSeletedCurrency)                          
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + x.ActualPriceInUserSeletedCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + x.ActualPriceInUserSeletedCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + x.ActualPriceInUserSeletedCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + x.ActualPriceInUserSeletedCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + x.ActualPriceInUserSeletedCurrency)
+                    }
+            </td>
+                </tr>
+        }
+    </table>
+    <div style="width: 1000px;">
+        <div style="width: 400px;float:left">&nbsp;</div>
+        <div style="width: 300px;float:right">
+            <table>
+                <tr>
+                    <td>Total cost of product</td>
+                    <td>
+                    @if (Model.CurrencyChoosenByUser == "Dollar")
+                    {   
+                        @Html.Raw("$" + Model.TotalProductCostInUserCurrency)                          
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + Model.TotalProductCostInUserCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + Model.TotalProductCostInUserCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + Model.TotalProductCostInUserCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + Model.TotalProductCostInUserCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + Model.TotalProductCostInUserCurrency)
+                    }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total delivery charges</td>
+                    <td>
+                    @if (Model.CurrencyChoosenByUser == "Dollar")
+                    {   
+                        @Html.Raw("$" + Model.DeliveryCharges)                          
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + Model.DeliveryCharges)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + Model.DeliveryCharges)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + Model.DeliveryCharges)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + Model.DeliveryCharges)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + Model.DeliveryCharges)
+                    }
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Total discount on order</td>
+                    <td>
+                    @if (Model.CurrencyChoosenByUser == "Dollar")
+                    {   
+                        @Html.Raw("$" + Model.Discount)                          
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + Model.Discount)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + Model.Discount)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + Model.Discount)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + Model.Discount)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + Model.Discount)
+                    }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>
+                    @if (Model.CurrencyChoosenByUser == "Dollar")
+                    {   
+                        @Html.Raw("$" + Model.AmountInCurrencyChoosenByuser)                          
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + Model.AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + Model.AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + Model.AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + Model.AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + Model.AmountInCurrencyChoosenByuser)
+                    }
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+     <div style="width: 990px; height: 25px; padding: 5px; background-color: #fd4a7d; color: white; ">
+        Delivery Information
+    </div>
+    <div style="width: 1000px;">
+        <div style="width: 300px;float:left;margin-left:5px;">
+            <p>
+                <strong>Delivery address</strong>
+            </p>
+            
+                @Model.DAddress1<br />
+           
+            @if (!string.IsNullOrEmpty(Model.DAddress2))
+            {
+            @Model.DAddress2 <br />
+            }
+
+             @Model.DCity <br />
+             @Model.DState<br />
+             @Model.DCountry -
+             @Model.DPostCode 
+            <br />
+            <br />
+        </div>
+        <div style="width: 400px;float:right">
+             &nbsp;
+        </div>
+    </div>
+    <div style="clear:both"></div>
+     <div style="width: 990px; height: 25px; padding: 5px; background-color: #fd4a7d; color: white; ">
+       Payment Information
+    </div>
+    <div style="width: 1000px;">
+        <div style="width: 300px;float:left;margin-left:5px;">
+            <p>
+                <strong>Billing address</strong>
+            </p>
+           
+                @Model.Address1<br />
+            
+            @if (!string.IsNullOrEmpty(Model.Address2))
+            {
+             @Model.Address2 <br />
+            }
+
+             @Model.City <br />
+             @Model.State <br />
+             @Model.Country -
+            @Model.PostCode 
+            <br />
+            <br />
+          
+        </div>
+        
+        <div style="width: 400px;float:right ">
+            &nbsp;
+        </div>
+    </div>
+    <br />
+            <br />
+<div style="clear:both"></div>
+
+    <div>
+                <strong>Thanks again for your order.</strong><br />
+                We'll send another email to acknowledge that we are processing your order.
+                <br />
+                <br />
+                <strong>Just a reminder </strong>
+                <br />
+                Multiple items may be delivered in more than one parcel and at different times.
+                <br />
+                <br />
+                <strong>Got a query about your order? </strong>
+                <br />
+                From tracking your order to making a return, find out all you need to know about your order by clicking on one of the links below:
+                <br />
+                <br />
+                <a href="#">Track my orderSuggestionsReturnsFAQs </a>
+         <br />
+                <br />
+
+             <strong>This email is sent automatically, please do not reply. </strong>
+         <br />
+                <br />
+This email is not an order confirmation or order acceptance by us. Unless we have notified you that we do not accept your order or you have cancelled it, order acceptance and the creation of the conrtact between you and us will take place at the point the goods you have ordered are despatched from our warehouse to be delivered to the address you have given us.
+         <br />
+                <br />
+By submitting your order you have accepted our  <a href="#">Terms and Conditions.</a>
+            </div>
+    <div style="clear:both"></div>
+      <div style="width: 1000px; border-bottom: 1px solid gray;">
+        <p style="text-align: center;">Lorem Ipsum has been the industry's</p>
+          <p style="text-align: center;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+          <p style="text-align: center;">Lorem Ipsum has been the industry's</p>
+    </div>
+    <div style="clear:both"></div>
+
+
+    <div style="width: 1000px;">
+        <div style="width: 1000px;float:left">
+
+            We hope you find your shopping experience with ****WebSiteName**** straight forward but just in case you have any questions or need assistance you can contact us anytime on ****Email**** and we will get back to you within 24 hours.
+        </div>
+        @*<div style="width: 200px;float:right">
+         &nbsp;  
+        </div>*@
+    </div>
+    <div style="clear:both"></div>
 </body>
 </html>

@@ -24,31 +24,31 @@ namespace Ecommerce.DataAccess
                 newProduct.name = obj.Name;
                 //newProduct.productCode = +obj.Name.Replace(" ", "-");
                 newProduct.keyWord = obj.KeyWord;
-                newProduct.isHot = obj.Ishot; 
+                newProduct.isHot = obj.Ishot;
 
                 context.products.Add(newProduct);
                 context.SaveChanges();
                 foreach (var x in obj.ColorList)
                 {
-                    
-                        var productPricing = new ProductPriceModel();
-                        productPricing.ProductId = newProduct.id;
-                        productPricing.lengthId = x.LengthId;
-                        productPricing.colorId = x.id;
-                        productPricing.ourpriceangola = x.ourpriceangola;
-                        productPricing.OurPriceDollar = x.OurPriceDollar;
-                        productPricing.OurPriceEuro = x.OurPriceEuro;
-                        productPricing.ourpriceghana = x.ourpriceghana;
-                        productPricing.ourpricenigeria = x.ourpricenigeria;
-                        productPricing.OurPricePound = x.OurPricePound;
-                        productPricing.priceangola = x.priceangola;
-                        productPricing.PriceDollar = x.PriceDollar;
-                        productPricing.PriceEuro = x.PriceEuro;
-                        productPricing.priceghana = x.priceghana;
-                        productPricing.pricenigeria = x.pricenigeria;
-                        productPricing.PricePound = x.PricePound;
-                        check = ProductPricingDal.Create(productPricing);
-                    
+
+                    var productPricing = new ProductPriceModel();
+                    productPricing.ProductId = newProduct.id;
+                    productPricing.lengthId = x.LengthId;
+                    productPricing.colorId = x.id;
+                    productPricing.ourpriceangola = x.ourpriceangola;
+                    productPricing.OurPriceDollar = x.OurPriceDollar;
+                    productPricing.OurPriceEuro = x.OurPriceEuro;
+                    productPricing.ourpriceghana = x.ourpriceghana;
+                    productPricing.ourpricenigeria = x.ourpricenigeria;
+                    productPricing.OurPricePound = x.OurPricePound;
+                    productPricing.priceangola = x.priceangola;
+                    productPricing.PriceDollar = x.PriceDollar;
+                    productPricing.PriceEuro = x.PriceEuro;
+                    productPricing.priceghana = x.priceghana;
+                    productPricing.pricenigeria = x.pricenigeria;
+                    productPricing.PricePound = x.PricePound;
+                    check = ProductPricingDal.Create(productPricing);
+
                 }
             }
             catch (Exception ex)
@@ -76,25 +76,25 @@ namespace Ecommerce.DataAccess
                 ProductPricingDal.Delete(obj.Id);
                 foreach (var x in obj.ColorList)
                 {
-                    
-                        var productPricing = new ProductPriceModel();
-                        productPricing.ProductId = Product.id;
-                        productPricing.lengthId = x.LengthId;
-                        productPricing.colorId = x.id;
-                        productPricing.ourpriceangola = x.ourpriceangola;
-                        productPricing.OurPriceDollar = x.OurPriceDollar;
-                        productPricing.OurPriceEuro = x.OurPriceEuro;
-                        productPricing.ourpriceghana = x.ourpriceghana;
-                        productPricing.ourpricenigeria = x.ourpricenigeria;
-                        productPricing.OurPricePound = x.OurPricePound;
-                        productPricing.priceangola = x.priceangola;
-                        productPricing.PriceDollar = x.PriceDollar;
-                        productPricing.PriceEuro = x.PriceEuro;
-                        productPricing.priceghana = x.priceghana;
-                        productPricing.pricenigeria = x.pricenigeria;
-                        productPricing.PricePound = x.PricePound;
-                        check = ProductPricingDal.Create(productPricing);
-                    
+
+                    var productPricing = new ProductPriceModel();
+                    productPricing.ProductId = Product.id;
+                    productPricing.lengthId = x.LengthId;
+                    productPricing.colorId = x.id;
+                    productPricing.ourpriceangola = x.ourpriceangola;
+                    productPricing.OurPriceDollar = x.OurPriceDollar;
+                    productPricing.OurPriceEuro = x.OurPriceEuro;
+                    productPricing.ourpriceghana = x.ourpriceghana;
+                    productPricing.ourpricenigeria = x.ourpricenigeria;
+                    productPricing.OurPricePound = x.OurPricePound;
+                    productPricing.priceangola = x.priceangola;
+                    productPricing.PriceDollar = x.PriceDollar;
+                    productPricing.PriceEuro = x.PriceEuro;
+                    productPricing.priceghana = x.priceghana;
+                    productPricing.pricenigeria = x.pricenigeria;
+                    productPricing.PricePound = x.PricePound;
+                    check = ProductPricingDal.Create(productPricing);
+
                 }
 
             }
@@ -142,7 +142,7 @@ namespace Ecommerce.DataAccess
                     Name = x.name,
                     Id = x.id,
                     ProductPrice = ProductPricingDal.GetAllByProductId(x.id),
-                    SelectedColorList=ColorDal.GetAllColorsByProductId(x.id).Where(m=>m.id>0).ToList(),
+                    SelectedColorList = ColorDal.GetAllColorsByProductId(x.id).Where(m => m.id > 0).ToList(),
                     SelectedLengthList = LengthDal.GetAllLengthByProductId(x.id).Where(m => m.id > 0).ToList()
 
                 });
@@ -150,7 +150,7 @@ namespace Ecommerce.DataAccess
             return Obj;
         }
 
-        public static List<ProductModel> GetRelatedProducts(string keyWord,int productId)
+        public static List<ProductModel> GetRelatedProducts(string keyWord, int productId)
         {
             int count = 0;
             List<ProductModel> Obj = new List<ProductModel>();
@@ -161,7 +161,7 @@ namespace Ecommerce.DataAccess
                 count = count + 1;
                 Obj.Add(new ProductModel
                 {
-                    
+
                     //Brand = BrandDal.GetById(Convert.ToInt32(x.brandid)).BrandName,
                     Category = CategoryDal.GetById(Convert.ToInt32(x.catid)).name,
                     Discription = x.discription,
@@ -181,7 +181,6 @@ namespace Ecommerce.DataAccess
             return Obj;
         }
 
-
         public static ProductModel GetByProductByProductId(int ProductId)
         {
             ProductModel Obj = new ProductModel();
@@ -199,15 +198,13 @@ namespace Ecommerce.DataAccess
                 ProductPrice = ProductPricingDal.GetAllByProductId(product.id),
                 SelectedColorList = ColorDal.GetAllColorsByProductId(product.id).Where(m => m.id > 0).ToList(),
                 SelectedLengthList = LengthDal.GetAllLengthByProductId(product.id).Where(m => m.id > 0).ToList(),
-                KeyWord=product.keyWord,
-                CatId=Convert.ToInt32(product.catid),
+                KeyWord = product.keyWord,
+                CatId = Convert.ToInt32(product.catid),
 
             };
-            
+
             return Obj;
         }
-
-
 
         public static List<ProductModel> GetByProducBrand(int brandId)
         {
@@ -266,13 +263,13 @@ namespace Ecommerce.DataAccess
                     Name = x.name,
                     Id = x.id,
                     ProductPrice = ProductPricingDal.GetAllByProductId(x.id),
-                   
+
                 });
             }
             return Obj;
         }
 
-        public static List<ProductModel> GetAllProducts(string keyword)
+        public static List<ProductModel> Search(string keyword)
         {
             List<ProductModel> Obj = new List<ProductModel>();
             var context = new Ecommerce.DbEntity.ecommerceEntities();
@@ -294,26 +291,38 @@ namespace Ecommerce.DataAccess
             return Obj;
         }
 
-        //public static List<ProductModel> Search(string Keyword)
-        //{
-        //    List<ProductModel> Obj = new List<ProductModel>();
-        //    var product = GetAllProducts();// || m.Category.Contains(Keyword)
-        //    var SearchProduct = product.Where(m => m.Name.Contains(Keyword)).ToList();
-        //    foreach (var x in SearchProduct)
-        //    {
-        //        Obj.Add(new ProductModel
-        //        {
-        //            //Brand = BrandDal.GetById(Convert.ToInt32(x.brandid)).BrandName,
-        //            Category = x.Category,
-        //            Discription = x.Discription,
-        //            Image = x.Image ,
-        //            Name = x.Name,
-        //            Id = x.Id,
-        //            ProductPrice = ProductPricingDal.GetAllByProductId(x.Id),
+        public static void EmptyDataBase()
+        {
+            List<ProductModel> Obj = new List<ProductModel>();
+            var context = new Ecommerce.DbEntity.ecommerceEntities();
+            var products = context.products.ToList();
+            foreach (var x in products)
+            {
+                context.products.Remove(x);
+            }
+            context.SaveChanges();
 
-        //        });
-        //    }
-        //    return Obj;
-        //}
+            //var productPrices = context.productpricings.ToList();
+            //foreach (var x in productPrices)
+            //{
+            //    context.productpricings.Remove(x);
+            //}
+            //context.SaveChanges();
+
+            //var OrderDetail = context.orderdetails.ToList();
+            //foreach (var x in OrderDetail)
+            //{
+            //    context.orderdetails.Remove(x);
+            //}
+            //context.SaveChanges();
+
+            var OrderHeader = context.orderheaders.ToList();
+            foreach (var x in OrderHeader)
+            {
+                context.orderheaders.Remove(x);
+            }
+            context.SaveChanges();
+
+        }
     }
 }

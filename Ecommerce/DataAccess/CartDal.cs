@@ -131,6 +131,11 @@ namespace Ecommerce.DataAccess
                 obj.Total = Math.Round(obj.Total, 2);
                 obj.DiscountAmmount = Math.Round(obj.DiscountAmmount, 2);
             }
+            obj.AllProductPrice=0;
+            foreach (var x in obj.Product)
+            {
+                obj.AllProductPrice = obj.AllProductPrice + x.Price.TotalPrice;
+            }
             return obj;
         }
 
@@ -219,6 +224,9 @@ namespace Ecommerce.DataAccess
                 Orderheaderobj.ActualAmountPaid = Utility.GetConvertedPrice(obj.Total, Currency, "USD");
                 Orderheaderobj.AmountInCurrencyChoosenByuser = obj.Total;
                 Orderheaderobj.DeliveryCharges = Utility.GetConvertedPrice(obj.DelivierCharges, Currency, "USD");
+                Orderheaderobj.TotalProductCostInUserCurrency = obj.AllProductPrice;
+                Orderheaderobj.TotalProductCostInConvertedrCurrency = Utility.GetConvertedPrice(obj.AllProductPrice, Currency, "USD");
+               
                 foreach (var x in obj.Product)
                 {
                     Orderheaderobj.OrderDetail.Add(new OrderDetail
@@ -239,6 +247,9 @@ namespace Ecommerce.DataAccess
                 Orderheaderobj.ActualAmountPaid = obj.Total;
                 Orderheaderobj.AmountInCurrencyChoosenByuser = obj.Total;
                 Orderheaderobj.DeliveryCharges = obj.DelivierCharges;
+                Orderheaderobj.TotalProductCostInUserCurrency = obj.AllProductPrice;
+                Orderheaderobj.TotalProductCostInConvertedrCurrency = obj.AllProductPrice;
+
                 foreach (var x in obj.Product)
                 {
                     Orderheaderobj.OrderDetail.Add(new OrderDetail
@@ -256,6 +267,7 @@ namespace Ecommerce.DataAccess
             Orderheaderobj.PaymentStatus = "Not Recived";
             Orderheaderobj.PermotionCode = obj.DiscountCoupan;
             Orderheaderobj.Userid = userid;
+            Orderheaderobj.Discount = obj.DiscountAmmount;
             if (orderId > 0)
             {
                 Orderheaderobj.orderID = orderId;

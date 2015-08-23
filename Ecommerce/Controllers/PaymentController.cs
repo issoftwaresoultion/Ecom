@@ -1,6 +1,8 @@
 ﻿using Ecommerce.DataAccess;
+using Ecommerce.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -15,9 +17,11 @@ namespace Ecommerce.Controllers
         //
         // GET: /Payment/
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            ViewBag.Image = ConfigurationManager.AppSettings["WebsiteUrl"].ToString() + "/img/Logo.png";
+            var order = OrderDal.GetByOrderId(id);
+            return View(order);
         }
 
         public ActionResult IPIN()
@@ -27,25 +31,23 @@ namespace Ecommerce.Controllers
             return View(order);
         }
 
-         public ActionResult RedirectFromPaypal()
+
+        public ActionResult Status()
         {
-            ViewBag.Text = Response; 
-            return View();
+            int orderId = 1;//Convert.ToInt32(Session["OrderId"]);
+            OrderDal.UpdatePaymentStatusInOrder(orderId, Convert.ToString(Request.QueryString["st"]), Convert.ToString(Request.QueryString["tx"]));
+            var order = OrderDal.GetByOrderId(orderId);
+            string url = ConfigurationManager.AppSettings["WebsiteUrl"].ToString() + "/payment/index/" + orderId;
+            string emailMessage = Utility.GetResponse(url);
+            Utility.SendEmail(order.Email, emailMessage, "Order confirmation", ConfigurationManager.AppSettings["WebsiteUrl"].ToString());
+            Session["OrderId"] = "";
+            Session["Cart"] = new CartModel();
+            return View(order);
         }
-         public ActionResult Status()
-        {
-            
-            using (Stream input = Response.OutputStream)
-            {
-                ViewBag.Text = input.ToString(); 
-            }
-             
-            
-            return View();
-        }
-         public ActionResult NotifyFromPaypal()
+        public ActionResult NotifyFromPaypal()
         {
             return null;
         }
+
     }
 }
