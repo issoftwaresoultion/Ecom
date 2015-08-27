@@ -54,6 +54,9 @@
           <ScalarProperty Name="freeDeliveryAmountGhana" ColumnName="freeDeliveryAmountGhana" />
           <ScalarProperty Name="deliveryGhana" ColumnName="deliveryGhana" />
           <ScalarProperty Name="freeDeliveryAmountDoller" ColumnName="freeDeliveryAmountDoller" />
+          <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
+          <ScalarProperty Name="Default" ColumnName="Default" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -132,6 +135,11 @@
           <ScalarProperty Name="DState" ColumnName="DState" />
           <ScalarProperty Name="DPostCode" ColumnName="DPostCode" />
           <ScalarProperty Name="DCountry" ColumnName="DCountry" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="TotalProductCostInUserCurrency" ColumnName="TotalProductCostInUserCurrency" />
+          <ScalarProperty Name="TotalProductCostInConvertedrCurrency" ColumnName="TotalProductCostInConvertedrCurrency" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,0 +1,117 @@
+﻿@model Ecommerce.Model.ContactUs
+@{
+    ViewBag.Title = "Order History";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<section id="content">
+    <div class="container">
+        <table width="100%">
+            <tr>
+                <td width="75%">
+                    <ol class="breadcrumb">
+                        <li><a href="/Landing/Index">Home</a></li>
+                        <li>Contact Us</li>
+                    </ol>
+                </td>
+                <td width="25%" style="vertical-align: top;">&nbsp;
+                </td>
+            </tr>
+        </table>
+        @*         <a href="/landing/Index" class="btn btn-primary btn-lg">Continue Shoping</a>*@
+        We always strive to meet our customers’ needs. Drop us a line with your queries or suggestions so we can improve your shopping experience.
+    <br />
+        <br />
+    <div class="row">
+        <div class="col-lg-6">
+
+
+            @using (Html.BeginForm("SendContactUs", "About"))
+            {
+             
+                <span>&nbsp;       
+         @if (TempData["Message"] != null)
+         {
+             Html.Raw(TempData["Message"].ToString());
+         }
+                </span>
+                <span style="font-size: 8pt">(Fields (*) marked are required.)</span>
+                <div class="panel panel-default">
+                    <div class="panel-SigeUpHeading">
+                        <strong>Contact us </strong>
+                    </div>
+                    <div class="panel-body">
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="width: 9%">&nbsp</td>
+                                <td style="width: 16%" align="right">Name<span style="color: #fd638f">*</span></td>
+                                <td style="width: 2%">&nbsp;</td>
+                                <td style="width: 40%">@Html.TextBoxFor(m => m.Name, new { @class = "form-control input-sm" })
+                                    <span>&nbsp
+                         @Html.ValidationMessageFor(m => m.Name)
+                                    </span>
+                                </td>
+                                <td style="width: 9%">&nbsp</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp</td>
+                                <td align="right">Email<span style="color: #fd638f">*</span> </td>
+                                <td>&nbsp;</td>
+                                <td>@Html.TextBoxFor(m => m.Email, new { @class = "form-control input-sm" })
+                                    <span>&nbsp @Html.ValidationMessageFor(m => m.Email)</span></td>
+                                <td>&nbsp</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp</td>
+                                <td align="right">Contact Number</td>
+                                <td>&nbsp;</td>
+                                <td>@Html.TextBoxFor(m => m.ContactNumber, new { @class = "form-control input-sm" })
+                                    <span>&nbsp </span></td>
+                                <td>&nbsp</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp</td>
+                                <td align="right">Subject<span style="color: #fd638f">*</span> </td>
+                                <td>&nbsp;</td>
+                                <td>@Html.TextBoxFor(m => m.Subject, new { @class = "form-control input-sm" })
+                                    <span>&nbsp @Html.ValidationMessageFor(m => m.Subject)</span></td>
+                                <td>&nbsp</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp</td>
+                                <td align="right">Message<span style="color: #fd638f">*</span> </td>
+                                <td>&nbsp;</td>
+                                <td>@Html.TextAreaFor(m => m.Message, new { @class = "form-control input-sm" })
+                                    <span>&nbsp @Html.ValidationMessageFor(m => m.Message)</span></td>
+                                <td>&nbsp</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                                    <input type="submit" value="Send" class="btn btn-primary btn-sm" style="float:right;margin-right:20px;"/> 
+                    <div>&nbsp;</div>       
+                      <div>&nbsp;</div>   
+                      <div>&nbsp;</div>   
+                </div>
+            }
+        </div>
+        <div class="col-lg-1">
+            <h1>OR</h1>
+        </div>
+        <div class="col-lg-5">
+            <br />
+            <br />
+            
+
+            <span style="font-size:large;color:#fd638f;">Get in touch</span>
+            <br />
+               <p>You can lso contact us at</p>
+                <h2>Customerservices@email.com</h2>       
+            <br />
+            <a href="#" target="_blank"><img src="/img/twitter.png" /></a>
+            <a href="#" target="_blank"><img src="/img/facebook.png" /></a>
+            <a href="#" target="_blank"><img src="/img/pinterest.jpg" /></a>
+        </div>
+    </div>
+</div>
+</section>

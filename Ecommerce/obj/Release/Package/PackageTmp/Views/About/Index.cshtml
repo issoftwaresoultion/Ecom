@@ -1,0 +1,27 @@
+﻿@model Ecommerce.DbEntity.staticpage
+@{
+    ViewBag.Title = "Order History";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<section id="content">
+    <div class="container">
+        <table width="100%">
+            <tr>
+                <td width="75%">
+                    <ol class="breadcrumb">
+                        <li><a href="/Landing/Index">Home</a></li>
+                        <li>@ViewBag.pageTitle</li>
+                    </ol>
+                </td>
+                <td width="25%" style="vertical-align: top;">&nbsp;
+                </td>
+            </tr>
+        </table>
+        @*         <a href="/landing/Index" class="btn btn-primary btn-lg">Continue Shoping</a>*@
+
+        @Html.Raw(Model.Content)
+    </div>
+
+
+</section>

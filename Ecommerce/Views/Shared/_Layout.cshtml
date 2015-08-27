@@ -224,13 +224,11 @@
 
                             </li>
                              
-                           @* <li><a href="#">About</a></li>*@
-
-                            <li><a href="#">Contact</a></li>
+                            
                             @if (Request.IsAuthenticated)
                             {
                                 <li>
-                                    <a href="contact.html">Order History</a>
+                                    <a href="/OrderHistory/Index">Order History</a>
                                 </li>
                             }
                             @Html.Action("GetSignup", "FrontBase")
@@ -326,9 +324,22 @@
     <footer id="footer">
 
 
-        <div id="copyright">
+                <div id="copyright">
+                                    <div class="container"> <a href="/About/Index/About">About</a> | <a href="/About/ContactUs">Contact</a> | 
+                                        <a href="/About/Index/Conditions">Terms & Conditions</a> | 
+                                        <a href="/About/Index/Question">FAQ</a> | 
+                                        <a href="/About/Index/ReturnPolicy">Return Policy</a>  
+
+
+                                    </div>
+
             <div class="container">&copy; Copyright Ecommerce Site | All Rights Reserved | Designed and developed by <a target="_blank" href="http://www.issoftwaresolution.com/">IS-Software solution</a></div>
+        <div class="container">
+        <a href="#" target="_blank"><img src="/img/twitter.png" /></a>
+            <a href="#" target="_blank"><img src="/img/facebook.png" /></a>
+            <a href="#" target="_blank"><img src="/img/pinterest.jpg" /></a>    
         </div>
+                </div>
 
     </footer>
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ecommerceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ecommerceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="ecommerceModelStoreContainer">
           <EntitySet Name="brand" EntityType="ecommerceModel.Store.brand" store:Type="Tables" Schema="ecommerce" />
           <EntitySet Name="category" EntityType="ecommerceModel.Store.category" store:Type="Tables" Schema="ecommerce" />
@@ -152,6 +152,7 @@
           <Property Name="TotalProductCostInUserCurrency" Type="decimal" Scale="2" />
           <Property Name="TotalProductCostInConvertedrCurrency" Type="decimal" Scale="2" />
           <Property Name="Discount" Type="decimal" Scale="2" />
+          <Property Name="CreateDate" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -206,7 +207,7 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Heading" Type="varchar" MaxLength="200" />
-          <Property Name="Content" Type="varchar" />
+          <Property Name="Content" Type="varchar" MaxLength="5000" />
           <Property Name="Groupby" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="user">
@@ -214,26 +215,27 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="ContactNumber" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="Address1" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="Address2" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="City" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="State" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="PostCode" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="Country" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="DName" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="DAddress1" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="DAddress2" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="200" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Address1" Type="varchar" MaxLength="200" />
+          <Property Name="Address2" Type="varchar" MaxLength="200" />
+          <Property Name="City" Type="varchar" MaxLength="200" />
+          <Property Name="State" Type="varchar" MaxLength="200" />
+          <Property Name="PostCode" Type="varchar" MaxLength="200" />
+          <Property Name="Country" Type="varchar" MaxLength="200" />
+          <Property Name="DName" Type="varchar" MaxLength="200" />
+          <Property Name="DAddress1" Type="varchar" MaxLength="200" />
+          <Property Name="DAddress2" Type="varchar" MaxLength="200" />
           <Property Name="DCity" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="DState" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="DPostCode" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="DCountry" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DState" Type="varchar" MaxLength="200" />
+          <Property Name="DPostCode" Type="varchar" MaxLength="200" />
+          <Property Name="DCountry" Type="varchar" MaxLength="200" />
           <Property Name="Isadmin" Type="bit" />
         </EntityType>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ecommerceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -305,9 +307,9 @@
           <Property Name="freeDeliveryAmountGhana" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="deliveryGhana" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="freeDeliveryAmountDoller" Type="Decimal" Precision="10" Scale="0" />
-          <Property Type="String" Name="DeliveryDays" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="Default" />
-          <Property Type="Boolean" Name="Active" />
+          <Property Name="DeliveryDays" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Default" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" />
         </EntityType>
         <EntityType Name="deliveryday">
           <Key>
@@ -380,10 +382,11 @@
           <Property Name="DState" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="DPostCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="DCountry" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Type="String" Name="TransId" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Decimal" Name="TotalProductCostInUserCurrency" Precision="10" Scale="2" />
-          <Property Type="Decimal" Name="TotalProductCostInConvertedrCurrency" Precision="10" Scale="2" />
-          <Property Type="Decimal" Name="Discount" Precision="10" Scale="2" />
+          <Property Name="TransId" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="TotalProductCostInUserCurrency" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="TotalProductCostInConvertedrCurrency" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CreateDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -438,7 +441,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Heading" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="Content" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Content" Type="String" MaxLength="5000" Unicode="false" FixedLength="false" />
           <Property Name="Groupby" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="user">
@@ -446,23 +449,23 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="Address1" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="Address2" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="City" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="State" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="PostCode" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="Country" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="DName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="DAddress1" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="DAddress2" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Address1" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="PostCode" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DAddress1" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DAddress2" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="DCity" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="DState" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="DPostCode" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="DCountry" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DState" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DPostCode" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DCountry" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="Isadmin" Type="Boolean" />
         </EntityType>
       </Schema>
@@ -511,9 +514,6 @@
           <EntitySetMapping Name="deliverycharges">
             <EntityTypeMapping TypeName="ecommerceModel.deliverycharge">
               <MappingFragment StoreEntitySet="deliverycharges">
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Default" ColumnName="Default" />
-                <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="deliveryDoller" ColumnName="deliveryDoller" />
                 <ScalarProperty Name="freeDeliveryAmountPound" ColumnName="freeDeliveryAmountPound" />
@@ -527,6 +527,9 @@
                 <ScalarProperty Name="freeDeliveryAmountGhana" ColumnName="freeDeliveryAmountGhana" />
                 <ScalarProperty Name="deliveryGhana" ColumnName="deliveryGhana" />
                 <ScalarProperty Name="freeDeliveryAmountDoller" ColumnName="freeDeliveryAmountDoller" />
+                <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
+                <ScalarProperty Name="Default" ColumnName="Default" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -579,10 +582,6 @@
           <EntitySetMapping Name="orderheaders">
             <EntityTypeMapping TypeName="ecommerceModel.orderheader">
               <MappingFragment StoreEntitySet="orderheader">
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="TotalProductCostInConvertedrCurrency" ColumnName="TotalProductCostInConvertedrCurrency" />
-                <ScalarProperty Name="TotalProductCostInUserCurrency" ColumnName="TotalProductCostInUserCurrency" />
-                <ScalarProperty Name="TransId" ColumnName="TransId" />
                 <ScalarProperty Name="orderID" ColumnName="orderID" />
                 <ScalarProperty Name="Userid" ColumnName="Userid" />
                 <ScalarProperty Name="PermotionCode" ColumnName="PermotionCode" />
@@ -609,6 +608,11 @@
                 <ScalarProperty Name="DState" ColumnName="DState" />
                 <ScalarProperty Name="DPostCode" ColumnName="DPostCode" />
                 <ScalarProperty Name="DCountry" ColumnName="DCountry" />
+                <ScalarProperty Name="TransId" ColumnName="TransId" />
+                <ScalarProperty Name="TotalProductCostInUserCurrency" ColumnName="TotalProductCostInUserCurrency" />
+                <ScalarProperty Name="TotalProductCostInConvertedrCurrency" ColumnName="TotalProductCostInConvertedrCurrency" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

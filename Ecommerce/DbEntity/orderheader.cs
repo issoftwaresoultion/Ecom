@@ -41,9 +41,9 @@ namespace Ecommerce.DbEntity
         public string DPostCode { get; set; }
         public string DCountry { get; set; }
         public string TransId { get; set; }
-       public decimal  TotalProductCostInUserCurrency{get;set;}
-       public decimal TotalProductCostInConvertedrCurrency { get; set; }
-       public decimal Discount { get; set; }
-
+        public Nullable<decimal> TotalProductCostInUserCurrency { get; set; }
+        public Nullable<decimal> TotalProductCostInConvertedrCurrency { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public string CreateDate { get; set; }
     }
 }

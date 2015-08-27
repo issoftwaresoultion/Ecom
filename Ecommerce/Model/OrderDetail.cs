@@ -17,5 +17,8 @@ namespace Ecommerce.Model
         public string ProductName { get; set; }
         public decimal UnitPrice { get; set; }
 
+        public string Length { get; set; }
+        public string Color { get; set; }
+
     }
 }

@@ -35,31 +35,70 @@ namespace Ecommerce
             decimal rate = System.Convert.ToDecimal(values[1]);
             return rate * amount;
         }
+        public static void SendConfermationEmail(string ToEmail, String EmailMessage, String subject, string name)
+        {
+            MailMessage m = new MailMessage("ravikumar318@gmail.com", ToEmail);
+            m.Subject = subject;
+            m.Body = EmailMessage;
+            m.IsBodyHtml = true;
+            m.From = new MailAddress("ravikumar318@gmail.com");
+
+            m.To.Add(new MailAddress(ToEmail));
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            NetworkCredential authinfo = new NetworkCredential("ravikumar318@gmail.com", "s_022113");
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = authinfo;
+            smtp.EnableSsl = true;
+            smtp.Send(m);
+        }
         public static void SendEmail(string ToEmail, String EmailMessage, String subject, string name)
         {
-            MailAddress fromAddress = new MailAddress(ConfigurationManager.AppSettings["Email"].ToString(), ConfigurationManager.AppSettings["WebsiteName"].ToString());
-            MailAddress toAddress = new MailAddress(ToEmail, name);
-            string fromPassword = ConfigurationManager.AppSettings["Password"].ToString();
-            string body = EmailMessage;
-            var smtp = new SmtpClient
-            {
-                Host = ConfigurationManager.AppSettings["Host"],
-                Port = 8889,
-                EnableSsl = false,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                Timeout = 20000
-            };
-            using (var message = new MailMessage(fromAddress, toAddress)
-            {
-                Subject = subject,
-                Body = body,
-                IsBodyHtml=true
 
-            })
+            using (MailMessage mail = new MailMessage())
             {
-                smtp.Send(message);
+                mail.From = new MailAddress("adam_022113@yahoo.com");
+                mail.To.Add(ToEmail);
+                mail.Subject = "Order Confirmed";
+                mail.Body = EmailMessage;
+                mail.IsBodyHtml = true;
+                // Can set to false, if you are sending pure text.
+
+                //mail.Attachments.Add(new Attachment("C:\\SomeFile.txt"));
+                //mail.Attachments.Add(new Attachment("C:\\SomeZip.zip"));
+
+                using (SmtpClient smtp = new SmtpClient("smtp.mail.yahoo.com", 587))
+                {
+                    smtp.Credentials = new NetworkCredential("adam_022113@yahoo.com", "Seesharp#4.0");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
             }
+
+            //MailAddress fromAddress = new MailAddress(ConfigurationManager.AppSettings["Email"].ToString(), "Ecommerce");//website name
+            //MailAddress toAddress = new MailAddress(ToEmail, name);
+            //string fromPassword = ConfigurationManager.AppSettings["Password"].ToString();
+            //string body = "Test";
+            //var smtp = new SmtpClient
+            //{
+            //    Host = ConfigurationManager.AppSettings["Host"],
+            //    Port = 8889,
+            //    EnableSsl = false,
+            //    DeliveryMethod = SmtpDeliveryMethod.Network,
+            //    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+            //    Timeout = 20000
+            //};
+            //using (var message = new MailMessage(fromAddress, toAddress)
+            //{
+            //    Subject = subject,
+            //    Body = body,
+            //    IsBodyHtml = true
+
+            //})
+            //{
+            //    smtp.Send(message);
+            //}
         }
 
         public static string GetResponse(string url)

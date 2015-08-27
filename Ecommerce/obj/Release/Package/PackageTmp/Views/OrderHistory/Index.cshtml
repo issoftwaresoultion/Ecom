@@ -1,0 +1,92 @@
+﻿@model List<Ecommerce.Model.OrderHeader>
+@{
+    ViewBag.Title = "Order History";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<section id="content">
+    <div class="container">
+        <table width="100%">
+            <tr>
+                <td width="75%">
+                    <ol class="breadcrumb">
+                        <li><a href="/Landing/Index">Home</a></li>
+                        <li>Order History</li>
+                    </ol>
+                </td>
+                <td width="25%" style="vertical-align: top;">&nbsp;
+                </td>
+            </tr>
+        </table>
+        @*         <a href="/landing/Index" class="btn btn-primary btn-lg">Continue Shoping</a>*@
+
+        <div id="CartDiv">
+
+
+            <table class="shop_table cart table-striped" style="width: 100%;border-bottom:none;">
+                <thead>
+                    <tr>
+                        <th class="product-remove" style="text-align:left">Order Number</th>
+                        <th class="product-remove" style="text-align:left">Total</th>
+                        <th class="product-remove" style="text-align:left">Ship to</th>
+                        <th class="product-remove" style="text-align:left">OrderDate</th>
+                        <th class="product-remove" style="text-align:left">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>
+                             <a href="/Payment/OrderDetail?orderId=@x.orderID">   @x.orderID</a>
+                            </td>
+
+                            <td>&nbsp;&nbsp;
+                  @if (x.CurrencyChoosenByUser == "Dollar")
+                  {   
+                      @Html.Raw("$" + x.AmountInCurrencyChoosenByuser)                          
+                  }
+                                @if (x.CurrencyChoosenByUser == "Euro")
+                                {   
+                                    @Html.Raw("&euro" + x.AmountInCurrencyChoosenByuser)
+                                }
+                                @if (x.CurrencyChoosenByUser == "Pound")
+                                {   
+                                    @Html.Raw("&pound;" + x.AmountInCurrencyChoosenByuser)
+                                }
+                                @if (x.CurrencyChoosenByUser == "Naira")
+                                {   
+                                    @Html.Raw("&#8358;" + x.AmountInCurrencyChoosenByuser)
+                                }
+                                @if (x.CurrencyChoosenByUser == "Kwanza")
+                                {   
+                                    @Html.Raw("Kz" + x.AmountInCurrencyChoosenByuser)
+                                }
+                                @if (x.CurrencyChoosenByUser == "Cedi")
+                                {   
+                                    @Html.Raw("GH₵" + x.AmountInCurrencyChoosenByuser)
+                                }
+
+                            </td>
+                            <td>&nbsp;&nbsp; @x.Name
+                            </td>
+                            <td>&nbsp;&nbsp; @x.CreatedDate
+
+                            </td>
+
+                            <td>&nbsp;&nbsp; @x.OrderStatus
+                            </td>
+
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</section>

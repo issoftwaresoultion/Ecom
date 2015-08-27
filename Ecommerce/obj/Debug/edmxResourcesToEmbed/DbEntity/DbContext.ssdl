@@ -147,6 +147,7 @@
     <Property Name="TotalProductCostInUserCurrency" Type="decimal" Scale="2" />
     <Property Name="TotalProductCostInConvertedrCurrency" Type="decimal" Scale="2" />
     <Property Name="Discount" Type="decimal" Scale="2" />
+    <Property Name="CreateDate" Type="varchar" MaxLength="45" />
   </EntityType>
   <EntityType Name="product">
     <Key>
@@ -201,7 +202,7 @@
     </Key>
     <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Heading" Type="varchar" MaxLength="200" />
-    <Property Name="Content" Type="varchar" />
+    <Property Name="Content" Type="varchar" MaxLength="5000" />
     <Property Name="Groupby" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="user">
@@ -209,23 +210,23 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="ContactNumber" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="20" />
-    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="Address1" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="Address2" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="City" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="State" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="PostCode" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="Country" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="DName" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="DAddress1" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="DAddress2" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Email" Type="varchar" MaxLength="200" />
+    <Property Name="ContactNumber" Type="varchar" MaxLength="200" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Address1" Type="varchar" MaxLength="200" />
+    <Property Name="Address2" Type="varchar" MaxLength="200" />
+    <Property Name="City" Type="varchar" MaxLength="200" />
+    <Property Name="State" Type="varchar" MaxLength="200" />
+    <Property Name="PostCode" Type="varchar" MaxLength="200" />
+    <Property Name="Country" Type="varchar" MaxLength="200" />
+    <Property Name="DName" Type="varchar" MaxLength="200" />
+    <Property Name="DAddress1" Type="varchar" MaxLength="200" />
+    <Property Name="DAddress2" Type="varchar" MaxLength="200" />
     <Property Name="DCity" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="DState" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="DPostCode" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="DCountry" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DState" Type="varchar" MaxLength="200" />
+    <Property Name="DPostCode" Type="varchar" MaxLength="200" />
+    <Property Name="DCountry" Type="varchar" MaxLength="200" />
     <Property Name="Isadmin" Type="bit" />
   </EntityType>
 </Schema>

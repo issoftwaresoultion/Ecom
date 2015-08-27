@@ -41,9 +41,6 @@
     <EntitySetMapping Name="deliverycharges">
       <EntityTypeMapping TypeName="ecommerceModel.deliverycharge">
         <MappingFragment StoreEntitySet="deliverycharges">
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Default" ColumnName="Default" />
-          <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="deliveryDoller" ColumnName="deliveryDoller" />
           <ScalarProperty Name="freeDeliveryAmountPound" ColumnName="freeDeliveryAmountPound" />
@@ -57,6 +54,9 @@
           <ScalarProperty Name="freeDeliveryAmountGhana" ColumnName="freeDeliveryAmountGhana" />
           <ScalarProperty Name="deliveryGhana" ColumnName="deliveryGhana" />
           <ScalarProperty Name="freeDeliveryAmountDoller" ColumnName="freeDeliveryAmountDoller" />
+          <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
+          <ScalarProperty Name="Default" ColumnName="Default" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -109,10 +109,6 @@
     <EntitySetMapping Name="orderheaders">
       <EntityTypeMapping TypeName="ecommerceModel.orderheader">
         <MappingFragment StoreEntitySet="orderheader">
-          <ScalarProperty Name="Discount" ColumnName="Discount" />
-          <ScalarProperty Name="TotalProductCostInConvertedrCurrency" ColumnName="TotalProductCostInConvertedrCurrency" />
-          <ScalarProperty Name="TotalProductCostInUserCurrency" ColumnName="TotalProductCostInUserCurrency" />
-          <ScalarProperty Name="TransId" ColumnName="TransId" />
           <ScalarProperty Name="orderID" ColumnName="orderID" />
           <ScalarProperty Name="Userid" ColumnName="Userid" />
           <ScalarProperty Name="PermotionCode" ColumnName="PermotionCode" />
@@ -139,6 +135,11 @@
           <ScalarProperty Name="DState" ColumnName="DState" />
           <ScalarProperty Name="DPostCode" ColumnName="DPostCode" />
           <ScalarProperty Name="DCountry" ColumnName="DCountry" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="TotalProductCostInUserCurrency" ColumnName="TotalProductCostInUserCurrency" />
+          <ScalarProperty Name="TotalProductCostInConvertedrCurrency" ColumnName="TotalProductCostInConvertedrCurrency" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -52,9 +52,12 @@ namespace Ecommerce.Controllers
             else
             {
                 Session["OrderId"] = CartDal.SaveOrUpdateCartAsOrder((CartModel)Session["Cart"], Convert.ToString(Session["currency"]), user.id, Convert.ToInt32(Session["OrderId"]));
-
             }
-            
+             var OrderId = new HttpCookie("OrderId")
+                {
+                    Value = Session["OrderId"].ToString()
+                };
+            Response.SetCookie(OrderId);
             return View();
         }
 

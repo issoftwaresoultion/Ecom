@@ -125,13 +125,16 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\LengthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReviewAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\FrontBaseController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
+    <Compile Include="Controllers\OrderHistoryController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShareController.cs" />
@@ -151,70 +154,71 @@
     <Compile Include="DataAccess\ReviewDal.cs" />
     <Compile Include="DataAccess\StaticPagesDal.cs" />
     <Compile Include="DbEntity\brand.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\category.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\color.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\coupan.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbEntity\dbcontext.Context.cs">
+    <Compile Include="DbEntity\Dbcontext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbcontext.Context.tt</DependentUpon>
+      <DependentUpon>Dbcontext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbEntity\dbcontext.cs">
+    <Compile Include="DbEntity\Dbcontext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbEntity\dbcontext.Designer.cs">
+    <Compile Include="DbEntity\Dbcontext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbcontext.edmx</DependentUpon>
+      <DependentUpon>Dbcontext.edmx</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\deliverycharge.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\deliveryday.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\image.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\length.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\newletter.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\orderdetail.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\orderheader.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\product.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\productpricing.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\review.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\staticpage.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity\user.cs">
-      <DependentUpon>dbcontext.tt</DependentUpon>
+      <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\adminUser.cs" />
     <Compile Include="Model\Classes\ReCalculateCart.cs" />
+    <Compile Include="Model\ContactUs.cs" />
     <Compile Include="Model\OrderDetail.cs" />
     <Compile Include="Model\OrderHeader.cs" />
     <Compile Include="Model\ReviewModel.cs" />
@@ -1790,11 +1794,15 @@
     <Content Include="img\CartStep1.JPG" />
     <Content Include="img\CheckOutStep2.PNG" />
     <Content Include="img\Euro.png" />
+    <Content Include="img\facebook.png" />
     <Content Include="img\Ghana.png" />
     <Content Include="img\Golden.png" />
     <Content Include="img\Nigeria.png" />
     <Content Include="img\PaymentMethod.PNG" />
     <Content Include="img\paypal.png" />
+    <Content Include="img\pinterest.jpg" />
+    <Content Include="img\thanks.jpg" />
+    <Content Include="img\twitter.png" />
     <Content Include="img\UK.png" />
     <Content Include="img\USA.png" />
     <Content Include="ProductImages\HumanHair.jpg" />
@@ -1808,25 +1816,25 @@
     <Content Include="Areas\Admin\Views\User\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ReviewAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ReviewAdmin\Create.cshtml" />
-    <EntityDeploy Include="DbEntity\dbcontext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dbcontext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="DbEntity\dbcontext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbcontext.edmx</DependentUpon>
-      <LastGenOutput>dbcontext.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DbEntity\dbcontext.edmx.diagram">
-      <DependentUpon>dbcontext.edmx</DependentUpon>
-    </Content>
-    <Content Include="DbEntity\dbcontext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbcontext.edmx</DependentUpon>
-      <LastGenOutput>dbcontext.cs</LastGenOutput>
-    </Content>
     <Content Include="Areas\Admin\Views\AdminStaticpage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminStaticpage\Create.cshtml" />
+    <EntityDeploy Include="DbEntity\Dbcontext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Dbcontext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DbEntity\Dbcontext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Dbcontext.edmx</DependentUpon>
+      <LastGenOutput>Dbcontext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DbEntity\Dbcontext.edmx.diagram">
+      <DependentUpon>Dbcontext.edmx</DependentUpon>
+    </Content>
+    <Content Include="DbEntity\Dbcontext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Dbcontext.edmx</DependentUpon>
+      <LastGenOutput>Dbcontext.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\Ecommerse.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1898,6 +1906,11 @@
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\Status.cshtml" />
     <Content Include="Views\Shared\Faq.cshtml" />
+    <Content Include="Views\OrderHistory\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\About\ContactUs.cshtml" />
+    <Content Include="Views\Payment\Test.cshtml" />
+    <Content Include="Views\Payment\PreStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

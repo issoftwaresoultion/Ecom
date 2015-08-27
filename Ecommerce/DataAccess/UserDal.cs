@@ -70,7 +70,7 @@ namespace Ecommerce.DataAccess
                 User.DState = obj.DState;
                 User.Email = obj.Email;
                 User.Name = obj.Name;
-                User.Password = obj.Password;
+                //User.Password = obj.Password;
                 User.PostCode = obj.PostCode;
                 User.State = obj.State;
                 User.Isadmin = obj.Isadmin;

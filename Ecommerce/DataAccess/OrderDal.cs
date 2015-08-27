@@ -2,6 +2,7 @@
 using Ecommerce.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Ecommerce.DataAccess
                 var Order = new DbEntity.orderheader();
                 Order.ActualAmountPaid = obj.ActualAmountPaid;
                 Order.AmountInCurrencyChoosenByuser = obj.ActualAmountPaid;
-                Order.CreatedDate = obj.CreatedDate;
+                Order.CreatedDate = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
                 Order.CurrencyChoosenByUser = obj.CurrencyChoosenByUser;
                 Order.CurrencyInWhichAmmountPaid = obj.CurrencyInWhichAmmountPaid;
                 Order.OrderStatus = obj.OrderStatus;
@@ -58,7 +59,7 @@ namespace Ecommerce.DataAccess
             var obj = context.orderheaders.Where(m => m.orderID == id).FirstOrDefault();
             Order.ActualAmountPaid = obj.ActualAmountPaid;
             Order.AmountInCurrencyChoosenByuser = obj.ActualAmountPaid;
-            Order.CreatedDate = obj.CreatedDate;
+            Order.CreatedDate = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
             Order.CurrencyChoosenByUser = obj.CurrencyChoosenByUser;
             Order.CurrencyInWhichAmmountPaid = obj.CurrencyInWhichAmmountPaid;
             Order.OrderStatus = obj.OrderStatus;
@@ -67,9 +68,9 @@ namespace Ecommerce.DataAccess
             Order.Userid = obj.Userid;
             Order.orderID = obj.orderID;
             Order.Name = obj.Name;
-            Order.TotalProductCostInUserCurrency = obj.TotalProductCostInUserCurrency;
-            Order.TotalProductCostInConvertedrCurrency = obj.TotalProductCostInConvertedrCurrency;
-            Order.Discount = obj.Discount == null ? 0 : obj.Discount;
+            Order.TotalProductCostInUserCurrency = Convert.ToDecimal(obj.TotalProductCostInUserCurrency);
+            Order.TotalProductCostInConvertedrCurrency = Convert.ToDecimal(obj.TotalProductCostInConvertedrCurrency);
+            Order.Discount = Convert.ToDecimal(obj.Discount);
             Order.DeliveryCharges = obj.DeliveryCharges;
             Order.Address1 = obj.Address1;
             Order.Address2 = obj.Address2;
@@ -86,11 +87,26 @@ namespace Ecommerce.DataAccess
             Order.Name = obj.Name;
             Order.PostCode = obj.PostCode;
             Order.State = obj.State;
+            Order.CreatedDate = obj.CreateDate;
 
             Order.OrderDetail = new List<OrderDetail>();
             Order.OrderDetail = OrderDetailDal.GetByOrderId(Order.orderID, obj.CurrencyChoosenByUser);
             return Order;
         }
+
+        public static List<OrderHeader> GetOrderUserId(int UserId)
+        {
+            List<int> OrderIds = new List<int>();
+             List<OrderHeader> ListOrder = new List<OrderHeader>();
+            var context = new Ecommerce.DbEntity.ecommerceEntities();
+            OrderIds = context.orderheaders.Where(m => m.Userid == UserId).Select(m=>m.orderID).ToList();
+            foreach (var x in OrderIds)
+            {
+                ListOrder.Add(GetByOrderId(x));
+            }
+            return ListOrder;
+        }
+
 
         public static bool UpdateUserAddressInOrder(OrderHeader obj)
         {
@@ -162,7 +178,6 @@ namespace Ecommerce.DataAccess
             }
             return orderId;
         }
-
         public static bool UpdatePaymentStatusInOrder(int orderid,string PaymantStatus,string TransId)
         {
             bool check = true;

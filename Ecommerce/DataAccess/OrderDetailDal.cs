@@ -47,7 +47,11 @@ namespace Ecommerce.DataAccess
                 _orderd.ProductPriceId = obj.ProductPriceId;
                 _orderd.Quantity = obj.Quantity;
                 _orderd.ProductName = obj.ProductName;
-                _orderd.UnitPrice = ProductPricingDal.GetPriceByProductPriceId(obj.ProductPriceId, CurrencySeletedByUser).Unitprice;
+                var ProductPricing = ProductPricingDal.GetPriceByProductPriceId(obj.ProductPriceId, CurrencySeletedByUser);
+                _orderd.UnitPrice = ProductPricing.Unitprice;
+                _orderd.Length = ProductPricing.LengthName;
+                _orderd.Color = ProductPricing.ColorName;
+               
                 _OrderDetail.Add(_orderd);
             }
             return _OrderDetail;

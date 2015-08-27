@@ -22,11 +22,12 @@
 
         <div id="CartDiv">
 
-
+            @if(ViewBag.history != "true")
+            {
             <div style="height: 50px; border-bottom: 1px solid gray;">
                 <h1 style="text-align: center;">Thanks for your order</h1>
             </div>
-
+            }
             <div style="height: 25px; padding-top: 5px; background-color: #fd4a7d; color: white; text-align: center">
                 Order No : @Model.orderID
             </div>
@@ -313,6 +314,8 @@
                 </div>
             </div>
             <div style="clear: both"></div>
+            @if(ViewBag.history != "true")
+            {
             <div>
                 <strong>Thanks again for your order.</strong><br />
                 We'll send another email to acknowledge that we are processing your order.
@@ -330,7 +333,7 @@
                 <br />
                 <a href="#">Track my orderSuggestionsReturnsFAQs </a>
             </div>
-
+            }
 
 
         </div>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c2287a0ad9d44960bde8d964dbd64588" Name="Diagram1">
+      <Diagram DiagramId="00963545591d4f43b69db0fb6cb3d632" Name="Diagram1">
         <EntityTypeShape EntityType="ecommerceModel.brand" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ecommerceModel.category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ecommerceModel.color" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="ecommerceModel.orderdetail" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ecommerceModel.orderheader" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ecommerceModel.product" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ecommerceModel.productpricing" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommerceModel.productpricing" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ecommerceModel.review" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ecommerceModel.staticpage" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ecommerceModel.user" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />

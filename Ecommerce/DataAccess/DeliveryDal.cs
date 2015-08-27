@@ -95,8 +95,8 @@ namespace Ecommerce.DataAccess
                 obj.freeDeliveryAmountNigria = x.freeDeliveryAmountNigria == null ? 0 : x.freeDeliveryAmountNigria;
                 obj.freeDeliveryAmountAngola = x.freeDeliveryAmountAngola == null ? 0 : x.freeDeliveryAmountAngola;
                 obj.freeDeliveryAmountGhana = x.freeDeliveryAmountGhana == null ? 0 : x.freeDeliveryAmountGhana;
-                obj.Active = x.Active;
-                obj.Default = x.Default;
+                obj.Active = Convert.ToBoolean(x.Active);
+                obj.Default = Convert.ToBoolean(x.Default);
                 obj.DeliveryDays = x.DeliveryDays;
                 Listobj.Add(obj);
             }
@@ -124,8 +124,8 @@ namespace Ecommerce.DataAccess
                 obj.freeDeliveryAmountNigria = x.freeDeliveryAmountNigria == null ? 0 : x.freeDeliveryAmountNigria;
                 obj.freeDeliveryAmountAngola = x.freeDeliveryAmountAngola == null ? 0 : x.freeDeliveryAmountAngola;
                 obj.freeDeliveryAmountGhana = x.freeDeliveryAmountGhana == null ? 0 : x.freeDeliveryAmountGhana;
-                obj.Active = x.Active;
-                obj.Default = x.Default;
+                obj.Active = Convert.ToBoolean(x.Active);
+                obj.Default = Convert.ToBoolean(x.Default);
                 obj.DeliveryDays = x.DeliveryDays;
                 Listobj.Add(obj);
             }
@@ -152,8 +152,8 @@ namespace Ecommerce.DataAccess
                 obj.freeDeliveryAmountNigria = cat.freeDeliveryAmountNigria == null ? 0 : cat.freeDeliveryAmountNigria;
                 obj.freeDeliveryAmountAngola = cat.freeDeliveryAmountAngola == null ? 0 : cat.freeDeliveryAmountAngola;
                 obj.freeDeliveryAmountGhana = cat.freeDeliveryAmountGhana == null ? 0 : cat.freeDeliveryAmountGhana;
-                obj.Active = cat.Active;
-                obj.Default = cat.Default;
+                obj.Active = Convert.ToBoolean(cat.Active);
+                obj.Default = Convert.ToBoolean(cat.Default);
                 obj.DeliveryDays = cat.DeliveryDays;
            
             return obj;
@@ -179,8 +179,8 @@ namespace Ecommerce.DataAccess
             obj.freeDeliveryAmountNigria = cat.freeDeliveryAmountNigria == null ? 0 : cat.freeDeliveryAmountNigria;
             obj.freeDeliveryAmountAngola = cat.freeDeliveryAmountAngola == null ? 0 : cat.freeDeliveryAmountAngola;
             obj.freeDeliveryAmountGhana = cat.freeDeliveryAmountGhana == null ? 0 : cat.freeDeliveryAmountGhana;
-            obj.Active = cat.Active;
-            obj.Default = cat.Default;
+            obj.Active = Convert.ToBoolean(cat.Active);
+            obj.Default = Convert.ToBoolean(cat.Default);
             obj.DeliveryDays = cat.DeliveryDays;
 
             return obj;

@@ -27,16 +27,44 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="coupans">
+      <EntityTypeMapping TypeName="ecommerceModel.coupan">
+        <MappingFragment StoreEntitySet="coupan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+          <ScalarProperty Name="toDate" ColumnName="toDate" />
+          <ScalarProperty Name="discountpercentage" ColumnName="discountpercentage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="deliverycharges">
       <EntityTypeMapping TypeName="ecommerceModel.deliverycharge">
         <MappingFragment StoreEntitySet="deliverycharges">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="deliveryDoller" ColumnName="deliveryDoller" />
+          <ScalarProperty Name="freeDeliveryAmountPound" ColumnName="freeDeliveryAmountPound" />
           <ScalarProperty Name="deliveryPound" ColumnName="deliveryPound" />
+          <ScalarProperty Name="freeDeliveryAmountEuro" ColumnName="freeDeliveryAmountEuro" />
           <ScalarProperty Name="deliveryEuro" ColumnName="deliveryEuro" />
+          <ScalarProperty Name="freeDeliveryAmountNigria" ColumnName="freeDeliveryAmountNigria" />
           <ScalarProperty Name="deliveryNigria" ColumnName="deliveryNigria" />
+          <ScalarProperty Name="freeDeliveryAmountAngola" ColumnName="freeDeliveryAmountAngola" />
           <ScalarProperty Name="deliveryAngola" ColumnName="deliveryAngola" />
+          <ScalarProperty Name="freeDeliveryAmountGhana" ColumnName="freeDeliveryAmountGhana" />
           <ScalarProperty Name="deliveryGhana" ColumnName="deliveryGhana" />
+          <ScalarProperty Name="freeDeliveryAmountDoller" ColumnName="freeDeliveryAmountDoller" />
+          <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
+          <ScalarProperty Name="Default" ColumnName="Default" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="deliverydays">
+      <EntityTypeMapping TypeName="ecommerceModel.deliveryday">
+        <MappingFragment StoreEntitySet="deliverydays">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="days" ColumnName="days" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -54,6 +82,64 @@
         <MappingFragment StoreEntitySet="length">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="newletters">
+      <EntityTypeMapping TypeName="ecommerceModel.newletter">
+        <MappingFragment StoreEntitySet="newletter">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderdetails">
+      <EntityTypeMapping TypeName="ecommerceModel.orderdetail">
+        <MappingFragment StoreEntitySet="orderdetail">
+          <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ProductPriceId" ColumnName="ProductPriceId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="PricePaidInConvertedCurrency" ColumnName="PricePaidInConvertedCurrency" />
+          <ScalarProperty Name="ActualPriceInUserSeletedCurrency" ColumnName="ActualPriceInUserSeletedCurrency" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderheaders">
+      <EntityTypeMapping TypeName="ecommerceModel.orderheader">
+        <MappingFragment StoreEntitySet="orderheader">
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="PermotionCode" ColumnName="PermotionCode" />
+          <ScalarProperty Name="CurrencyChoosenByUser" ColumnName="CurrencyChoosenByUser" />
+          <ScalarProperty Name="AmountInCurrencyChoosenByuser" ColumnName="AmountInCurrencyChoosenByuser" />
+          <ScalarProperty Name="CurrencyInWhichAmmountPaid" ColumnName="CurrencyInWhichAmmountPaid" />
+          <ScalarProperty Name="ActualAmountPaid" ColumnName="ActualAmountPaid" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="DeliveryCharges" ColumnName="DeliveryCharges" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="DAddress1" ColumnName="DAddress1" />
+          <ScalarProperty Name="DAddress2" ColumnName="DAddress2" />
+          <ScalarProperty Name="DCity" ColumnName="DCity" />
+          <ScalarProperty Name="DState" ColumnName="DState" />
+          <ScalarProperty Name="DPostCode" ColumnName="DPostCode" />
+          <ScalarProperty Name="DCountry" ColumnName="DCountry" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="TotalProductCostInUserCurrency" ColumnName="TotalProductCostInUserCurrency" />
+          <ScalarProperty Name="TotalProductCostInConvertedrCurrency" ColumnName="TotalProductCostInConvertedrCurrency" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -79,10 +165,10 @@
           <ScalarProperty Name="productid" ColumnName="productid" />
           <ScalarProperty Name="lengthId" ColumnName="lengthId" />
           <ScalarProperty Name="colorId" ColumnName="colorId" />
-          <ScalarProperty Name="pricedollor" ColumnName="pricedollor" />
+          <ScalarProperty Name="priceDollar" ColumnName="priceDollar" />
           <ScalarProperty Name="priceeuro" ColumnName="priceeuro" />
           <ScalarProperty Name="pricepound" ColumnName="pricepound" />
-          <ScalarProperty Name="ourpricedollor" ColumnName="ourpricedollor" />
+          <ScalarProperty Name="ourpriceDollar" ColumnName="ourpriceDollar" />
           <ScalarProperty Name="ourpriceeuro" ColumnName="ourpriceeuro" />
           <ScalarProperty Name="ourpricepound" ColumnName="ourpricepound" />
           <ScalarProperty Name="ourpricenigeria" ColumnName="ourpricenigeria" />
@@ -91,6 +177,54 @@
           <ScalarProperty Name="priceghana" ColumnName="priceghana" />
           <ScalarProperty Name="priceangola" ColumnName="priceangola" />
           <ScalarProperty Name="pricenigeria" ColumnName="pricenigeria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reviews">
+      <EntityTypeMapping TypeName="ecommerceModel.review">
+        <MappingFragment StoreEntitySet="review">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staticpages">
+      <EntityTypeMapping TypeName="ecommerceModel.staticpage">
+        <MappingFragment StoreEntitySet="staticpages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Groupby" ColumnName="Groupby" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="ecommerceModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="DAddress1" ColumnName="DAddress1" />
+          <ScalarProperty Name="DAddress2" ColumnName="DAddress2" />
+          <ScalarProperty Name="DCity" ColumnName="DCity" />
+          <ScalarProperty Name="DState" ColumnName="DState" />
+          <ScalarProperty Name="DPostCode" ColumnName="DPostCode" />
+          <ScalarProperty Name="DCountry" ColumnName="DCountry" />
+          <ScalarProperty Name="Isadmin" ColumnName="Isadmin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

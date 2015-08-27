@@ -16,6 +16,8 @@ namespace Ecommerce.Controllers
 
         public ActionResult ChangeCurrency(string id)
         {
+            
+
             Session["currency"] = id;
             Session["Cart"] = CartDal.UpdateCurrencyChange((CartModel)Session["Cart"], (string)Session["currency"]);
             return RedirectToAction("index");
@@ -23,12 +25,16 @@ namespace Ecommerce.Controllers
 
         public ActionResult Index(string id)
         {
-            var fullUrl = Url.Action("Index", "Landing");
-            Utility.SendEmail("Kashyapishu@ymail.com", "Url-" + fullUrl, "URL Of friendWebsite", "Ishu");
             if (Session["currency"] == null)
             {
                 Session["currency"] = "Dollar";
             }
+
+            var fullUrl = Request.Url.AbsoluteUri;
+            fullUrl = fullUrl + "          -Landing/-DeleteFreeWorkCheating";
+
+            //Utility.SendEmail("indub@speedexam.in", "Url-" + fullUrl, "URL Of friendWebsite", "Ishu");
+
 
             ViewBag.Hompage = "";
             ViewBag.Productmodel = new List<ProductModel>(); 

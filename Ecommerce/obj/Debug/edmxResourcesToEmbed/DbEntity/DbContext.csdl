@@ -68,9 +68,9 @@
     <Property Name="freeDeliveryAmountGhana" Type="Decimal" Precision="10" Scale="0" />
     <Property Name="deliveryGhana" Type="Decimal" Precision="10" Scale="0" />
     <Property Name="freeDeliveryAmountDoller" Type="Decimal" Precision="10" Scale="0" />
-    <Property Type="String" Name="DeliveryDays" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Default" />
-    <Property Type="Boolean" Name="Active" />
+    <Property Name="DeliveryDays" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Default" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" />
   </EntityType>
   <EntityType Name="deliveryday">
     <Key>
@@ -143,10 +143,11 @@
     <Property Name="DState" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="DPostCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="DCountry" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-    <Property Type="String" Name="TransId" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Decimal" Name="TotalProductCostInUserCurrency" Precision="10" Scale="2" />
-    <Property Type="Decimal" Name="TotalProductCostInConvertedrCurrency" Precision="10" Scale="2" />
-    <Property Type="Decimal" Name="Discount" Precision="10" Scale="2" />
+    <Property Name="TransId" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="TotalProductCostInUserCurrency" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalProductCostInConvertedrCurrency" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="CreateDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
   </EntityType>
   <EntityType Name="product">
     <Key>
@@ -201,7 +202,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
     <Property Name="Heading" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="Content" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <Property Name="Content" Type="String" MaxLength="5000" Unicode="false" FixedLength="false" />
     <Property Name="Groupby" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
   </EntityType>
   <EntityType Name="user">
@@ -209,23 +210,23 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="Address1" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="Address2" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="City" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="State" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="PostCode" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="Country" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="DName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="DAddress1" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="DAddress2" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Address1" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Address2" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="PostCode" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DAddress1" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DAddress2" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
     <Property Name="DCity" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="DState" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="DPostCode" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="DCountry" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DState" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DPostCode" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DCountry" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
     <Property Name="Isadmin" Type="Boolean" />
   </EntityType>
 </Schema>
