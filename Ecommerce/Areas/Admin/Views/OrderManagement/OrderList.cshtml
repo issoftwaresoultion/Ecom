@@ -1,0 +1,69 @@
+﻿@model List<Ecommerce.Model.OrderHeader>
+@{
+    string cssclass = "gradeA odd";
+}
+
+<table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info">
+    <thead>
+        <tr role="row">
+            <th tabindex="0" aria-controls="dataTables-example" style="width: 10%;">Order Number</th>
+            <th tabindex="0" aria-controls="dataTables-example" style="width: 30%;">Total</th>
+            <th tabindex="0" aria-controls="dataTables-example" style="width: 20%;">Ship to</th>
+            <th tabindex="0" aria-controls="dataTables-example" style="width: 20%;">Trans Id</th>
+            <th tabindex="0" aria-controls="dataTables-example" style="width: 40%;">Date</th>
+            <th tabindex="0" aria-controls="dataTables-example" style="width: 40%;">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            if (i % 2 == 0)
+            {
+                cssclass = "gradeA even";
+            }
+            else
+            {
+                cssclass = "gradeA odd";
+            }
+            <tr class="@cssclass" role="row">
+                <td class=""><a href="/admin/OrderManagement/GetOrderDetail/@Model[i].orderID">@Model[i].orderID</a></td>
+                <td>
+                    @if (Model[i].CurrencyChoosenByUser == "Dollar")
+                    {   
+                        @Html.Raw("$" + Model[i].AmountInCurrencyChoosenByuser)                          
+                    }
+                    @if (Model[i].CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + Model[i].AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model[i].CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + Model[i].AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model[i].CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + Model[i].AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model[i].CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + Model[i].AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model[i].CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + Model[i].AmountInCurrencyChoosenByuser)
+                    }
+                </td>
+                <td>@Model[i].Name</td>
+                <td>
+                @Model[i].TransId</td>
+
+                <td>
+                @Model[i].CreatedDate</td>
+                <td>
+                @Model[i].OrderStatus</td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>

@@ -51,92 +51,95 @@ namespace Ecommerce.DataAccess
             return orderId;
 
         }
-
         public static OrderHeader GetByOrderId(int id)
         {
             OrderHeader Order = new OrderHeader();
             var context = new Ecommerce.DbEntity.ecommerceEntities();
             var obj = context.orderheaders.Where(m => m.orderID == id).FirstOrDefault();
-            Order.ActualAmountPaid = obj.ActualAmountPaid;
-            Order.AmountInCurrencyChoosenByuser = obj.ActualAmountPaid;
-            Order.CreatedDate = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-            Order.CurrencyChoosenByUser = obj.CurrencyChoosenByUser;
-            Order.CurrencyInWhichAmmountPaid = obj.CurrencyInWhichAmmountPaid;
-            Order.OrderStatus = obj.OrderStatus;
-            Order.PaymentStatus = obj.PaymentStatus;
-            Order.PermotionCode = obj.PermotionCode;
-            Order.Userid = obj.Userid;
-            Order.orderID = obj.orderID;
-            Order.Name = obj.Name;
-            Order.TotalProductCostInUserCurrency = Convert.ToDecimal(obj.TotalProductCostInUserCurrency);
-            Order.TotalProductCostInConvertedrCurrency = Convert.ToDecimal(obj.TotalProductCostInConvertedrCurrency);
-            Order.Discount = Convert.ToDecimal(obj.Discount);
-            Order.DeliveryCharges = obj.DeliveryCharges;
-            Order.Address1 = obj.Address1;
-            Order.Address2 = obj.Address2;
-            Order.City = obj.City;
-            Order.ContactNumber = obj.ContactNumber;
-            Order.Country = obj.Country;
-            Order.DAddress1 = obj.DAddress1;
-            Order.DAddress2 = obj.DAddress2;
-            Order.DCity = obj.DCity;
-            Order.DCountry = obj.DCountry;
-            Order.DPostCode = obj.DPostCode;
-            Order.DState = obj.DState;
-            Order.Email = obj.Email;
-            Order.Name = obj.Name;
-            Order.PostCode = obj.PostCode;
-            Order.State = obj.State;
-            Order.CreatedDate = obj.CreateDate;
-
-            Order.OrderDetail = new List<OrderDetail>();
-            Order.OrderDetail = OrderDetailDal.GetByOrderId(Order.orderID, obj.CurrencyChoosenByUser);
-            return Order;
+            if (obj != null)
+            {
+                Order.ActualAmountPaid = obj.ActualAmountPaid;
+                Order.AmountInCurrencyChoosenByuser = obj.ActualAmountPaid;
+                Order.CreatedDate = obj.CreatedDate;
+                Order.CurrencyChoosenByUser = obj.CurrencyChoosenByUser;
+                Order.CurrencyInWhichAmmountPaid = obj.CurrencyInWhichAmmountPaid;
+                Order.OrderStatus = obj.OrderStatus;
+                Order.PaymentStatus = obj.PaymentStatus;
+                Order.PermotionCode = obj.PermotionCode;
+                Order.Userid = obj.Userid;
+                Order.orderID = obj.orderID;
+                Order.Name = obj.Name;
+                Order.TotalProductCostInUserCurrency = Convert.ToDecimal(obj.TotalProductCostInUserCurrency);
+                Order.TotalProductCostInConvertedrCurrency = Convert.ToDecimal(obj.TotalProductCostInConvertedrCurrency);
+                Order.Discount = Convert.ToDecimal(obj.Discount);
+                Order.DeliveryCharges = obj.DeliveryCharges;
+                Order.Address1 = obj.Address1;
+                Order.Address2 = obj.Address2;
+                Order.City = obj.City;
+                Order.ContactNumber = obj.ContactNumber;
+                Order.Country = obj.Country;
+                Order.DAddress1 = obj.DAddress1;
+                Order.DAddress2 = obj.DAddress2;
+                Order.DCity = obj.DCity;
+                Order.DCountry = obj.DCountry;
+                Order.DPostCode = obj.DPostCode;
+                Order.DState = obj.DState;
+                Order.Email = obj.Email;
+                Order.Name = obj.Name;
+                Order.PostCode = obj.PostCode;
+                Order.State = obj.State;
+                Order.TrackingNumber = obj.TrackingNumber;
+                Order.TransId = obj.TransId;
+                Order.OrderDetail = new List<OrderDetail>();
+                Order.OrderDetail = OrderDetailDal.GetByOrderId(Order.orderID, obj.CurrencyChoosenByUser);
+            }
+            else
+            {
+                Order = new OrderHeader();
+            }
+              return Order;
         }
-
         public static List<OrderHeader> GetOrderUserId(int UserId)
         {
             List<int> OrderIds = new List<int>();
-             List<OrderHeader> ListOrder = new List<OrderHeader>();
+            List<OrderHeader> ListOrder = new List<OrderHeader>();
             var context = new Ecommerce.DbEntity.ecommerceEntities();
-            OrderIds = context.orderheaders.Where(m => m.Userid == UserId).Select(m=>m.orderID).ToList();
+            OrderIds = context.orderheaders.Where(m => m.Userid == UserId).Select(m => m.orderID).ToList();
             foreach (var x in OrderIds)
             {
                 ListOrder.Add(GetByOrderId(x));
             }
             return ListOrder;
         }
-
-
         public static bool UpdateUserAddressInOrder(OrderHeader obj)
         {
-             bool check = true;
-             try
-             {
-                 var context = new Ecommerce.DbEntity.ecommerceEntities();
-                 var Order = context.orderheaders.Where(m => m.orderID == obj.orderID).FirstOrDefault();
-                 Order.Address1 = obj.Address1;
-                 Order.Address2 = obj.Address2;
-                 Order.City = obj.City;
-                 Order.ContactNumber = obj.ContactNumber;
-                 Order.Country = obj.Country;
-                 Order.DAddress1 = obj.DAddress1;
-                 Order.DAddress2 = obj.DAddress2;
-                 Order.DCity = obj.DCity;
-                 Order.DCountry = obj.DCountry;
-                 Order.DPostCode = obj.DPostCode;
-                 Order.DState = obj.DState;
-                 Order.Email = obj.Email;
-                 Order.Name = obj.Name;
-                 Order.PostCode = obj.PostCode;
-                 Order.State = obj.State;
-                 context.SaveChanges();
-             }
-             catch (Exception ex)
-             {
-                 check = false;
-             }
-             return check;
+            bool check = true;
+            try
+            {
+                var context = new Ecommerce.DbEntity.ecommerceEntities();
+                var Order = context.orderheaders.Where(m => m.orderID == obj.orderID).FirstOrDefault();
+                Order.Address1 = obj.Address1;
+                Order.Address2 = obj.Address2;
+                Order.City = obj.City;
+                Order.ContactNumber = obj.ContactNumber;
+                Order.Country = obj.Country;
+                Order.DAddress1 = obj.DAddress1;
+                Order.DAddress2 = obj.DAddress2;
+                Order.DCity = obj.DCity;
+                Order.DCountry = obj.DCountry;
+                Order.DPostCode = obj.DPostCode;
+                Order.DState = obj.DState;
+                Order.Email = obj.Email;
+                Order.Name = obj.Name;
+                Order.PostCode = obj.PostCode;
+                Order.State = obj.State;
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                check = false;
+            }
+            return check;
         }
         internal static int Update(OrderHeader obj)
         {
@@ -147,7 +150,7 @@ namespace Ecommerce.DataAccess
                 var Order = context.orderheaders.Where(m => m.orderID == obj.orderID).FirstOrDefault();
                 Order.ActualAmountPaid = obj.ActualAmountPaid;
                 Order.AmountInCurrencyChoosenByuser = obj.ActualAmountPaid;
-                Order.CreatedDate = obj.CreatedDate;
+                Order.CreatedDate = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
                 Order.CurrencyChoosenByUser = obj.CurrencyChoosenByUser;
                 Order.CurrencyInWhichAmmountPaid = obj.CurrencyInWhichAmmountPaid;
                 Order.OrderStatus = obj.OrderStatus;
@@ -178,7 +181,8 @@ namespace Ecommerce.DataAccess
             }
             return orderId;
         }
-        public static bool UpdatePaymentStatusInOrder(int orderid,string PaymantStatus,string TransId)
+
+        public static bool UpdatePaymentStatusInOrder(int orderid, string PaymantStatus, string TransId)
         {
             bool check = true;
             try
@@ -195,7 +199,44 @@ namespace Ecommerce.DataAccess
             }
             return check;
         }
+        public static List<OrderHeader> GetOrdersByStatus(string Status, int Orderid)
+        {
+            List<OrderHeader> Order = new List<OrderHeader>();
+            if (Orderid > 0)
+            {
+                Order.Add(GetByOrderId(Orderid));
+            }
+            else
+            {
+                var context = new Ecommerce.DbEntity.ecommerceEntities();
+                var obj = context.orderheaders.Where(m => m.OrderStatus == Status).Select(m => m.orderID).ToList();
+                foreach (var x in obj)
+                {
+                    Order.Add(GetByOrderId(x));
 
-        
+                }
+            }
+            return Order;
+        }
+
+        public static bool UpdateOrderStatus(int orderid, string trackingNumber, string Status)
+        {
+            bool check = true;
+            try
+            {
+                var context = new Ecommerce.DbEntity.ecommerceEntities();
+                var Order = context.orderheaders.Where(m => m.orderID == orderid).FirstOrDefault();
+                Order.TrackingNumber = trackingNumber;
+                Order.OrderStatus = Status;
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                check = false;
+            }
+            return check;
+        }
+
+
     }
 }

@@ -45,5 +45,6 @@ namespace Ecommerce.DbEntity
         public Nullable<decimal> TotalProductCostInConvertedrCurrency { get; set; }
         public Nullable<decimal> Discount { get; set; }
         public string CreateDate { get; set; }
+        public string TrackingNumber { get; set; }
     }
 }

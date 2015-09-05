@@ -9,18 +9,8 @@
         
         @if (ViewBag.Hompage == "true")
         {
-            <div id="landing">
-            <div class="title">
-                <img src="/img/form-title.png" alt="Sign up to get emails about the latest  products and special offers from Candy Crush." border="0"></div>
-            <!-- <div id="errorDiv" style="border: 1px solid; background-repeat: no-repeat; background-position: 10px center; color: #D8000C; background-color: #FFBABA; font-weight:normal; font-size:12px; visibility:hidden;"></div> -->
-            <div class="section signup" id="mainForm" style="">
-                <div class="field single" id="emailDiv">
-                    <input type="text" name="email" maxlength="50" size="30" value="Enter your email" onfocus="if (this.value == 'Enter your email') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter your email';}">
-                    <input class="btn btn-primary" type="submit" value="SUBMIT">
-                </div>
-                <div class="field submit"></div>
-            </div>
-        </div>
+            @Html.Partial("newsLetterSubscription")
+           
         }
         <h2 class="align-center unbranded">Browse Our Store</h2>
         <div class="gap-30"></div>

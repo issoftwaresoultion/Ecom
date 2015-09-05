@@ -60,7 +60,7 @@ namespace Ecommerce
             {
                 mail.From = new MailAddress("adam_022113@yahoo.com");
                 mail.To.Add(ToEmail);
-                mail.Subject = "Order Confirmed";
+                mail.Subject = subject;
                 mail.Body = EmailMessage;
                 mail.IsBodyHtml = true;
                 // Can set to false, if you are sending pure text.

@@ -105,7 +105,11 @@ namespace Ecommerce.Controllers
             }
             return Json(OutputMessage);
         }
-
+        public ActionResult NewsletterEmail(NewsLetter obj)
+        {
+            NewLetter.Create(obj.Email);
+            return Content("You have subscribed for newsletter");
+        }
 
         public JsonResult RegisterUser(LoginModel obj)
         {

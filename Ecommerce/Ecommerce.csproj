@@ -125,6 +125,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\LengthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsLetterController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReviewAdminController.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="DataAccess\DeliveryDal.cs" />
     <Compile Include="DataAccess\ImageDal.cs" />
     <Compile Include="DataAccess\LengthDal.cs" />
+    <Compile Include="DataAccess\NewLetter.cs" />
     <Compile Include="DataAccess\OrderDal.cs" />
     <Compile Include="DataAccess\OrderDetailDal.cs" />
     <Compile Include="DataAccess\ProductDal.cs" />
@@ -217,6 +219,7 @@
       <DependentUpon>Dbcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\adminUser.cs" />
+    <Compile Include="Model\NewsLetter.cs" />
     <Compile Include="Model\Classes\ReCalculateCart.cs" />
     <Compile Include="Model\ContactUs.cs" />
     <Compile Include="Model\OrderDetail.cs" />
@@ -1798,6 +1801,7 @@
     <Content Include="img\Ghana.png" />
     <Content Include="img\Golden.png" />
     <Content Include="img\Nigeria.png" />
+    <Content Include="img\order_update.jpg" />
     <Content Include="img\PaymentMethod.PNG" />
     <Content Include="img\paypal.png" />
     <Content Include="img\pinterest.jpg" />
@@ -1835,6 +1839,10 @@
       <DependentUpon>Dbcontext.edmx</DependentUpon>
       <LastGenOutput>Dbcontext.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Admin\Views\OrderManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderManagement\OrderList.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderManagement\GetOrderDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\NewsLetter\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Ecommerse.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1911,6 +1919,8 @@
     <Content Include="Views\About\ContactUs.cshtml" />
     <Content Include="Views\Payment\Test.cshtml" />
     <Content Include="Views\Payment\PreStatus.cshtml" />
+    <Content Include="Views\Payment\DispatchEmail.cshtml" />
+    <Content Include="Views\Shared\newsLetterSubscription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

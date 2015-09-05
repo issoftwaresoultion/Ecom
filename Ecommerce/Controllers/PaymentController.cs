@@ -25,6 +25,15 @@ namespace Ecommerce.Controllers
             return View(order);
         }
 
+
+        public ActionResult DispatchEmail(int id)
+        {
+            ViewBag.Image = "http://testing.issoftwaresolution.in/img/Logo.png";
+            ViewBag.Thanks = "http://testing.issoftwaresolution.in/img/order_update.jpg";
+            var order = OrderDal.GetByOrderId(id);
+            return View(order);
+        }
+
         public ActionResult IPIN()
         {
             int orderId = Convert.ToInt32(Session["OrderId"]);

@@ -40,6 +40,7 @@ namespace Ecommerce.Model
         public decimal TotalProductCostInUserCurrency { get; set; }
         public decimal TotalProductCostInConvertedrCurrency { get; set; }
         public decimal Discount { get; set; }
+        public string TrackingNumber { get; set; }
         
     }
 }

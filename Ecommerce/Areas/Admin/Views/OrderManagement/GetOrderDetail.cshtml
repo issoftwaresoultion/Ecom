@@ -1,0 +1,203 @@
+﻿@model Ecommerce.Model.OrderHeader
+@{
+
+    Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
+    string cssclass = "gradeA odd";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+         @using (Html.BeginForm("Update", "OrderManagement"))
+                        {
+        <table>
+            <tr>
+
+                <td style="width:70%">Order Information</td>
+                <td>
+                    <select name="OrderStatus">
+                        @if (Model.OrderStatus == "Pending")
+                        {
+                            <option selected="selected" value="Pending">Pending</option>
+                        }
+                        else
+                        {
+                            <option value="Pending">Pending</option>
+                        }
+                        @if (Model.OrderStatus == "Dispatched")
+                        {
+                            <option selected="selected" value="Dispatched">Dispatched</option>
+                        }
+                        else
+                        {
+                            <option value="Dispatched">Dispatched</option>
+                        }
+                        @if (Model.OrderStatus == "Delivered")
+                        {
+                            <option selected="selected" value="Delivered">Delivered</option>
+                        }
+                        else
+                        {
+                            <option value="Delivered">Delivered</option>
+                        }
+
+                    </select></td>
+                <td>
+                    <input type="text" name="TrackingNumber" placeholder="TrackingNumber" value="@Model.TrackingNumber"/></td>
+                <td>
+                    @Html.HiddenFor(m=>m.orderID)
+                     @Html.HiddenFor(m=>m.Email)
+                    <input type="submit" value="Update" /></td>
+
+            </tr>
+        </table>
+         }
+
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <table style="padding: 5px; width: 100%">
+            <tr>
+                <th style="width: 400px; text-align: left">Description
+                </th>
+
+                <th style="width: 100px; text-align: left">Quantity
+                </th>
+                <th style="width: 100px; text-align: left">Price
+                </th>
+                <th style="width: 100px; text-align: left">Total
+                </th>
+            </tr>
+            @foreach (var x in Model.OrderDetail)
+            {
+                <tr>
+                    <td style="width: 400px; text-align: left">
+                        @x.ProductName
+                         <br>
+                         Color: @x.Color | Length: @x.Length 
+                    </td>
+
+                    <td style="width: 100px">&nbsp;&nbsp; @x.Quantity
+                    </td>
+                    <td style="width: 100px">&nbsp;&nbsp;
+                  @if (Model.CurrencyChoosenByUser == "Dollar")
+                  {   
+                      @Html.Raw("$" + x.UnitPrice)                          
+                  }
+                        @if (Model.CurrencyChoosenByUser == "Euro")
+                        {   
+                            @Html.Raw("&euro" + x.UnitPrice)
+                        }
+                        @if (Model.CurrencyChoosenByUser == "Pound")
+                        {   
+                            @Html.Raw("&pound;" + x.UnitPrice)
+                        }
+                        @if (Model.CurrencyChoosenByUser == "Naira")
+                        {   
+                            @Html.Raw("&#8358;" + x.UnitPrice)
+                        }
+                        @if (Model.CurrencyChoosenByUser == "Kwanza")
+                        {   
+                            @Html.Raw("Kz" + x.UnitPrice)
+                        }
+                        @if (Model.CurrencyChoosenByUser == "Cedi")
+                        {   
+                            @Html.Raw("GH₵" + x.UnitPrice)
+                        }
+
+                    </td>
+                    <td style="width: 100px">&nbsp;&nbsp;
+                 @if (Model.CurrencyChoosenByUser == "Dollar")
+                 {   
+                     @Html.Raw("$" + x.ActualPriceInUserSeletedCurrency)                          
+                 }
+                        @if (Model.CurrencyChoosenByUser == "Euro")
+                        {   
+                            @Html.Raw("&euro" + x.ActualPriceInUserSeletedCurrency)
+                        }
+                        @if (Model.CurrencyChoosenByUser == "Pound")
+                        {   
+                            @Html.Raw("&pound;" + x.ActualPriceInUserSeletedCurrency)
+                        }
+                        @if (Model.CurrencyChoosenByUser == "Naira")
+                        {   
+                            @Html.Raw("&#8358;" + x.ActualPriceInUserSeletedCurrency)
+                        }
+                        @if (Model.CurrencyChoosenByUser == "Kwanza")
+                        {   
+                            @Html.Raw("Kz" + x.ActualPriceInUserSeletedCurrency)
+                        }
+                        @if (Model.CurrencyChoosenByUser == "Cedi")
+                        {   
+                            @Html.Raw("GH₵" + x.ActualPriceInUserSeletedCurrency)
+                        }
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td style="width: 400px; text-align: left">&nbsp;
+                </td>
+
+                <td style="width: 100px; text-align: left">&nbsp;
+                </td>
+                <td style="width: 100px; text-align: left">&nbsp;
+                </td>
+                <td style="width: 100px; text-align: left">&nbsp;
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- /.panel-body -->
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Delivery Information
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body" id="ListBody">
+        <p>
+            <strong>Delivery address</strong>
+        </p>
+
+        @Model.DAddress1<br />
+
+        @if (!string.IsNullOrEmpty(Model.DAddress2))
+        {
+            @Model.DAddress2 <br />
+        }
+
+        @Model.DCity
+        <br />
+        @Model.DState<br />
+        @Model.DCountry -
+             @Model.DPostCode<br />
+        @Model.ContactNumber
+    </div>
+    <!-- /.panel-body -->
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Payment Information
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body" id="ListBody">
+        <p>
+            <strong>Billing address</strong>
+        </p>
+
+        @Model.Address1<br />
+
+        @if (!string.IsNullOrEmpty(Model.Address2))
+        {
+            @Model.Address2 <br />
+        }
+
+        @Model.City
+        <br />
+        @Model.State
+        <br />
+        @Model.Country -
+            @Model.PostCode
+        <br />
+        @Model.ContactNumber
+    </div>
+    <!-- /.panel-body -->
+</div>

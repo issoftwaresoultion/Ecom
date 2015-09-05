@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ecommerceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ecommerceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="ecommerceModelStoreContainer">
           <EntitySet Name="brand" EntityType="ecommerceModel.Store.brand" store:Type="Tables" Schema="ecommerce" />
           <EntitySet Name="category" EntityType="ecommerceModel.Store.category" store:Type="Tables" Schema="ecommerce" />
@@ -153,6 +153,7 @@
           <Property Name="TotalProductCostInConvertedrCurrency" Type="decimal" Scale="2" />
           <Property Name="Discount" Type="decimal" Scale="2" />
           <Property Name="CreateDate" Type="varchar" MaxLength="45" />
+          <Property Name="TrackingNumber" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -234,8 +235,7 @@
           <Property Name="DCountry" Type="varchar" MaxLength="200" />
           <Property Name="Isadmin" Type="bit" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ecommerceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -387,6 +387,7 @@
           <Property Name="TotalProductCostInConvertedrCurrency" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="CreateDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="TrackingNumber" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -582,6 +583,7 @@
           <EntitySetMapping Name="orderheaders">
             <EntityTypeMapping TypeName="ecommerceModel.orderheader">
               <MappingFragment StoreEntitySet="orderheader">
+                <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
                 <ScalarProperty Name="orderID" ColumnName="orderID" />
                 <ScalarProperty Name="Userid" ColumnName="Userid" />
                 <ScalarProperty Name="PermotionCode" ColumnName="PermotionCode" />

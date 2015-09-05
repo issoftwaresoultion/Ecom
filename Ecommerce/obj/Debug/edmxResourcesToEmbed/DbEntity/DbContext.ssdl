@@ -148,6 +148,7 @@
     <Property Name="TotalProductCostInConvertedrCurrency" Type="decimal" Scale="2" />
     <Property Name="Discount" Type="decimal" Scale="2" />
     <Property Name="CreateDate" Type="varchar" MaxLength="45" />
+    <Property Name="TrackingNumber" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="product">
     <Key>

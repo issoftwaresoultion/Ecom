@@ -148,6 +148,7 @@
     <Property Name="TotalProductCostInConvertedrCurrency" Type="Decimal" Precision="10" Scale="2" />
     <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" />
     <Property Name="CreateDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Type="String" Name="TrackingNumber" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="product">
     <Key>

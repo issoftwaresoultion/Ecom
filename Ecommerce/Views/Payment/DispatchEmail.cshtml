@@ -1,4 +1,5 @@
 ﻿@model Ecommerce.Model.OrderHeader
+
 <table cellpadding="5" cellspacing="0" border="0" width="850" bgcolor="#3a3a3a">
     <tbody>
         <tr>
@@ -34,7 +35,7 @@
                                     <tbody>
                                         <tr>
                                             <td align="left" style="color: #000; font-size: 17px; font-family: arial;">Dear @Model.Name,<br>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with 
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with 
                                             </td>
                                         </tr>
                                     </tbody>
@@ -54,69 +55,69 @@
                                             <td align="left" style="background: #fff; font-size: 14px; font-weight: bold; font-family: Arial;">Total</td>
                                         </tr>
 
-                                        @foreach (var x in Model.OrderDetail)
-                                        {
-                                            <tr>
-                                                <td align="left" style="background: #fff; font-size: 14px; font-weight: normal; font-family: Arial;">@x.ProductName
-                                                    <br>
-                                                    Color: @x.Color | Length: @x.Length  </td>
-                                                <td align="left" style="background: #fff; font-size: 14px; font-weight: normal; font-family: Arial;">@x.Quantity</td>
-                                                <td align="left" style="background: #fff; font-size: 14px; font-weight: normal; font-family: Arial;">
-                                                    @if (Model.CurrencyChoosenByUser == "Dollar")
-                                                    {   
-                                                        @Html.Raw("$" + x.UnitPrice)                          
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Euro")
-                                                    {   
-                                                        @Html.Raw("&euro" + x.UnitPrice)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Pound")
-                                                    {   
-                                                        @Html.Raw("&pound;" + x.UnitPrice)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Naira")
-                                                    {   
-                                                        @Html.Raw("&#8358;" + x.UnitPrice)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Kwanza")
-                                                    {   
-                                                        @Html.Raw("Kz" + x.UnitPrice)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Cedi")
-                                                    {   
-                                                        @Html.Raw("GH₵" + x.UnitPrice)
-                                                    }
+                                         @foreach (var x in Model.OrderDetail)
+                                         {
+                                        <tr>
+                                            <td align="left" style="background: #fff; font-size: 14px; font-weight: normal; font-family: Arial;">@x.ProductName
+                                                <br>
+                                                Color: @x.Color | Length: @x.Length  </td>
+                                            <td align="left" style="background: #fff; font-size: 14px; font-weight: normal; font-family: Arial;">@x.Quantity</td>
+                                            <td align="left" style="background: #fff; font-size: 14px; font-weight: normal; font-family: Arial;">
+                                                @if (Model.CurrencyChoosenByUser == "Dollar")
+                                                {   
+                        @Html.Raw("$" + x.UnitPrice)                          
+                                                }
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + x.UnitPrice)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + x.UnitPrice)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + x.UnitPrice)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + x.UnitPrice)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + x.UnitPrice)
+                    }
 
-                                                </td>
-                                                <td align="left" style="background: #fff; font-size: 14px; font-weight: normal; font-family: Arial;">
+                                            </td>
+                                            <td align="left" style="background: #fff; font-size: 14px; font-weight: normal; font-family: Arial;">
 
-                                                    @if (Model.CurrencyChoosenByUser == "Dollar")
-                                                    {   
-                                                        @Html.Raw("$" + x.ActualPriceInUserSeletedCurrency)                          
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Euro")
-                                                    {   
-                                                        @Html.Raw("&euro" + x.ActualPriceInUserSeletedCurrency)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Pound")
-                                                    {   
-                                                        @Html.Raw("&pound;" + x.ActualPriceInUserSeletedCurrency)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Naira")
-                                                    {   
-                                                        @Html.Raw("&#8358;" + x.ActualPriceInUserSeletedCurrency)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Kwanza")
-                                                    {   
-                                                        @Html.Raw("Kz" + x.ActualPriceInUserSeletedCurrency)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Cedi")
-                                                    {   
-                                                        @Html.Raw("GH₵" + x.ActualPriceInUserSeletedCurrency)
-                                                    }
-                                                </td>
-                                            </tr>
-                                        }
+                                                @if (Model.CurrencyChoosenByUser == "Dollar")
+                                                {   
+                        @Html.Raw("$" + x.ActualPriceInUserSeletedCurrency)                          
+                                                }
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + x.ActualPriceInUserSeletedCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + x.ActualPriceInUserSeletedCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + x.ActualPriceInUserSeletedCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + x.ActualPriceInUserSeletedCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + x.ActualPriceInUserSeletedCurrency)
+                    }
+                                            </td>
+                                        </tr>
+                                         }
 
 
 
@@ -132,109 +133,109 @@
                                                 <td align="right" width="60%" style="font-size: 14px; font-weight: bold; font-family: Arial;">Total Cost of Products:</td>
                                                 <td align="left" width="40%" style="font-size: 14px; font-weight: normal; font-family: Arial;">@if (Model.CurrencyChoosenByUser == "Dollar")
                                                                                                                                                {   
-                                                    @Html.Raw("$" + Model.TotalProductCostInUserCurrency)                          
+                        @Html.Raw("$" + Model.TotalProductCostInUserCurrency)                          
                                                                                                                                                }
-                                                    @if (Model.CurrencyChoosenByUser == "Euro")
-                                                    {   
-                                                        @Html.Raw("&euro" + Model.TotalProductCostInUserCurrency)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Pound")
-                                                    {   
-                                                        @Html.Raw("&pound;" + Model.TotalProductCostInUserCurrency)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Naira")
-                                                    {   
-                                                        @Html.Raw("&#8358;" + Model.TotalProductCostInUserCurrency)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Kwanza")
-                                                    {   
-                                                        @Html.Raw("Kz" + Model.TotalProductCostInUserCurrency)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Cedi")
-                                                    {   
-                                                        @Html.Raw("GH₵" + Model.TotalProductCostInUserCurrency)
-                                                    }</td>
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + Model.TotalProductCostInUserCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + Model.TotalProductCostInUserCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + Model.TotalProductCostInUserCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + Model.TotalProductCostInUserCurrency)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + Model.TotalProductCostInUserCurrency)
+                    }</td>
                                             </tr>
                                             <tr>
                                                 <td align="right" style="font-size: 14px; font-weight: bold; font-family: Arial;">Total delivery charges:</td>
                                                 <td align="left" style="font-size: 14px; font-weight: normal; font-family: Arial;">@if (Model.CurrencyChoosenByUser == "Dollar")
                                                                                                                                    {   
-                                                    @Html.Raw("$" + Model.DeliveryCharges)                          
+                        @Html.Raw("$" + Model.DeliveryCharges)                          
                                                                                                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Euro")
-                                                    {   
-                                                        @Html.Raw("&euro" + Model.DeliveryCharges)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Pound")
-                                                    {   
-                                                        @Html.Raw("&pound;" + Model.DeliveryCharges)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Naira")
-                                                    {   
-                                                        @Html.Raw("&#8358;" + Model.DeliveryCharges)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Kwanza")
-                                                    {   
-                                                        @Html.Raw("Kz" + Model.DeliveryCharges)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Cedi")
-                                                    {   
-                                                        @Html.Raw("GH₵" + Model.DeliveryCharges)
-                                                    }</td>
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + Model.DeliveryCharges)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + Model.DeliveryCharges)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + Model.DeliveryCharges)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + Model.DeliveryCharges)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + Model.DeliveryCharges)
+                    }</td>
                                             </tr>
                                             <tr>
                                                 <td align="right" style="font-size: 14px; font-weight: bold; font-family: Arial;">Total discount on order:</td>
                                                 <td align="left" style="font-size: 14px; font-weight: normal; font-family: Arial;">@if (Model.CurrencyChoosenByUser == "Dollar")
                                                                                                                                    {   
-                                                    @Html.Raw("$" + Model.Discount)                          
+                        @Html.Raw("$" + Model.Discount)                          
                                                                                                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Euro")
-                                                    {   
-                                                        @Html.Raw("&euro" + Model.Discount)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Pound")
-                                                    {   
-                                                        @Html.Raw("&pound;" + Model.Discount)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Naira")
-                                                    {   
-                                                        @Html.Raw("&#8358;" + Model.Discount)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Kwanza")
-                                                    {   
-                                                        @Html.Raw("Kz" + Model.Discount)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Cedi")
-                                                    {   
-                                                        @Html.Raw("GH₵" + Model.Discount)
-                                                    }</td>
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + Model.Discount)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + Model.Discount)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + Model.Discount)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + Model.Discount)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + Model.Discount)
+                    }</td>
                                             </tr>
                                             <tr>
                                                 <td align="right" style="font-size: 14px; font-weight: bold; font-family: Arial;">Total:</td>
                                                 <td align="left" style="font-size: 14px; font-weight: normal; font-family: Arial;">@if (Model.CurrencyChoosenByUser == "Dollar")
                                                                                                                                    {   
-                                                    @Html.Raw("$" + Model.AmountInCurrencyChoosenByuser)                          
+                        @Html.Raw("$" + Model.AmountInCurrencyChoosenByuser)                          
                                                                                                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Euro")
-                                                    {   
-                                                        @Html.Raw("&euro" + Model.AmountInCurrencyChoosenByuser)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Pound")
-                                                    {   
-                                                        @Html.Raw("&pound;" + Model.AmountInCurrencyChoosenByuser)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Naira")
-                                                    {   
-                                                        @Html.Raw("&#8358;" + Model.AmountInCurrencyChoosenByuser)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Kwanza")
-                                                    {   
-                                                        @Html.Raw("Kz" + Model.AmountInCurrencyChoosenByuser)
-                                                    }
-                                                    @if (Model.CurrencyChoosenByUser == "Cedi")
-                                                    {   
-                                                        @Html.Raw("GH₵" + Model.AmountInCurrencyChoosenByuser)
-                                                    }</td>
+                    @if (Model.CurrencyChoosenByUser == "Euro")
+                    {   
+                        @Html.Raw("&euro" + Model.AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Pound")
+                    {   
+                        @Html.Raw("&pound;" + Model.AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Naira")
+                    {   
+                        @Html.Raw("&#8358;" + Model.AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Kwanza")
+                    {   
+                        @Html.Raw("Kz" + Model.AmountInCurrencyChoosenByuser)
+                    }
+                    @if (Model.CurrencyChoosenByUser == "Cedi")
+                    {   
+                        @Html.Raw("GH₵" + Model.AmountInCurrencyChoosenByuser)
+                    }</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -251,22 +252,21 @@
                                         <tr>
                                             <td align="left" style="background: #fff; font-size: 14px; font-weight: normal; font-family: Arial;"><strong>Delivery address:</strong><br>
                                                 @Model.Name<br />
-                                                @Model.DAddress1<br />
+                                                 @Model.DAddress1<br />
+           
+            @if (!string.IsNullOrEmpty(Model.DAddress2))
+            {
+            @Model.DAddress2 <br />
+            }
 
-                                                @if (!string.IsNullOrEmpty(Model.DAddress2))
-                                                {
-                                                    @Model.DAddress2 <br />
-                                                }
-
-                                                @Model.DCity
-                                                <br />
-                                                @Model.DState<br />
-                                                @Model.DCountry -
-             @Model.DPostCode
-                                                <br />
-                                                <span style="color: #21a5cc;">@Model.ContactNumber
-                                                </span>
+             @Model.DCity <br />
+             @Model.DState<br />
+             @Model.DCountry -
+             @Model.DPostCode <br />
+                    <span style="color: #21a5cc;">@Model.ContactNumber
+                                                </span>                            
                                                 <br>
+                                               
                                             </td>
                                         </tr>
                                     </tbody>
@@ -284,24 +284,22 @@
                                             <td align="left" style="background: #fff; font-size: 14px; font-weight: normal; font-family: Arial;"><strong>Billing address:</strong><br>
                                                 <br>
                                                 @Model.Name<br />
-                                                @Model.Address1<br />
+                                                 @Model.Address1<br />
+           
+            @if (!string.IsNullOrEmpty(Model.Address2))
+            {
+            @Model.Address2 <br />
+            }
 
-                                                @if (!string.IsNullOrEmpty(Model.Address2))
-                                                {
-                                                    @Model.Address2 <br />
-                                                }
-
-                                                @Model.City
-                                                <br />
-                                                @Model.State<br />
-                                                @Model.Country -
+             @Model.City <br />
+             @Model.State<br />
+             @Model.Country -
              @Model.PostCode
                                                 <br />
-                                                <span style="color: #21a5cc;">@Model.ContactNumber
-                                                </span>
-                                                <br />
-                                                <span style="color: #21a5cc;">@Model.Email
-                                                </span>
+                    <span style="color: #21a5cc;">@Model.ContactNumber
+                                                </span> <br />
+                                                 <span style="color: #21a5cc;">@Model.Email
+                                                </span> 
                                             </td>
                                         </tr>
                                     </tbody>
@@ -324,7 +322,7 @@
                                                 target="_blank"
                                                 href="mailto:customerservice@sweetfacecosmetics.com?Subject=Customer+Service+Email"
                                                 style="color:#21a5cc;display:inline-block;margin-left:40px;text-decoration:none;">Suggestions</a><a rel="nofollow" target="_blank" href="#" style="color: #21a5cc; display: inline-block; margin-left: 40px; text-decoration: none;">Returns</a><a rel="nofollow" target="_blank" href="#" style="color: #21a5cc; display: inline-block; margin-left: 40px; text-decoration: none;">FAQs</a><br>
-                                                
+
             <br>
                                                 <br>
                                                 <strong>This email is sent automatically, please do not reply.</strong><br>

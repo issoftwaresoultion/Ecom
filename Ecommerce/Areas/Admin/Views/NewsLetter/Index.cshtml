@@ -1,0 +1,97 @@
+﻿@model Ecommerce.DbEntity.staticpage
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
+}
+
+<script src="../../../../Scripts/jquery-1.9.1.js"></script>
+<script src="../../../../Scripts/jquery.unobtrusive-ajax.js"></script>
+<link href="/Content/Theme/vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/stylesheets/bootstrap-wysihtml5/core-b3.css" rel="stylesheet"/>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        @if (TempData["message"] != null)
+        {
+        <div class="panel panel-info" id="infoPannal">
+            <div class="panel-heading">
+                Info
+            </div>
+            <div class="panel-body">
+                @Html.Raw(TempData["message"].ToString())
+                </div>
+            </div>
+        }
+        <div id="ListBody">
+            &nbsp;
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Send NewsLetter
+            </div>
+            <div class="panel-body" style="padding:34px">
+               @using (Ajax.BeginForm("send", "NewsLetter", new AjaxOptions
+    {
+        UpdateTargetId = "ListBody"
+    }, new { @id = "updateCarForm" }))
+                {
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="form-group">
+                            <label>Subject</label>
+                           
+                            @Html.TextAreaFor(m => m.Heading, new { @class = "form-control", maxlength = "100" })
+                            
+                                </div>
+                        <div class="form-group">
+                            <label>Body</label>
+                            @Html.TextAreaFor(m => m.Content, new { @class = "form-control", maxlength = "3000" })
+                        </div>
+
+                        
+                        <div class="form-group">
+                        <input type="submit" value="Send" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                </div>
+                    
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/Content/Theme/vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/javascripts/bootstrap-wysihtml5/wysihtml5.js"></script>
+<script src="/Content/Theme/vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/javascripts/bootstrap-wysihtml5/core-b3.js"></script>
+
+<script src="/Content/Theme/vendors/ckeditor/ckeditor.js"></script>
+
+
+<script src="/Content/Theme/vendors/ckeditor/adapters/jquery.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(HideInfo, 3500);
+    });
+    function HideInfo() {
+        $("#infoPannal").hide();
+    }
+    $(function () {
+        $('#Content').ckeditor({
+            height: '150px',
+            toolbar: [
+                { name: 'document', items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates'] }, // Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
+                ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'], // Defines toolbar group without name.
+                { name: 'basicstyles', items: ['Bold', 'Italic'] }
+            ]
+        });
+    });
+    $('#bootstrap-editor').wysihtml5({
+        stylesheets: [
+            '/Content/Theme/vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/stylesheets/bootstrap-wysihtml5/wysiwyg-color.css'
+        ]
+    });
+</script>
+    

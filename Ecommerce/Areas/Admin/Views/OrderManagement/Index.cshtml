@@ -1,0 +1,71 @@
+﻿@{
+
+    Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
+    string cssclass = "gradeA odd";
+}
+<link href="../../../../Content/css/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="../../../../Content/css/dataTables.responsive.css" rel="stylesheet" />
+<script src="../../../../Scripts/Datatable/jquery.dataTables.js"></script>
+<script src="../../../../Scripts/Datatable/dataTables.bootstrap.js"></script>
+<script src="../../../../Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Order Search
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                @using (Ajax.BeginForm("GetByOrderId", "OrderManagementController", new AjaxOptions
+    {
+        UpdateTargetId = "ListBody"
+    }, new { @id = "updateCarForm" }))
+                {
+                    Html.Raw("Search By Order Id");
+                    <br />
+                    <input type="text" name="orderId" />
+                    Html.Raw("&nbsp;");
+                    <input type="submit" value="Search" />  
+                }
+            </div>
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-5">
+                               @using (Ajax.BeginForm("OrderList", "OrderManagementController", new AjaxOptions
+    {
+        UpdateTargetId = "ListBody"
+    }, new { @id = "updateCarForm" }))
+                {
+                    Html.Raw("Search By Order status");
+                    <br />
+                    <select name="DDStatus">
+                    <option value="Pending">Pending</option>
+                    <option value="Dispatched">Dispatched</option>
+                    <option value="Delivered">Delivered</option>
+                        </select>
+                    Html.Raw("&nbsp;");
+                    <input type="submit" value="Search" />  
+                }
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- /.panel-body -->
+</div>
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Order List
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body" id="ListBody">
+        @Html.Action("OrderList","OrderManagement")
+    </div>
+    <!-- /.panel-body -->
+</div>
+
+
